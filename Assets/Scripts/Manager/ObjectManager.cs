@@ -1,0 +1,182 @@
+using Cysharp.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class ObjectManager : MonoBehaviour {
+	private static readonly int GARBAGE_COUNT = 10;
+	private static readonly int MAX_CREATE_OBJECT_NUMBER = 5;
+	private Sprite[] objectSprites;
+
+	public enum ObjectKey {
+		None = -1,
+		Zero,
+		One,
+		Two,
+		Three,
+		Four, 
+		Five, 
+		Six, 
+		Seven,
+		Eight, 
+		Nine,
+		Max
+	}
+
+	public static ObjectManager init = null;
+	private void Awake() {
+		if (init == null) {
+			init = this;
+		} else if (init != this) {
+			Destroy(this.gameObject);
+		}
+		DontDestroyOnLoad(this.gameObject);
+	}
+
+	public GameObject[] objects;
+	public GameObject[] backgroundPrefabs;
+	public BlockManager[] block;
+
+	public List<MainObject> MainObjects => _mainObjecs;
+	public float backgroundLeft => block[0].GetX();
+	public float backgroundRight => block[1].GetX();
+
+	public int currBackgroundNum;
+	public int currStyleNum;
+
+	private GameObject _objParent;
+	private List<MainObject> _mainObjecs = new List<MainObject>();
+
+	private static Queue<GameObject> garbageObjectContainer;
+
+	private float _initY;
+
+	public GameObject _currBackground {
+		get { return currBackground; }
+	}
+	private GameObject currBackground;
+
+	private void Start() {
+		_objParent = new GameObject("objParent");
+		garbageObjectContainer = new Queue<GameObject>();
+
+		GameManager.OnBindGoHome += InitObj;
+
+		ObjectsSizeAsync();
+	}
+
+	private void ObjectsSizeAsync() {
+		float maxWidth = Screen.width;//> 1080 ? 1080 : Screen.width;
+		float maxHeight = Screen.height;// > 1920 ? 1920 : Screen.height;
+		if (maxHeight < maxWidth) maxWidth = 1080;
+		float screenRate = maxWidth / maxHeight;
+		float objRate = screenRate / 0.5625f;
+
+		_objParent.transform.localScale = Vector3.one * objRate;
+
+		float hight = maxWidth * 1.5f;
+		_initY = Camera.main.ScreenToWorldPoint(Vector2.one * hight).y;
+	}
+
+	public MainObject GetRandomObject() {
+		ObjectKey key = (ObjectKey)Random.Range(0, MAX_CREATE_OBJECT_NUMBER);
+		return GetObject(key);
+    }
+
+	public MainObject GetObject(ObjectKey key, Vector3? pos = null) {
+		if (!pos.HasValue) 
+			pos = new Vector3(0, _initY, 0);
+
+		int index = (int)key;
+		var currObject = Instantiate(objects[index], pos.Value, Quaternion.identity).GetComponent<MainObject>();
+		currObject.transform.parent = _objParent.transform;
+		currObject.GetComponent<SpriteRenderer>().sprite = objectSprites[(int)key];
+
+		if (_mainObjecs == null)
+			_mainObjecs = new List<MainObject>();
+
+		_mainObjecs.Add(currObject);
+
+		return currObject;
+	}
+
+	public void MergeObject(MainObject target, MainObject curr) {
+		if (target.mergeLevel == ObjectKey.Max) 
+			return;
+
+		target.mergeLevel += 1;
+		GetObject(target.mergeLevel, target.transform.position).GetComponent<MainObject>().Setting();
+		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
+		AddMergedObjectToGarbage(new GameObject[] { target.gameObject, curr.gameObject });
+	}
+
+	public void AddMergedObjectToGarbage(GameObject[] gameObjects) {
+		if (garbageObjectContainer.Count > GARBAGE_COUNT) {
+			for (int i = 0; i < GARBAGE_COUNT; ++i) {
+				Destroy(garbageObjectContainer.Dequeue());
+			}
+		}
+
+		foreach (GameObject gameObject in gameObjects) {
+
+			garbageObjectContainer.Enqueue(gameObject);
+			gameObject.SetActive(false);
+		}
+	}
+
+	public void InitObj() {
+		garbageObjectContainer.Clear();
+		DataManager.init.gameData.objectData.Clear();
+
+		foreach (var obj in _mainObjecs) {
+			if (obj == null) continue;
+			if (obj.gameObject.activeSelf && obj.isDropped)
+				DataManager.init.gameData.objectData.Add(new Definition.GameObjectData(obj.transform.position, obj.mergeLevel));
+		}
+		Destroy(_objParent);
+		_objParent = new GameObject("objParent");
+	}
+
+	public void SetObjectSprite(int objNum) {
+		currStyleNum = objNum;
+		objectSprites = Resources.LoadAll<Sprite>("obj/objects" + objNum);
+	}
+
+	public void RankUpItem() {
+		var randomObjects = GetRandomItems(2);
+		foreach (var random in randomObjects) {
+			MainObject mainObject = GetObject(random.mergeLevel + 1, random.transform.position);
+			mainObject.Setting();
+			Destroy(random.gameObject);
+		}
+	}
+
+	public void RerollItem() {
+		foreach (var random in _mainObjecs) {
+			if (random.isDropped) {
+				ObjectKey key = (ObjectKey)Random.Range(0, (int)ObjectKey.Nine);
+				MainObject mainObject = GetObject(key, random.transform.position);
+				mainObject.Setting();
+				Destroy(random.gameObject);
+			}
+		}
+	}
+
+	public void DestroyItem() {
+		var randomObjects = GetRandomItems(4);
+		foreach(var random in randomObjects) {
+			Destroy(random.gameObject);
+        }
+	}
+
+	private List<MainObject> GetRandomItems(int count) {
+		if (_mainObjecs.Count <= count)
+			return _mainObjecs.Where(x => x.isDropped).ToList();
+		else {
+			System.Random random = new System.Random();
+			return _mainObjecs.Where(x => x.isDropped).OrderBy(x => random.Next()).Take(count).ToList();
+		}
+    }
+}

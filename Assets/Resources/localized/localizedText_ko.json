@@ -1,0 +1,117 @@
+{
+  "items": [
+    {
+      "key": "Title",
+      "value": "WaterMelon"
+    },
+    {
+      "key": "StartGame",
+      "value": "게임 시작"
+    },
+    {
+      "key": "NewGame",
+      "value": "새 게임"
+    },
+    {
+      "key": "Main",
+      "value": "메인"
+    },
+    {
+      "key": "Store",
+      "value": "상점"
+    },
+    {
+      "key": "IsPurchase",
+      "value": "구매 하시겠습니까?"
+    },
+    {
+      "key": "Check",
+      "value": "확인"
+    },
+    {
+      "key": "Cancel",
+      "value": "취소"
+    },
+    {
+      "key": "CoinDummy",
+      "value": "Coin Dummy"
+    },
+    {
+      "key": "CoinPurse",
+      "value": "Coin Poket"
+    },
+    {
+      "key": "CoinBox",
+      "value": "Coin Box"
+    },
+    {
+      "key": "Bonus",
+      "value": "bonus"
+    },
+
+    {
+      "key": "Object",
+      "value": "OBJECT"
+    },
+    {
+      "key": "Background",
+      "value": "BACKGROUND"
+    },
+    {
+      "key": "Special",
+      "value": "SPECIAL"
+    },
+
+    {
+      "key": "Destruction",
+      "value": "파괴"
+    },
+    {
+      "key": "RankUp",
+      "value": "랭크업"
+    },
+    {
+      "key": "Reroll",
+      "value": "굴리기"
+    },
+    {
+      "key": "FreeCoin",
+      "value": "무료 코인"
+    },
+    {
+      "key": "DoubleCoin",
+      "value": "더블 코인"
+    },
+    {
+      "key": "RemoveAds",
+      "value": "광고 제거"
+    },
+
+    {
+      "key": "DestructionDesc",
+      "value": "4개의 공을 삭제합니다. (랜덤)"
+    },
+    {
+      "key": "RankUpDesc",
+      "value": "2개의 공을 레벨 업 합니다."
+    },
+    {
+      "key": "RerollDesc",
+      "value": "모든 공을 뒤바꿉니다."
+    },
+    {
+      "key": "FreeCoinDesc",
+      "value": "일일 구매"
+    },
+    {
+      "key": "DoubleCoinDesc",
+      "value": "코인 획득량이 두배로 증가합니다."
+    },
+    {
+      "key": "RemoveAdsDesc",
+      "value": "모든 광고를 제거합니다."
+    }
+
+
+  ]
+}

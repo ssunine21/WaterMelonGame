@@ -1,0 +1,115 @@
+{
+  "items": [
+    {
+      "key": "Title",
+      "value": "WaterMelon"
+    },
+    {
+      "key": "StartGame",
+      "value": "Start Game"
+    },
+    {
+      "key": "NewGame",
+      "value": "New Game"
+    },
+    {
+      "key": "Main",
+      "value": "Main"
+    },
+    {
+      "key": "Store",
+      "value": "Store"
+    },
+    {
+      "key": "IsPurchase",
+      "value": "Would you like to purchase it?"
+    },
+    {
+      "key": "Check",
+      "value": "Confirm"
+    },
+    {
+      "key": "Cancel",
+      "value": "Cancel"
+    },
+    {
+      "key": "CoinDummy",
+      "value": "Coin Dummy"
+    },
+    {
+      "key": "CoinPurse",
+      "value": "Coin Poket"
+    },
+    {
+      "key": "CoinBox",
+      "value": "Coin Box"
+    },
+    {
+      "key": "Bonus",
+      "value": "bonus"
+    },
+
+    {
+      "key": "Object",
+      "value": "OBJECT"
+    },
+    {
+      "key": "Background",
+      "value": "BACKGROUND"
+    },
+    {
+      "key": "Special",
+      "value": "SPECIAL"
+    },
+
+    {
+      "key": "Destruction",
+      "value": "Destruction"
+    },
+    {
+      "key": "RankUp",
+      "value": "Rank Up"
+    },
+    {
+      "key": "Reroll",
+      "value": "Re-roll"
+    },
+    {
+      "key": "FreeCoin",
+      "value": "Free Coin"
+    },
+    {
+      "key": "DoubleCoin",
+      "value": "Double Coin"
+    },
+    {
+      "key": "RemoveAds",
+      "value": "Remove Ads"
+    },
+
+    {
+      "key": "DestructionDesc",
+      "value": "Delete four balls. (Random)"
+    },
+    {
+      "key": "RankUpDesc",
+      "value": "Level up two balls. (Random)"
+    },
+    {
+      "key": "RerollDesc",
+      "value": "Changes all balls."
+    },
+    {
+      "key": "FreeCoinDesc",
+      "value": "Daily purchase"
+    },
+    {
+      "key": "DoubleCoinDesc",
+      "value": "Coin acquisition amount is doubled"
+    },
+    {
+      "key": "RemoveAdsDesc",
+      "value": "Remove all ads."
+    }
+  ]
+}

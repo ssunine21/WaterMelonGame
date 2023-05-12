@@ -1,0 +1,60 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+public class MaxLine : MonoBehaviour {
+    public float LineHeight => transform.position.y;
+
+    private static readonly float DELAY_GAMEOVER = 1.5f;
+    private static readonly int isWaringToHash = Animator.StringToHash("isWaring");
+    private bool isWaring = false;
+
+    public static MaxLine init;
+    private void Awake() {
+		if (init == null) {
+			init = this;
+		} else if (init != this) {
+			Destroy(this.gameObject);
+		}
+
+        animator = GetComponent<Animator>();
+        boxCollider2D = this.GetComponent<BoxCollider2D>();
+    }
+
+    public float WaringYPosition {
+        get {
+            return this.transform.position.y - boxCollider2D.size.y;
+        }
+    }
+
+    public float OverYPosition {
+        get {
+            return this.transform.position.y;
+        }
+    }
+
+    private Animator animator;
+    private BoxCollider2D boxCollider2D = null;
+
+    private void Start() {
+        ObjectHeightAsync();
+    }
+
+    public void WaringLine(bool flag) {
+        animator.SetBool(isWaringToHash, flag);
+    }
+
+    public void StopFlickerAnim() {
+        animator.SetBool(isWaringToHash, false);
+    }
+
+    private void ObjectHeightAsync() {
+        float maxWidth = Screen.width;// > 1080 ? 1080 : Screen.width;
+        float hight = maxWidth * 1.5f;
+        Vector2 pos = Camera.main.ScreenToWorldPoint(Vector2.one * hight);
+        pos.x = 0;
+        this.transform.position = pos;
+    }
+}

@@ -1,0 +1,115 @@
+{
+  "items": [
+    {
+      "key": "Title",
+      "value": "スイカゲーム"
+    },
+    {
+      "key": "StartGame",
+      "value": "ゲーム開始"
+    },
+    {
+      "key": "NewGame",
+      "value": "新しいゲーム"
+    },
+    {
+      "key": "Main",
+      "value": "メイン"
+    },
+    {
+      "key": "Store",
+      "value": "ストア"
+    },
+    {
+      "key": "IsPurchase",
+      "value": "購入なさいますか？"
+    },
+    {
+      "key": "Check",
+      "value": "確認"
+    },
+    {
+      "key": "Cancel",
+      "value": "キャンセル"
+    },
+    {
+      "key": "CoinDummy",
+      "value": "コインの山"
+    },
+    {
+      "key": "CoinPurse",
+      "value": "コインパース"
+    },
+    {
+      "key": "CoinBox",
+      "value": "コインボックス"
+    },
+    {
+      "key": "Bonus",
+      "value": "ボーナス"
+    },
+
+    {
+      "key": "Object",
+      "value": "オブジェクト"
+    },
+    {
+      "key": "Background",
+      "value": "背景"
+    },
+    {
+      "key": "Special",
+      "value": "スペシャル"
+    },
+
+    {
+      "key": "Destruction",
+      "value": "破壊"
+    },
+    {
+      "key": "RankUp",
+      "value": "ランクアップ"
+    },
+    {
+      "key": "Reroll",
+      "value": "リロール"
+    },
+    {
+      "key": "FreeCoin",
+      "value": "無料コイン"
+    },
+    {
+      "key": "DoubleCoin",
+      "value": "ダブルコイン"
+    },
+    {
+      "key": "RemoveAds",
+      "value": "広告削除"
+    },
+
+    {
+      "key": "DestructionDesc",
+      "value": "ボールを4つ削除します。（ランダム）"
+    },
+    {
+      "key": "RankUpDesc",
+      "value": "ボールを2つレベルアップします。（ランダム）"
+    },
+    {
+      "key": "RerollDesc",
+      "value": "すべてのボールを反転させます。"
+    },
+    {
+      "key": "FreeCoinDesc",
+      "value": "デイリー購入"
+    },
+    {
+      "key": "DoubleCoinDesc",
+      "value": "コイン獲得量が2倍になります。"
+    },
+    {
+      "key": "RemoveAdsDesc",
+      "value": "すべての広告を削除します。"
+    }
+  ]
+}
