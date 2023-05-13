@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class ObjectManager : MonoBehaviour {
 	private static readonly int GARBAGE_COUNT = 10;
 	private static readonly int MAX_CREATE_OBJECT_NUMBER = 5;
-	private Sprite[] objectSprites;
+	private List<Sprite> objectSprites = new List<Sprite>();
 
 	public enum ObjectKey {
 		None = -1,
@@ -40,8 +40,8 @@ public class ObjectManager : MonoBehaviour {
 	public BlockManager[] block;
 
 	public List<MainObject> MainObjects => _mainObjecs;
-	public float backgroundLeft => block[0].GetX();
-	public float backgroundRight => block[1].GetX();
+	public float MinLeftX => GetPos(true);
+	public float MaxRightX => GetPos(false);
 
 	public int currBackgroundNum;
 	public int currStyleNum;
@@ -141,7 +141,13 @@ public class ObjectManager : MonoBehaviour {
 
 	public void SetObjectSprite(int objNum) {
 		currStyleNum = objNum;
-		objectSprites = Resources.LoadAll<Sprite>("obj/objects" + objNum);
+
+		if (objectSprites == null)
+			objectSprites = new List<Sprite>();
+
+		for(int i = 0; i < (int)ObjectKey.Max + 1; ++i ) {
+			objectSprites.Add(Resources.Load<Sprite>($"obj/Obj{objNum}_{i}"));
+        }
 	}
 
 	public void RankUpItem() {
@@ -179,4 +185,24 @@ public class ObjectManager : MonoBehaviour {
 			return _mainObjecs.Where(x => x.isDropped).OrderBy(x => random.Next()).Take(count).ToList();
 		}
     }
+
+	private float GetPos(bool isLeft) {
+		Vector2 pos;
+		float maxWidth = Screen.width;
+		float maxHeight = Screen.height;
+
+		if (maxHeight < maxWidth) maxWidth = 1080;
+
+		float realHalf = Screen.width * 0.5f;
+		float ingameHalf = maxWidth * 0.5f;// > 540 ? 540 : realHalf;
+
+
+		if (isLeft) {
+			pos = Camera.main.ScreenToWorldPoint(new Vector2(realHalf - ingameHalf, 0));
+			return pos.x;
+		} else {
+			pos = Camera.main.ScreenToWorldPoint(new Vector2(realHalf + ingameHalf, 0));
+			return pos.x;
+		}
+	}
 }

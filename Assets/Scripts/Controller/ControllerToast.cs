@@ -8,7 +8,7 @@ public class ControllerToast {
 
     public ControllerToast(Transform parent) {
         _view = ViewCanvas.Create<ViewCanvasToast>(parent);
-        _view.SetActive(true);
+        _view.SetActive(false);
         _view.SetLocalizeKey();
 
     }

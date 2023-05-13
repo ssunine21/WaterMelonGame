@@ -41,14 +41,12 @@ public class MainObject : MonoBehaviour {
 		float overLineTime = 0;
 
 		while (true) {
-			if (transform.position.x - radius < ObjectManager.init.backgroundLeft) {
-				Vector2 temp = new Vector2(ObjectManager.init.backgroundLeft + radius, transform.position.y);
+			if (transform.position.x - radius < ObjectManager.init.MinLeftX) {
+				Vector2 temp = new Vector2(ObjectManager.init.MinLeftX + radius, transform.position.y);
 				transform.position = temp;
-				_rigidbody.angularVelocity = 0;
-			} else if (transform.position.x + radius > ObjectManager.init.backgroundRight) {
-				Vector2 temp = new Vector2(ObjectManager.init.backgroundRight - radius, transform.position.y);
+			} else if (transform.position.x + radius > ObjectManager.init.MaxRightX) {
+				Vector2 temp = new Vector2(ObjectManager.init.MaxRightX - radius, transform.position.y);
 				transform.position = temp;
-				_rigidbody.angularVelocity = 0;
 			}
 
 			if (isDropped && isReady) {

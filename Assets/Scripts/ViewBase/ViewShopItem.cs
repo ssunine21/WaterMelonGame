@@ -17,7 +17,7 @@ public class ViewShopItem : ViewBase {
 
         for(int i = 0; i < _objectImages.Length; ++i) {
             int num = int.Parse(Regex.Replace(_objectImages[i].name, @"\D", ""));
-            _objectImages[i].sprite = sprites[num];
+            _objectImages[i].sprite = Resources.Load<Sprite>($"obj/Obj{index}_{num}");
         }
     }
 
