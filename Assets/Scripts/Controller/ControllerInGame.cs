@@ -19,7 +19,7 @@ public class ControllerInGame {
         });
         _view.ButtonDestroyItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            viewToastMessage.Show("아이템 사용하시겠습니까?", () => {
+            viewToastMessage.Show("?????? ?????????????????", () => {
                 var key = Definition.Item.Destruction;
                 if (PlayerItem.GetCount(key) > 0) {
                     PlayerItem.Comsume(key);
@@ -29,7 +29,7 @@ public class ControllerInGame {
         });
         _view.ButtonRankUpItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            viewToastMessage.Show("아이템 사용하시겠습니까?", () => {
+            viewToastMessage.Show("?????? ?????????????????", () => {
                 var key = Definition.Item.RankUp;
                 if (PlayerItem.GetCount(key) > 0) {
                     PlayerItem.Comsume(key);
@@ -39,7 +39,7 @@ public class ControllerInGame {
         });
         _view.ButtonRerollItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            viewToastMessage.Show("아이템 사용하시겠습니까?", () => {
+            viewToastMessage.Show("?????? ?????????????????", () => {
                 var key = Definition.Item.Reroll;
                 if (PlayerItem.GetCount(key) > 0) {
                     PlayerItem.Comsume(key);
@@ -51,7 +51,9 @@ public class ControllerInGame {
         GameManager.OnBindNewGame += InitNewStart;
         GameManager.OnBindStartGame += InitStartStart;
         GameManager.OnBindGoHome += GameEnd;
-        DataScore.OnBindChangeCurrScore += () => CoCurrSocreFlow().Forget();
+        DataScore.OnBindChangeCurrScore += () => SetScore();
+
+        CoCurrSocreFlow().Forget();
 
         PlayerItem.OnChangeItem += (key) => UpdateItemCount();
     }
@@ -170,17 +172,24 @@ public class ControllerInGame {
         int.TryParse(_view.TextCurrScore.text, out int curr);
 
         float elapsedTime = 0f;
-        float duration = 1f;
-        while (elapsedTime < duration) {
+        float duration = 2f;
+        while (true) {
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
             int currentValue = (int)Mathf.Lerp(curr, DataScore.CurrScore, t);
-            _view.SetCurrScore(currentValue);
+            if (currentValue >= DataScore.CurrScore)
+            {
+                elapsedTime = 0f;
+                duration = 1f;
+            }
+            UpdateScore();
             await UniTask.Delay(10);
         }
+    }
 
+    private void SetScore()
+    {
         if (DataScore.CurrScore > DataScore.BestScore)
             DataScore.SetBestScore(DataScore.CurrScore);
-        UpdateScore();
     }
 }

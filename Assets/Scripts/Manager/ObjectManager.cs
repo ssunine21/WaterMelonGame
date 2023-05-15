@@ -42,6 +42,7 @@ public class ObjectManager : MonoBehaviour {
 	public List<MainObject> MainObjects => _mainObjecs;
 	public float MinLeftX => GetPos(true);
 	public float MaxRightX => GetPos(false);
+	public float GetY => -7.4f;
 
 	public int currBackgroundNum;
 	public int currStyleNum;

@@ -16,8 +16,9 @@ public class MainObject : MonoBehaviour {
         }
     }
 
+	[SerializeField] private SpriteRenderer _spriteRenderer;
+
 	private Sprite sprite;
-	private SpriteRenderer _spriteRenderer;
 	private Rigidbody2D _rigidbody;
 	private Vector3 screenPos;
 
@@ -28,7 +29,6 @@ public class MainObject : MonoBehaviour {
 
 
 	private void Start() {
-		_spriteRenderer = GetComponent<SpriteRenderer>();
 		_rigidbody = GetComponent<Rigidbody2D>();
 		radius = GetRadius();
 		screenPos.x = Camera.main.ViewportToWorldPoint(Vector2.zero).x;
@@ -39,15 +39,20 @@ public class MainObject : MonoBehaviour {
 	private IEnumerator CoAsyncPosition() {
 		float waringLineTime = 0;
 		float overLineTime = 0;
-
+		Vector2 tempPosition = transform.position;
 		while (true) {
-			if (transform.position.x - radius < ObjectManager.init.MinLeftX) {
-				Vector2 temp = new Vector2(ObjectManager.init.MinLeftX + radius, transform.position.y);
-				transform.position = temp;
-			} else if (transform.position.x + radius > ObjectManager.init.MaxRightX) {
-				Vector2 temp = new Vector2(ObjectManager.init.MaxRightX - radius, transform.position.y);
-				transform.position = temp;
+			_rigidbody.angularVelocity = 0;
+			tempPosition = transform.position;
+			if (transform.position.x - radius < ObjectManager.init.MinLeftX)
+			{
+				tempPosition.x = ObjectManager.init.MinLeftX + radius;
 			}
+			else if (transform.position.x + radius > ObjectManager.init.MaxRightX)
+			{
+				tempPosition.x = ObjectManager.init.MaxRightX - radius;
+			}
+
+			transform.position = tempPosition;
 
 			if (isDropped && isReady) {
 				if (waringLineTime > 0.5f) {
@@ -90,7 +95,7 @@ public class MainObject : MonoBehaviour {
 	}
 
 	private float GetRadius() {
-		sprite = GetComponent<SpriteRenderer>().sprite;
+		sprite = _spriteRenderer.sprite;
 		return sprite.rect.width / (sprite.pixelsPerUnit * 0.01f) * 0.005f;
 	}
 
