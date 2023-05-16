@@ -93,7 +93,7 @@ public class ObjectManager : MonoBehaviour {
 		int index = (int)key;
 		var currObject = Instantiate(objects[index], pos.Value, Quaternion.identity).GetComponent<MainObject>();
 		currObject.transform.parent = _objParent.transform;
-		currObject.GetComponent<SpriteRenderer>().sprite = objectSprites[(int)key];
+		currObject.SpriteRenderer.sprite = objectSprites[(int)key];
 
 		if (_mainObjecs == null)
 			_mainObjecs = new List<MainObject>();

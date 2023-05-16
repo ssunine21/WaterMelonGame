@@ -60,7 +60,7 @@ public class ControllerGameOver {
         _view.TextTotalScore.gameObject.SetActive(true);
 
         int curr = 0;
-        int score = 2319917; // DataScore.CurrScore
+        int score = DataScore.CurrScore;
         _view.Panel.DOColor(new Color(0, 0, 0, 0.9f), 0.5f);
         _view.RectTotalScore.DOAnchorPosY(_textSocreYPos, 0.5f);
 
@@ -76,6 +76,9 @@ public class ControllerGameOver {
 
         int finalScore = int.Parse(_view.TextTotalScore.text);
         finalScore += finalScore / 10;
+
+        DataScore.SetCurrScore(finalScore);
+        DataScore.SetBestScore(finalScore);
 
         await UniTask.Delay(700);
         _view.TextTempTotalScore.gameObject.SetActive(true);

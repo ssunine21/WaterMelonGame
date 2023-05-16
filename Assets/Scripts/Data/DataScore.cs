@@ -12,6 +12,7 @@ public static class DataScore {
 	}
 
 	public static void SetBestScore(int score) {
+		if (score < CurrScore) return;
 		DataManager.init.gameData.bestScore = score;
     }
 

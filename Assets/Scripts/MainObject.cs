@@ -16,6 +16,8 @@ public class MainObject : MonoBehaviour {
         }
     }
 
+	public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
 	[SerializeField] private SpriteRenderer _spriteRenderer;
 
 	private Sprite sprite;
@@ -133,7 +135,7 @@ public class MainObject : MonoBehaviour {
 
 	public void ObjectFlickerAnimation() {
 		if(!GameManager.IsGamePause) {
-			StartCoroutine(CoFlicker());
+			//StartCoroutine(CoFlicker());
         }
 	}
 
