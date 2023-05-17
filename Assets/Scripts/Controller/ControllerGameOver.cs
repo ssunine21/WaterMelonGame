@@ -64,10 +64,11 @@ public class ControllerGameOver {
         _view.Panel.DOColor(new Color(0, 0, 0, 0.9f), 0.5f);
         _view.RectTotalScore.DOAnchorPosY(_textSocreYPos, 0.5f);
 
+        // after timer -> score setting
         float elapsedTime = 0f;
         float duration = 1f;
         while (elapsedTime < duration) {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * 7f;
             float t = Mathf.Clamp01(elapsedTime / duration);
             int currentValue = (int)Mathf.Lerp(curr, score, t);
             _view.TextTotalScore.text = currentValue.ToString();

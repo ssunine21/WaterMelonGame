@@ -45,12 +45,15 @@ public class MainObject : MonoBehaviour {
 		while (true) {
 			_rigidbody.angularVelocity = 0;
 			tempPosition = transform.position;
+			_rigidbody.freezeRotation = true;
 			if (transform.position.x - radius < ObjectManager.init.MinLeftX)
 			{
+				_rigidbody.freezeRotation = false;
 				tempPosition.x = ObjectManager.init.MinLeftX + radius;
 			}
 			else if (transform.position.x + radius > ObjectManager.init.MaxRightX)
 			{
+				_rigidbody.freezeRotation = false;
 				tempPosition.x = ObjectManager.init.MaxRightX - radius;
 			}
 
@@ -90,8 +93,6 @@ public class MainObject : MonoBehaviour {
 		} catch (System.NullReferenceException e) {
 			Debug.Log(e.StackTrace);
 		}
-
-		_spriteRenderer.DOFade(0.0f, duraitionSeconds).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
 
 		StartCoroutine(CoReady());
 	}
