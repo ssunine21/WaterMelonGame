@@ -546,6 +546,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2046542405955930903, guid: c79f2d707e262b1478a55a56670962ad,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2293120670819342917, guid: c79f2d707e262b1478a55a56670962ad,
         type: 3}
       propertyPath: _objectImages.Array.size
@@ -586,6 +591,11 @@ PrefabInstance:
       propertyPath: _objectImages.Array.data[6]
       value: 
       objectReference: {fileID: 7997352355138670780}
+    - target: {fileID: 4916890341032365839, guid: c79f2d707e262b1478a55a56670962ad,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5661692729983026356, guid: c79f2d707e262b1478a55a56670962ad,
         type: 3}
       propertyPath: m_Name
@@ -696,6 +706,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5965806651451413089, guid: c79f2d707e262b1478a55a56670962ad,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141338670910665919, guid: c79f2d707e262b1478a55a56670962ad,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6373996165686114667, guid: c79f2d707e262b1478a55a56670962ad,
         type: 3}
       propertyPath: m_IsActive
@@ -705,6 +725,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316129395466327069, guid: c79f2d707e262b1478a55a56670962ad,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7411363006532220355, guid: c79f2d707e262b1478a55a56670962ad,
         type: 3}

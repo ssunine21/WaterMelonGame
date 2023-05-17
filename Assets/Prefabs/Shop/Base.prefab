@@ -388,21 +388,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5853891186408347752}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8822451398355710907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5661692729983026356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e20297ba26473d4f8abd238b2729cc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: 0
-  _buttonPurchase: {fileID: 6114467869512672509}
-  _textPrice: {fileID: 8021032124320759514}
 --- !u!114 &2293120670819342917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +403,21 @@ MonoBehaviour:
   _objectImages: []
   _purchaseInfo: {fileID: 8822451398355710907}
   _panelLock: {fileID: 6373996165686114667}
+--- !u!114 &8822451398355710907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5661692729983026356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e20297ba26473d4f8abd238b2729cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _buttonPurchase: {fileID: 6114467869512672509}
+  _textPrice: {fileID: 8021032124320759514}
 --- !u!224 &5661692729983026357 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2283162896221609181, guid: a526e44457a1bab41884bf84c6a05ebc,
@@ -540,6 +540,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonPurchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079991224602673617, guid: 4dac31c08f5bf62428b401ceba5a473d,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160823773610084269, guid: 4dac31c08f5bf62428b401ceba5a473d,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489684604983501171, guid: 4dac31c08f5bf62428b401ceba5a473d,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579988265425034971, guid: 4dac31c08f5bf62428b401ceba5a473d,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dac31c08f5bf62428b401ceba5a473d, type: 3}
