@@ -28,23 +28,10 @@ public class DataManager : MonoBehaviour {
 
 	public void Save() {
 		BinaryFormatter binaryFormatter = new BinaryFormatter();
-		FileStream file = File.Create(dataPath);
-
-
-		/*gameData.isPremium = GameManager.init.isPremium;
-		gameData.isDoubleCoin = GameManager.init.isDoubleCoin;
-
-		gameData.isBGMVolum = CameraControl.init.audioSource.mute;
-		gameData.isEffectVolum = UIManager.init.audioSource.mute;
-
-		gameData.initTimer = UIManager.init.initTime;
-
-		gameData.lastLanguageFileName = LocalizationManager.init.lastLanguageFileName;
-		gameData.key = GameManager.init.key;*/
-
-		binaryFormatter.Serialize(file, gameData);
-
-		file.Close();
+		using(var file = File.Open(dataPath, FileMode.OpenOrCreate))
+        {
+			binaryFormatter.Serialize(file, gameData);
+        }
 
 		//SetFirebaseData();
 	}
@@ -54,33 +41,13 @@ public class DataManager : MonoBehaviour {
 		if (File.Exists(dataPath)) {
 
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
-			FileStream file = File.OpenRead(dataPath);
 
-			if (file.Length <= 0) return;
-			gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
+			using(var file = File.Open(dataPath, FileMode.OpenOrCreate))
+            {
+				if (file.Length <= 0) return;
 
-			//ShoppingManager.init.ApplyItem(ShoppingManager.init.style[gameData.styleNum]);
-			//ShoppingManager.init.ApplyItem(ShoppingManager.init.wallpaper[gameData.wallpaperNum]);
-
-			/*GameManager.init.isPremium = gameData.isPremium;
-			GameManager.init.isDoubleCoin = gameData.isDoubleCoin;*/
-
-			/*SettingManager.init.BGMOn(gameData.isBGMVolum);
-			SettingManager.init.EffectOn(gameData.isEffectVolum);
-
-			UIManager.init.initTime = gameData.initTimer;
-			LocalizationManager.init.lastLanguageFileName = gameData.lastLanguageFileName ?? "";*/
-
-			/*if (gameData.key.Equals("")) {
-				InitFirebaseData();
-			}
-			else {
-				GameManager.init.key = gameData.key;
-				LoadFirebaseDate();
-			}*/
-
-			file.Close();
-
+				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
+            }
 		}
 		else {
 			//InitFirebaseData();

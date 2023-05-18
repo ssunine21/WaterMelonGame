@@ -153,7 +153,7 @@ public class ControllerShop {
                                 UpdateOnLockObject();
                             }
                             else {
-                                viewToastMessage.ShowOneTimeMessage("코인이 부족합니다.");
+                                viewToastMessage.ShowOneTimeMessage("?????? ??????????.");
                             }
                         });
                 });
@@ -174,10 +174,10 @@ public class ControllerShop {
                     viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsPurchase)
                         , () => {
                             if (PlayerCoin.Consume(item.PurchaseInfo.Price)) {
-                                DataManager.init.gameData.styleProducts[index] = true;
+                                DataManager.init.gameData.wallpaperProducts[index] = true;
                                 UpdateOnLockWallpaper();
                             } else {
-                                viewToastMessage.ShowOneTimeMessage("코인이 부족합니다.");
+                                viewToastMessage.ShowOneTimeMessage("?????? ??????????.");
                             }
                         });
                 });
