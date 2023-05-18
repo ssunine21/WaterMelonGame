@@ -67,7 +67,8 @@ public class ControllerInGame {
 
     private void InitStartStart() {
         UpdateView();
-        if (DataManager.init.gameData.objectData == null) {
+        if (DataManager.init.gameData.objectData == null
+            || DataManager.init.gameData.objectData.Count == 0) {
             InitObject();
         }
         Main().Forget();
@@ -112,6 +113,7 @@ public class ControllerInGame {
 
     async UniTaskVoid Main() {
         _isGameStart = true;
+        GameManager.IsGamePause = false;
         foreach (var objInfo in DataManager.init.gameData.objectData) {
             var obj = ObjectManager.init.GetObject(objInfo.mergeLevel);
             obj.transform.position = objInfo.position;
