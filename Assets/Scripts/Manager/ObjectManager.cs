@@ -147,7 +147,7 @@ public class ObjectManager : MonoBehaviour {
 			objectSprites = new List<Sprite>();
 
 		for(int i = 0; i < (int)ObjectKey.Max + 1; ++i ) {
-			objectSprites.Add(Resources.Load<Sprite>($"obj/Obj{objNum}_{i}"));
+			objectSprites.Add(Resources.Load<Sprite>($"obj/obj{objNum}_{i}"));
         }
 	}
 

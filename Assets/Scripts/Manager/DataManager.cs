@@ -9,6 +9,8 @@ public class DataManager : MonoBehaviour {
 	static readonly private string TITLE = "RANK";
 	static readonly private string COIN = "coin";
 
+	static readonly public string FileName = "/gameData.dat";
+
 	public static DataManager init = null;
 	private void Awake() {
 		if (init == null) {
@@ -19,7 +21,7 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		dataPath = Application.persistentDataPath + "/gameData.dat";
+		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
 
@@ -27,10 +29,13 @@ public class DataManager : MonoBehaviour {
 	public DataInfo.GameData gameData = new DataInfo.GameData();
 
 	public void Save() {
-		BinaryFormatter binaryFormatter = new BinaryFormatter();
-		using(var file = File.Open(dataPath, FileMode.OpenOrCreate))
-        {
-			binaryFormatter.Serialize(file, gameData);
+		try {
+			BinaryFormatter binaryFormatter = new BinaryFormatter();
+			using (var file = File.Open(dataPath, FileMode.OpenOrCreate)) {
+				binaryFormatter.Serialize(file, gameData);
+			}
+		} catch(System.Exception e) {
+
         }
 
 		//SetFirebaseData();
@@ -38,20 +43,22 @@ public class DataManager : MonoBehaviour {
 
 	public void Load() {
 
-		if (File.Exists(dataPath)) {
+		try {
+			if (File.Exists(dataPath)) {
 
-			BinaryFormatter binaryFormatter = new BinaryFormatter();
+				BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-			using(var file = File.Open(dataPath, FileMode.OpenOrCreate))
-            {
-				if (file.Length <= 0) return;
+				using (var file = File.Open(dataPath, FileMode.OpenOrCreate)) {
+					if (file.Length <= 0) return;
 
-				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
-            }
-		}
-		else {
-			//InitFirebaseData();
-		}
+					gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
+				}
+			} else {
+				//InitFirebaseData();
+			}
+		} catch(System.Exception e) {
+
+        }
 	}
 
 	private void LoadFirebaseDate() {

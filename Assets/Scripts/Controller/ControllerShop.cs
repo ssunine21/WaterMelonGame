@@ -138,6 +138,7 @@ public class ControllerShop {
 
         i = 0;
         Array.Resize(ref DataManager.init.gameData.styleProducts, _view.ButtonObjectItems.Length);
+        DataManager.init.gameData.styleProducts[0] = true;
         foreach (var button in _view.ButtonObjectItems) {
             int index = i;
             var item = button.GetComponent<ViewShopItem>();
@@ -164,6 +165,7 @@ public class ControllerShop {
 
         i = 0;
         Array.Resize(ref DataManager.init.gameData.wallpaperProducts, _view.ButtonBackgroundItems.Length);
+        DataManager.init.gameData.wallpaperProducts[0] = true;
         foreach (var button in _view.ButtonBackgroundItems) {
             int index = i;
             var item = button.GetComponent<ViewShopItem>();
@@ -209,6 +211,11 @@ public class ControllerShop {
     }
 
     private void UpdateObjects(int index) {
+        if (DataManager.init.gameData.styleNum == index) {
+            _view.ButtonObjectItems[index].GetComponent<ViewShopItem>().StartAnimation();
+            return;
+        }
+
         for (int i = 0; i < _view.ButtonObjectItems.Length; ++i) {
             _view.ButtonObjectItems[i].SetLock(i == index);
             var item = _view.ButtonObjectItems[i].GetComponent<ViewShopItem>();
@@ -237,6 +244,9 @@ public class ControllerShop {
     }
 
     private void UpdateBackgroundItems(int index) {
+        if (DataManager.init.gameData.wallpaperNum == index)
+            return;
+
         for (int i = 0; i < _view.ButtonBackgroundItems.Length; ++i) {
             _view.ButtonBackgroundItems[i].SetLock(i == index);
         }
