@@ -64,7 +64,8 @@ public class ObjectManager : MonoBehaviour {
 		garbageObjectContainer = new Queue<GameObject>();
 
 		GameManager.OnBindGoHome += InitObj;
-
+		
+		SetObjectSprite(DataManager.init.gameData.styleNum);
 		ObjectsSizeAsync();
 	}
 
@@ -135,7 +136,7 @@ public class ObjectManager : MonoBehaviour {
 		foreach (var obj in _mainObjecs) {
 			if (obj == null) continue;
 			if (obj.gameObject.activeSelf && obj.isDropped)
-				DataManager.init.gameData.objectData.Add(new Definition.GameObjectData(obj.transform.position, obj.mergeLevel));
+				DataManager.init.gameData.objectData.Add(new DataInfo.GameObjectData(obj.transform.position, obj.mergeLevel));
 		}
 		Destroy(_objParent);
 		_objParent = new GameObject("objParent");

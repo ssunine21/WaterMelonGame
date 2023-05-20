@@ -2652,7 +2652,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: eff77441457222d44b194b733b003952, type: 2}
+      objectReference: {fileID: -1733909079544595112, guid: 0ee4eba2b2fba9f4089d2a171aaabd9f,
+        type: 2}
     - target: {fileID: 9094050685065054993, guid: f52445f9643c1a74288d3e447380c79e,
         type: 3}
       propertyPath: m_HorizontalAlignment

@@ -143,7 +143,7 @@ public class ControllerShop {
             int index = i;
             var item = button.GetComponent<ViewShopItem>();
 
-            button.onClick.AddListener(() => {OnSelectObjectItem?.Invoke(index);});
+            button.onClick.AddListener(() => OnSelectObjectItem(index));
             if (item != null) {
                 item.SetObjectImage(index);
                 item.PurchaseInfo.SetPrice().SetPurchaseButton(() => {
@@ -170,7 +170,7 @@ public class ControllerShop {
             int index = i;
             var item = button.GetComponent<ViewShopItem>();
 
-            button.onClick.AddListener(() => OnSelectBackgroundItem?.Invoke(index));
+            button.onClick.AddListener(() => OnSelectBackgroundItem(index));
             if(item != null) {
                 item.PurchaseInfo.SetPrice().SetPurchaseButton(() => {
                     viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsPurchase)
@@ -212,6 +212,7 @@ public class ControllerShop {
 
     private void UpdateObjects(int index) {
         if (DataManager.init.gameData.styleNum == index) {
+            _view.ButtonObjectItems[index].SetLock(true);
             _view.ButtonObjectItems[index].GetComponent<ViewShopItem>().StartAnimation();
             return;
         }
@@ -225,6 +226,7 @@ public class ControllerShop {
             else
                 item.StopAnimation();
         }
+
         DataManager.init.gameData.styleNum = index;
         ObjectManager.init.SetObjectSprite(index);
         DataManager.init.Save();

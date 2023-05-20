@@ -78,7 +78,7 @@ public class ControllerInGame {
         DataScore.SetCurrScore(0);
         _view.SetCurrScore(0);
         DataManager.init.gameData.currObjectKey = ObjectManager.ObjectKey.Zero;
-        DataManager.init.gameData.objectData = new List<Definition.GameObjectData>();
+        DataManager.init.gameData.objectData = new List<DataInfo.GameObjectData>();
     }
 
     private void UpdateView() {

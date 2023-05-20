@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public static class Definition {
 
 	public enum LocalizeKey {
@@ -33,18 +34,6 @@ public static class Definition {
 		FreeCoinDesc,
 		DoubleCoinDesc,
 		RemoveAdsDesc,
-	}
-
-
-	[System.Serializable]
-	public struct GameObjectData {
-		public Vector2 position;
-		public ObjectManager.ObjectKey mergeLevel;
-
-		public GameObjectData(Vector2 pos, ObjectManager.ObjectKey key) {
-			position = pos;
-			mergeLevel = key;
-        }
 	}
 
 	public enum Item {

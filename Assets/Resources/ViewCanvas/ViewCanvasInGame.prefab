@@ -2241,6 +2241,7 @@ GameObject:
   - component: {fileID: 7918430059228543459}
   - component: {fileID: 421328523725475221}
   - component: {fileID: 3493191363493845100}
+  - component: {fileID: 1668260915135382626}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -2380,6 +2381,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 55, y: 55}
   m_EdgeRadius: 0
+--- !u!114 &1668260915135382626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041295230421640183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4060259560699949645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,8 +2933,6 @@ MonoBehaviour:
   _buttonDestroyItem: {fileID: 7256313054108036519}
   _buttonRankUpItem: {fileID: 6838878045822153659}
   _buttonRerollItem: {fileID: 4569940559066131558}
-  _textTimer: {fileID: 0}
-  _imageTimer: {fileID: 0}
   _textDestoryItemCount: {fileID: 3001725647700470538}
   _textRankUpItemCount: {fileID: 1320134641135486821}
   _textRerollItemCount: {fileID: 6883935907264530566}

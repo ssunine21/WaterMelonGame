@@ -35,8 +35,8 @@ public class DataManager : MonoBehaviour {
 				binaryFormatter.Serialize(file, gameData);
 			}
 		} catch(System.Exception e) {
-
-        }
+			Debug.LogException(e);
+		}
 
 		//SetFirebaseData();
 	}
@@ -44,21 +44,17 @@ public class DataManager : MonoBehaviour {
 	public void Load() {
 
 		try {
-			if (File.Exists(dataPath)) {
+			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-				BinaryFormatter binaryFormatter = new BinaryFormatter();
+			using (var file = File.Open(dataPath, FileMode.OpenOrCreate)) {
+				if (file.Length <= 0) return;
 
-				using (var file = File.Open(dataPath, FileMode.OpenOrCreate)) {
-					if (file.Length <= 0) return;
-
-					gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
-				}
-			} else {
-				//InitFirebaseData();
+				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 			}
-		} catch(System.Exception e) {
 
-        }
+		} catch (System.Exception e) {
+			Debug.LogException(e);
+		}
 	}
 
 	private void LoadFirebaseDate() {

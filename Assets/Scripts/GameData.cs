@@ -34,7 +34,19 @@ namespace DataInfo {
 		public string lastLanguageFileName;
 
 		public DateTime initTimer;
-		public List<Definition.GameObjectData> objectData = new List<Definition.GameObjectData>();
+		public List<GameObjectData> objectData;
 		public ObjectManager.ObjectKey currObjectKey;
+	}
+
+
+	[System.Serializable]
+	public class GameObjectData {
+		public Vector2 position;
+		public ObjectManager.ObjectKey mergeLevel;
+
+		public GameObjectData(Vector2 pos, ObjectManager.ObjectKey key) {
+			position = pos;
+			mergeLevel = key;
+		}
 	}
 }
