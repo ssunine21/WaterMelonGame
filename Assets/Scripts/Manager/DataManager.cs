@@ -26,7 +26,7 @@ public class DataManager : MonoBehaviour {
 	}
 
 	private string dataPath;
-	public DataInfo.GameData gameData = new DataInfo.GameData();
+	public DataInfo.GameData gameData;
 
 	public void Save() {
 		try {
@@ -47,7 +47,11 @@ public class DataManager : MonoBehaviour {
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
 			using (var file = File.Open(dataPath, FileMode.OpenOrCreate)) {
-				if (file.Length <= 0) return;
+				if (file.Length <= 0)
+				{
+					gameData = new DataInfo.GameData();
+					return;
+				}
 
 				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 			}

@@ -24,16 +24,13 @@ namespace DataInfo {
 		public int styleNum;
 		public int wallpaperNum;
 
-		public bool isEffectVolum;
-		public bool isBGMVolum;
-		public bool isVibration;
+		public bool isEffectVolum = true;
+		public bool isBGMVolum = true;
+		public bool isVibration = true;
 
 		public bool isPremium = false;
 		public bool isDoubleCoin = false;
 
-		public string lastLanguageFileName;
-
-		public DateTime initTimer;
 		public List<GameObjectData> objectData;
 		public ObjectManager.ObjectKey currObjectKey;
 	}
@@ -41,11 +38,13 @@ namespace DataInfo {
 
 	[System.Serializable]
 	public class GameObjectData {
-		public Vector2 position;
+		public float xPos;
+		public float yPos;
 		public ObjectManager.ObjectKey mergeLevel;
 
 		public GameObjectData(Vector2 pos, ObjectManager.ObjectKey key) {
-			position = pos;
+			xPos = pos.x;
+			yPos = pos.y;
 			mergeLevel = key;
 		}
 	}

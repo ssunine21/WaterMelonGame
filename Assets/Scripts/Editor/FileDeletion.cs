@@ -11,9 +11,9 @@ public class FileDeletion : Editor
         string filePath = Application.persistentDataPath + DataManager.FileName;
         if (File.Exists(filePath)) {
             File.Delete(filePath);
-            Debug.Log("파일이 삭제되었습니다.");
+            Debug.Log("File delete.");
         } else {
-            Debug.Log("파일이 존재하지 않습니다.");
+            Debug.Log("File is not exist.");
         }
     }
 }

@@ -116,7 +116,7 @@ public class ControllerInGame {
         GameManager.IsGamePause = false;
         foreach (var objInfo in DataManager.init.gameData.objectData) {
             var obj = ObjectManager.init.GetObject(objInfo.mergeLevel);
-            obj.transform.position = objInfo.position;
+            obj.transform.position = new Vector2(objInfo.xPos, objInfo.yPos);
             obj.Setting();
         }
 

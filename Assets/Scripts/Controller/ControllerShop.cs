@@ -152,6 +152,8 @@ public class ControllerShop {
                             if (PlayerCoin.Consume(item.PurchaseInfo.Price)) {
                                 DataManager.init.gameData.styleProducts[index] = true;
                                 UpdateOnLockObject();
+
+                                OnSelectObjectItem?.Invoke(index);
                             }
                             else {
                                 viewToastMessage.ShowOneTimeMessage("?????? ??????????.");
@@ -161,7 +163,6 @@ public class ControllerShop {
             }
             i++;
         }
-
 
         i = 0;
         Array.Resize(ref DataManager.init.gameData.wallpaperProducts, _view.ButtonBackgroundItems.Length);
@@ -178,6 +179,8 @@ public class ControllerShop {
                             if (PlayerCoin.Consume(item.PurchaseInfo.Price)) {
                                 DataManager.init.gameData.wallpaperProducts[index] = true;
                                 UpdateOnLockWallpaper();
+
+                                OnSelectBackgroundItem?.Invoke(index);
                             } else {
                                 viewToastMessage.ShowOneTimeMessage("?????? ??????????.");
                             }
