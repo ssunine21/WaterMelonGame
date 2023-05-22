@@ -113,6 +113,9 @@ public class ObjectManager : MonoBehaviour {
 		GetObject(target.mergeLevel, target.transform.position).GetComponent<MainObject>().Setting();
 		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
 		AddMergedObjectToGarbage(new GameObject[] { target.gameObject, curr.gameObject });
+
+		if (DataManager.init.gameData.isVibration)
+			Vibratior.Vibrate();
 	}
 
 	public void AddMergedObjectToGarbage(GameObject[] gameObjects) {
