@@ -11,6 +11,9 @@ public class DataManager : MonoBehaviour {
 
 	static readonly public string FileName = "/gameData.dat";
 
+	public DatabaseReference databaseReference;
+	public string key = "";
+
 	public static DataManager init = null;
 	private void Awake() {
 		if (init == null) {
@@ -21,11 +24,16 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
+		databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
 
-	private string dataPath;
+    private void Start() {
+		PlayerCoin.OnChangeValue += CoinFirebaseSync;
+    }
+
+    private string dataPath;
 	public DataInfo.GameData gameData;
 
 	public void Save() {
@@ -54,6 +62,14 @@ public class DataManager : MonoBehaviour {
 				}
 
 				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
+
+				if (gameData.key.Equals("")) {
+					InitFirebaseData();
+				} else {
+					GameManager.init.key = gameData.key;
+					LoadFirebaseDate();
+				}
+
 			}
 
 		} catch (System.Exception e) {
@@ -67,6 +83,7 @@ public class DataManager : MonoBehaviour {
 			.EqualTo(gameData.key)
 			.ChildAdded += HandleChildAddedUserData;
 	}
+
 	private void HandleChildAddedUserData(object sender, ChildChangedEventArgs arge) {
 		if (arge.DatabaseError != null) {
 			Debug.LogError(arge.DatabaseError.Message);
@@ -78,17 +95,17 @@ public class DataManager : MonoBehaviour {
 	}
 
 	public void InitFirebaseData() {
-		GameManager.init.key = GameManager.init.databaseReference.Child(TITLE).Push().Key;
-		User user = new User(SystemInfo.deviceModel, gameData.coin);
+		key = databaseReference.Child(TITLE).Push().Key;
+		User user = new User(gameData.bestScore, gameData.coin);
 		string json = JsonUtility.ToJson(user);
-		GameManager.init.databaseReference.Child(TITLE).Child(GameManager.init.key).SetRawJsonValueAsync(json);
+		databaseReference.Child(TITLE).Child(key).SetRawJsonValueAsync(json);
 	}
 
-	public void SetFirebaseData() {
-		User user = new User(
-			SystemInfo.deviceModel,
-			gameData.coin
-			);
-		GameManager.init.SetFirebaseData(user);
+	public void CoinFirebaseSync() {
+		databaseReference.Child(TITLE).Child(key).Child(COIN).SetValueAsync(gameData.coin);
+	}
+
+	public void ScoreFirebaseSync(int num) {
+		databaseReference.Child(TITLE).Child(key).Child(SCORE).SetValueAsync(gameData.bestScore);
 	}
 }

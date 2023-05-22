@@ -15,15 +15,6 @@ public class GameManager : MonoBehaviour {
 	public static bool IsGameStart;
 	public static bool IsGamePause;
 
-	static readonly private string TITLE = "RANK";
-	static readonly private string COIN = "coin";
-	static readonly private string SCORE = "score";
-
-	public DatabaseReference databaseReference;
-
-	public string key = "";
-	public static GameManager init = null;
-
 	public GameObject premiumGround;
 
 	public bool isEnterGame = false;
@@ -49,7 +40,6 @@ public class GameManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 		Application.targetFrameRate = 60;
 
 		OnBindNewGame += GameStart;
@@ -72,20 +62,5 @@ public class GameManager : MonoBehaviour {
     public void BuyPremium() {
 		AdsManager.init.DestroyBannerAd();
 		premiumGround.SetActive(true);
-	}
-
-	public void SetFirebaseData(User user) {
-		if (!key.Equals("")) {
-			string json = JsonUtility.ToJson(user);
-			databaseReference.Child(TITLE).Child(key).SetRawJsonValueAsync(json);
-		}
-	}
-
-	public void CoinFirebaseSync(int num) {
-		databaseReference.Child(TITLE).Child(key).Child(COIN).SetValueAsync(num);
-	}
-
-	public void ScoreFirebaseSync(int num) {
-		databaseReference.Child(TITLE).Child(key).Child(SCORE).SetValueAsync(num);
 	}
 }

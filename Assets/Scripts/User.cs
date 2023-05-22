@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 public class User {
-	public string deviceModel;
+	public int score;
 	public int coin;
 
-	public User(string deviceModel, int coin) {
-		this.deviceModel = deviceModel;
+	public User(int bestScore, int coin) {
+		this.score = bestScore;
 		this.coin = coin;
 	}
 }
