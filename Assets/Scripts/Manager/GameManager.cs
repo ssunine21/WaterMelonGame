@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
 	public static bool IsGameStart;
 	public static bool IsGamePause;
+	public static GameManager init;
 
 	public GameObject premiumGround;
 

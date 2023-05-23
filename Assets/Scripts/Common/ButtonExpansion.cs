@@ -37,7 +37,7 @@ public class ButtonExpansion : Button {
             await RoutineUpScale(_cts);
             await RoutineOriginScale(_cts);
         } catch(System.Exception e) {
-
+            Debug.LogException(e);
         }
         rectTr.localScale = Vector3.one;
         isDoubleClick = false;

@@ -8,11 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class DataManager : MonoBehaviour {
 	static readonly private string TITLE = "RANK";
 	static readonly private string COIN = "coin";
+	static readonly private string SCORE = "score";
 
 	static readonly public string FileName = "/gameData.dat";
 
 	public DatabaseReference databaseReference;
-	public string key = "";
 
 	public static DataManager init = null;
 	private void Awake() {
@@ -66,7 +66,6 @@ public class DataManager : MonoBehaviour {
 				if (gameData.key.Equals("")) {
 					InitFirebaseData();
 				} else {
-					GameManager.init.key = gameData.key;
 					LoadFirebaseDate();
 				}
 
@@ -95,17 +94,17 @@ public class DataManager : MonoBehaviour {
 	}
 
 	public void InitFirebaseData() {
-		key = databaseReference.Child(TITLE).Push().Key;
+		gameData.key = databaseReference.Child(TITLE).Push().Key;
 		User user = new User(gameData.bestScore, gameData.coin);
 		string json = JsonUtility.ToJson(user);
-		databaseReference.Child(TITLE).Child(key).SetRawJsonValueAsync(json);
+		databaseReference.Child(TITLE).Child(gameData.key).SetRawJsonValueAsync(json);
 	}
 
 	public void CoinFirebaseSync() {
-		databaseReference.Child(TITLE).Child(key).Child(COIN).SetValueAsync(gameData.coin);
+		databaseReference.Child(TITLE).Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
 	}
 
-	public void ScoreFirebaseSync(int num) {
-		databaseReference.Child(TITLE).Child(key).Child(SCORE).SetValueAsync(gameData.bestScore);
+	public void ScoreFirebaseSync() {
+		databaseReference.Child(TITLE).Child(gameData.key).Child(SCORE).SetValueAsync(gameData.bestScore);
 	}
 }

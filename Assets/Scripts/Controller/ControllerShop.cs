@@ -96,8 +96,6 @@ public class ControllerShop {
         UpdateItemCount();
 
         DailyRewardTimeUpdate().Forget();
-
-        PlayerCoin.Earn(9900);
     }
 
     private async UniTaskVoid DailyRewardTimeUpdate() {

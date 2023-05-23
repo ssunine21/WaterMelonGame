@@ -6,10 +6,6 @@ using UnityEngine.Events;
 using TMPro;
 
 public class UIManager : MonoBehaviour {
-	private static readonly int COIN_ABOUT_SCORE = 55;
-	private static readonly double ADD_COIN_ADS_DELAY = 5;
-	private static readonly float MAX_LEVEL_PANEL_OFF_DELAY = 2.5f;
-	private static readonly float DESTROY_MAX_OBJECT_DELAY = 1.0f;
 
 	public UnityAction OnShopClick;
 
