@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mergeLevel: 9
   _spriteRenderer: {fileID: 3499459620710429629}
+  _particle: {fileID: 0}
   isReady: 0
 --- !u!95 &-843271489762651578
 Animator:

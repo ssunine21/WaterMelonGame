@@ -2039,6 +2039,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9150f4997a19c664b8a3f1dc7e52fd6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Particle: {fileID: 9157105887693468085, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
+    type: 3}
   objects:
   - {fileID: 4746096676058348578, guid: f4bfd92aac5a90f4aa0eaaa93f9c8355, type: 3}
   - {fileID: 941359352164928645, guid: 6a02a5f239f623544a0d0258f4b714d0, type: 3}
@@ -7398,7 +7400,6 @@ MonoBehaviour:
     isVibration: 0
     isPremium: 0
     isDoubleCoin: 0
-    lastLanguageFileName: 
     objectData: []
     currObjectKey: 0
 --- !u!4 &879273264
@@ -9813,7 +9814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dea17a6e448a84dafaa1412d18dd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 
   premiumGround: {fileID: 0}
   isEnterGame: 0
   isDoubleCoin: 0

@@ -24,7 +24,7 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+		//databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
@@ -63,11 +63,11 @@ public class DataManager : MonoBehaviour {
 
 				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 
-				if (gameData.key.Equals("")) {
-					InitFirebaseData();
-				} else {
-					LoadFirebaseDate();
-				}
+				//if (gameData.key.Equals("")) {
+				//	InitFirebaseData();
+				//} else {
+				//	LoadFirebaseDate();
+				//}
 
 			}
 
@@ -97,14 +97,14 @@ public class DataManager : MonoBehaviour {
 		gameData.key = databaseReference.Child(TITLE).Push().Key;
 		User user = new User(gameData.bestScore, gameData.coin);
 		string json = JsonUtility.ToJson(user);
-		databaseReference.Child(TITLE).Child(gameData.key).SetRawJsonValueAsync(json);
+		//databaseReference.Child(TITLE).Child(gameData.key).SetRawJsonValueAsync(json);
 	}
 
 	public void CoinFirebaseSync() {
-		databaseReference.Child(TITLE).Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
+	//	databaseReference.Child(TITLE).Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
 	}
 
 	public void ScoreFirebaseSync() {
-		databaseReference.Child(TITLE).Child(gameData.key).Child(SCORE).SetValueAsync(gameData.bestScore);
+		//databaseReference.Child(TITLE).Child(gameData.key).Child(SCORE).SetValueAsync(gameData.bestScore);
 	}
 }

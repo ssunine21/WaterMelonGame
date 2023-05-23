@@ -35,6 +35,7 @@ public class ObjectManager : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 	}
 
+	public ParticleSystem Particle;
 	public GameObject[] objects;
 	public GameObject[] backgroundPrefabs;
 	public BlockManager[] block;
@@ -49,8 +50,10 @@ public class ObjectManager : MonoBehaviour {
 
 	private GameObject _objParent;
 	private List<MainObject> _mainObjecs = new List<MainObject>();
+	private Queue<ParticleSystem> particleSystems = new Queue<ParticleSystem>();
 
 	private static Queue<GameObject> garbageObjectContainer;
+
 
 	private float _initY;
 
@@ -108,14 +111,27 @@ public class ObjectManager : MonoBehaviour {
 	public void MergeObject(MainObject target, MainObject curr) {
 		if (target.mergeLevel == ObjectKey.Max) 
 			return;
-
 		target.mergeLevel += 1;
 		GetObject(target.mergeLevel, target.transform.position).GetComponent<MainObject>().Setting();
 		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
 		AddMergedObjectToGarbage(new GameObject[] { target.gameObject, curr.gameObject });
 
+		PlayerParticle(target.transform.position).Forget();
 		if (DataManager.init.gameData.isVibration)
 			Vibratior.Vibrate();
+	}
+
+	private async UniTaskVoid PlayerParticle(Vector3 pos)
+    {
+		if (particleSystems.Count == 0)
+			particleSystems.Enqueue(Instantiate(Particle));
+
+		var particle = particleSystems.Dequeue();
+		particle.transform.position = pos;
+		particle.Play();
+
+		await UniTask.Delay(1000);
+		particleSystems.Enqueue(particle);
 	}
 
 	public void AddMergedObjectToGarbage(GameObject[] gameObjects) {

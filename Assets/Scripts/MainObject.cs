@@ -33,6 +33,7 @@ public class MainObject : MonoBehaviour {
 	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		radius = GetRadius();
+
 		screenPos.x = Camera.main.ViewportToWorldPoint(Vector2.zero).x;
 		screenPos.y = Camera.main.ViewportToWorldPoint(Vector2.one).x;
 		StartCoroutine(CoAsyncPosition());
