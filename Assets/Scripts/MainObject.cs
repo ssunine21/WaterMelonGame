@@ -44,7 +44,7 @@ public class MainObject : MonoBehaviour {
 		float overLineTime = 0;
 		Vector2 tempPosition = transform.position;
 		while (true) {
-			_rigidbody.angularVelocity = 0;
+			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 2f);
 			tempPosition = transform.position;
 			_rigidbody.freezeRotation = true;
 			if (transform.position.x - radius < ObjectManager.init.MinLeftX)

@@ -94,12 +94,13 @@ public class ControllerShop {
         UpdateOnLockObject();
         UpdateOnLockWallpaper();
         UpdateItemCount();
+        UpdateCoin();
 
         DailyRewardTimeUpdate().Forget();
     }
 
     private async UniTaskVoid DailyRewardTimeUpdate() {
-        DataManager.init.gameData.initTimeDailyRewardTicks = DateTime.Now.AddSeconds(15).Ticks;
+        DataManager.init.gameData.initTimeDailyRewardTicks = DateTime.Today.AddDays(1).Ticks;
 
 
         var todayDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
@@ -247,12 +248,13 @@ public class ControllerShop {
     }
 
     private void UpdateBackgroundItems(int index) {
-        if (DataManager.init.gameData.wallpaperNum == index)
-            return;
-
         for (int i = 0; i < _view.ButtonBackgroundItems.Length; ++i) {
             _view.ButtonBackgroundItems[i].SetLock(i == index);
         }
+
+        if (DataManager.init.gameData.wallpaperNum == index)
+            return;
+
         DataManager.init.gameData.wallpaperNum = index;
         DataManager.init.Save();
     }

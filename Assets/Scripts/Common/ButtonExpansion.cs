@@ -69,7 +69,10 @@ public class ButtonExpansion : Button {
     }
 
     public void SetLock(bool flag) {
-        LockPanel.SetActive(flag);
-        UnLockPanel.SetActive(!flag);
+        if (LockPanel != null)
+            LockPanel.SetActive(flag);
+
+        if (UnLockPanel != null)
+            UnLockPanel.SetActive(!flag);
     }
 }
