@@ -195,12 +195,18 @@ public class ObjectManager : MonoBehaviour {
 		}
 	}
 
-	public void DestroyItem() {
-		var randomObjects = GetRandomItems(4);
+	public void DestroyItem(int count) {
+		var randomObjects = GetRandomItems(count);
 		foreach(var random in randomObjects) {
+			PlayerParticle(random.transform.position).Forget();
 			Destroy(random.gameObject);
         }
 	}
+
+	public void DestroyHalfMainObject()
+    {
+		DestroyItem(_mainObjecs.Count / 2);
+    }
 
 	private List<MainObject> GetRandomItems(int count) {
 		if (_mainObjecs.Count <= count)

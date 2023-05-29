@@ -10,6 +10,7 @@ public class ViewCanvasGameOver : ViewCanvas {
     public Image Timer => _imageTimer;
     public TMP_Text TextTimer => _textTimer;
     public ButtonExpansion ButtonCancel => _buttonCancel;
+    public ButtonExpansion ButtonStartAds => _buttonAds;
     public Image Panel => _panel;
     public TMP_Text TextTotalScore => _textScore;
     public TMP_Text TextTempTotalScore => _textTempScore;
@@ -25,6 +26,7 @@ public class ViewCanvasGameOver : ViewCanvas {
     [SerializeField] private TMP_Text _textScore;
     [SerializeField] private TMP_Text _textTempScore;
     [SerializeField] private ButtonExpansion _buttonCancel;
+    [SerializeField] private ButtonExpansion _buttonAds;
     [SerializeField] private Image _panel;
 
     private Coroutine _timer;

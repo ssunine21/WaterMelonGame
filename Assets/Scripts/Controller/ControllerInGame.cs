@@ -23,7 +23,7 @@ public class ControllerInGame {
                 var key = Definition.Item.Destruction;
                 if (PlayerItem.GetCount(key) > 0) {
                     PlayerItem.Comsume(key);
-                    ObjectManager.init.DestroyItem();
+                    ObjectManager.init.DestroyItem(4);
                 }
             });
         });

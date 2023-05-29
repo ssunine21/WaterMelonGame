@@ -42,9 +42,11 @@ public class MainObject : MonoBehaviour {
 	private IEnumerator CoAsyncPosition() {
 		float waringLineTime = 0;
 		float overLineTime = 0;
-		Vector2 tempPosition = transform.position;
+
+		Vector2 tempPosition;
+
 		while (true) {
-			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 2f);
+			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 3f);
 			tempPosition = transform.position;
 			_rigidbody.freezeRotation = true;
 			if (transform.position.x - radius < ObjectManager.init.MinLeftX)

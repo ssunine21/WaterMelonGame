@@ -21,6 +21,10 @@ public class ControllerGameOver {
             } else
                 isCancel = true;
         });
+        _view.ButtonStartAds.onClick.AddListener(() =>
+        {
+            AdsManager.init.ShowAdRestartGame();
+        });
 
         GameManager.OnBindGameOver += () => UpdateVisible(true);
         GameManager.OnBindGoHome += () => UpdateVisible(false);

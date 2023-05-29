@@ -46,6 +46,7 @@ public class AdsManager : MonoBehaviour {
     private RewardedAd coinRewardedAd;
     private RewardedAd rankUpItemRewardedAd;
     private RewardedAd destroyItemRewardedAd;
+    private RewardedAd restartGameRewardedAd;
 
     private bool isPrevSoundOn = false;
 
@@ -136,6 +137,9 @@ public class AdsManager : MonoBehaviour {
 
         this.destroyItemRewardedAd = CreateAndLoadRewardedAd();
         this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
+
+        this.restartGameRewardedAd = CreateAndLoadRewardedAd();
+        this.restartGameRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
     }
 
     public RewardedAd CreateAndLoadRewardedAd() {
@@ -174,6 +178,14 @@ public class AdsManager : MonoBehaviour {
         }
     }
 
+    public void ShowAdRestartGame()
+    {
+       if(this.restartGameRewardedAd.IsLoaded())
+        {
+            this.restartGameRewardedAd.Show();
+        }
+    }
+
     public void HandleUserCoinReward(object sender, Reward args) {
         PlayerCoin.Earn(500);
         DataManager.init.gameData.currDailyCoinCount--;
@@ -185,8 +197,14 @@ public class AdsManager : MonoBehaviour {
         ObjectManager.init.RankUpItem();
     }
 
-    public void HandleUserDestroyItemReward(object sender, Reward args) {
-        ObjectManager.init.DestroyItem();
+    public void HandleUserDestroyItemReward(object sender, Reward args)
+    {
+        ObjectManager.init.DestroyItem(4);
+    }
+
+    public void HandleUserRestartGameReward(object sender, Reward args)
+    {
+        //ObjectManager.init.DestroyItem();
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args) {
@@ -203,6 +221,10 @@ public class AdsManager : MonoBehaviour {
         } else if (sender == destroyItemRewardedAd) {
             destroyItemRewardedAd = CreateAndLoadRewardedAd();
             this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
+        }else if (sender == restartGameRewardedAd)
+        {
+            restartGameRewardedAd = CreateAndLoadRewardedAd();
+            this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
         }
 
         SoundOn();
