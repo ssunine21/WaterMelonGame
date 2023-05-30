@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
 	public static bool IsGamePause;
 	public static GameManager init;
 
+	public static float Height => (Width / 9) * 16;
+	public static float Width => Screen.width > 1080 ? 1080 : Screen.width;
 
 	public bool isEnterGame = false;
 
