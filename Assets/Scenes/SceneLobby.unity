@@ -7388,6 +7388,7 @@ MonoBehaviour:
     rankupItemCount: 1
     destroyItemCount: 1
     rerollItemCount: 1
+    viewAdsCount: 0
     currDailyCoinCount: 0
     initTimeDailyRewardTicks: 0
     key: 
@@ -9814,7 +9815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dea17a6e448a84dafaa1412d18dd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  premiumGround: {fileID: 0}
   isEnterGame: 0
   isDoubleCoin: 0
 --- !u!1 &1256108541
@@ -12477,7 +12477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1578350838
 Animator:
   serializedVersion: 4
@@ -12539,7 +12539,7 @@ SpriteRenderer:
   m_SortingLayerID: 872025557
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c4a424a8417134e00b6e91232f73a181, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 845827480d77f3d43aadcf1482b549ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -12547,7 +12547,7 @@ SpriteRenderer:
   m_Size: {x: 10.8, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1578350840
@@ -12594,7 +12594,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 0.10546875}
+    oldSize: {x: 10.8, y: 0.1}
     newSize: {x: 10.8, y: 0.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

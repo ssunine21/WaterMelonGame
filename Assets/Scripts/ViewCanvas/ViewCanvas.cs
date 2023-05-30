@@ -31,4 +31,6 @@ public class ViewCanvas : MonoBehaviour
     public void SetActive(bool flag) {
         GetComponent<Canvas>().enabled = flag;
     }
+
+    public bool IsActiveSelf => GetComponent<Canvas>().isActiveAndEnabled;
 }

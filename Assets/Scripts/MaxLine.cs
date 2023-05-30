@@ -20,12 +20,11 @@ public class MaxLine : MonoBehaviour {
 		}
 
         animator = GetComponent<Animator>();
-        boxCollider2D = this.GetComponent<BoxCollider2D>();
     }
 
     public float WaringYPosition {
         get {
-            return this.transform.position.y - boxCollider2D.size.y;
+            return this.transform.position.y - 300f;
         }
     }
 

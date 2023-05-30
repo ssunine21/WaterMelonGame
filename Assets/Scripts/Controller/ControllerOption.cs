@@ -48,4 +48,5 @@ public class ControllerOption {
             _view.Wrapped.ShowToast();
         }
     }
+
 }

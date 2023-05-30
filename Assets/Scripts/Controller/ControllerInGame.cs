@@ -60,7 +60,6 @@ public class ControllerInGame {
 
     private void InitNewStart() {
         UpdateView();
-        DataScore.SetCurrScore(0);
         InitObject();
         Main().Forget();
     }
@@ -77,6 +76,7 @@ public class ControllerInGame {
     private void InitObject() {
         DataScore.SetCurrScore(0);
         _view.SetCurrScore(0);
+        DataManager.init.gameData.viewAdsCount = 0;
         DataManager.init.gameData.currObjectKey = ObjectManager.ObjectKey.Zero;
         DataManager.init.gameData.objectData = new List<DataInfo.GameObjectData>();
     }

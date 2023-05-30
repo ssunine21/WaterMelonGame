@@ -13,6 +13,7 @@ namespace DataInfo {
 		public int rankupItemCount = 1;
 		public int destroyItemCount = 1;
 		public int rerollItemCount = 1;
+		public int viewAdsCount = 0;
 
 		public int currDailyCoinCount;
 		public long initTimeDailyRewardTicks;

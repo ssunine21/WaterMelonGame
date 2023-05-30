@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-
+using System;
 
 public class MainObject : MonoBehaviour {
 	private static readonly float GRAVITY_SCALE = 3.2f;
@@ -13,8 +13,8 @@ public class MainObject : MonoBehaviour {
 		get { return _radius; }
 		set {
 			_radius = value;
-        }
-    }
+		}
+	}
 
 	public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
@@ -24,7 +24,15 @@ public class MainObject : MonoBehaviour {
 	private Rigidbody2D _rigidbody;
 	private Vector3 screenPos;
 
-	public bool isDropped => gameObject.GetComponent<Rigidbody2D>().gravityScale > 0;
+	public bool isDropped {
+		get {
+			try {
+				return gameObject.GetComponent<Rigidbody2D>().gravityScale > 0;
+			} catch(Exception e) {
+				return false;
+            }
+		}
+	}
 	public bool isReady;
 	private bool isMerging = false;
 	private bool isOver = false;
@@ -46,7 +54,7 @@ public class MainObject : MonoBehaviour {
 		Vector2 tempPosition;
 
 		while (true) {
-			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 3f);
+			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 2f);
 			tempPosition = transform.position;
 			_rigidbody.freezeRotation = true;
 			if (transform.position.x - radius < ObjectManager.init.MinLeftX)

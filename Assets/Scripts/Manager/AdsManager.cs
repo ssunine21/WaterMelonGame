@@ -55,9 +55,12 @@ public class AdsManager : MonoBehaviour {
         MobileAds.Initialize(initStatus => {
         });
 
-        RequestBannerAd();
         RequestRewardedAd();
         RquestInterstitialAd();
+
+        GameManager.OnBindNewGame += RequestBannerAd;
+        GameManager.OnBindStartGame += RequestBannerAd;
+        GameManager.OnBindGoHome += DestroyBannerAd;
     }
 
     private void RequestBannerAd() {
@@ -139,7 +142,7 @@ public class AdsManager : MonoBehaviour {
         this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
 
         this.restartGameRewardedAd = CreateAndLoadRewardedAd();
-        this.restartGameRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
+        this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
     }
 
     public RewardedAd CreateAndLoadRewardedAd() {
@@ -180,8 +183,7 @@ public class AdsManager : MonoBehaviour {
 
     public void ShowAdRestartGame()
     {
-       if(this.restartGameRewardedAd.IsLoaded())
-        {
+       if(this.restartGameRewardedAd.IsLoaded()) {
             this.restartGameRewardedAd.Show();
         }
     }
@@ -204,7 +206,10 @@ public class AdsManager : MonoBehaviour {
 
     public void HandleUserRestartGameReward(object sender, Reward args)
     {
-        //ObjectManager.init.DestroyItem();
+        ViewCanvas.Get<ViewCanvasGameOver>().SetActive(false);
+        ObjectManager.init.DestroyHalf();
+        GameManager.IsGamePause = false;
+        DataManager.init.gameData.viewAdsCount = 1;
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args) {
@@ -221,8 +226,7 @@ public class AdsManager : MonoBehaviour {
         } else if (sender == destroyItemRewardedAd) {
             destroyItemRewardedAd = CreateAndLoadRewardedAd();
             this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
-        }else if (sender == restartGameRewardedAd)
-        {
+        }else if (sender == restartGameRewardedAd){
             restartGameRewardedAd = CreateAndLoadRewardedAd();
             this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
         }
@@ -235,25 +239,15 @@ public class AdsManager : MonoBehaviour {
     }
 
     public void DestroyBannerAd() {
-        try {
-            this.bannerView.Destroy();
-        } catch (Exception e) {
-            Debug.Log(e.StackTrace);
-        }
-        finally {
-            isPremium = true;
-        }
+        this.bannerView.Destroy();
     }
 
     private void SoundOn() {
-        if (isPrevSoundOn)
-            SettingManager.init.BGMOn(false);
-        isPrevSoundOn = false;
+        CameraControl.init.audioSource.mute = true;
     }
 
     private void SoundOff() {
-        isPrevSoundOn = !SettingManager.init.isBGMOn;
-        SettingManager.init.BGMOn(true);
+        CameraControl.init.audioSource.mute = false;
     }
 }
 

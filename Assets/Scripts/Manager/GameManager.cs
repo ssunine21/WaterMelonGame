@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
 	public static bool IsGamePause;
 	public static GameManager init;
 
-	public GameObject premiumGround;
 
 	public bool isEnterGame = false;
 
@@ -62,6 +61,6 @@ public class GameManager : MonoBehaviour {
 
     public void BuyPremium() {
 		AdsManager.init.DestroyBannerAd();
-		premiumGround.SetActive(true);
+		isPremium = true;
 	}
 }

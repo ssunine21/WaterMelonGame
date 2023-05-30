@@ -17,10 +17,12 @@ public class ControllerGameOver {
             if (isCancel) {
                 ObjectManager.init.MainObjects.Clear();
                 GameManager.OnBindGoHome?.Invoke();
+                AdsManager.init.ShowInterstitialAd();
                 isCancel = false;
             } else
                 isCancel = true;
         });
+
         _view.ButtonStartAds.onClick.AddListener(() =>
         {
             AdsManager.init.ShowAdRestartGame();
@@ -43,20 +45,25 @@ public class ControllerGameOver {
         _view.TextTotalScore.gameObject.SetActive(false);
         _view.TextTempTotalScore.gameObject.SetActive(false);
 
-        for (int i = 0; i <= 5; ++i) {
-            _view.Timer.fillAmount = 1;
-            _view.TextTimer.text = (5 - i).ToString();
-            _view.Timer.DOFillAmount(0, 0.7f).SetEase(Ease.InOutExpo);
+        if (DataManager.init.gameData.viewAdsCount == 0) {
+            for (int i = 0; i <= 5; ++i) {
+                _view.Timer.fillAmount = 1;
+                _view.TextTimer.text = (5 - i).ToString();
+                _view.Timer.DOFillAmount(0, 0.7f).SetEase(Ease.InOutExpo);
 
-            float timer = 0;
-            while(timer < 1) {
-                if (isCancel)
-                    break;
+                float timer = 0;
+                while (timer < 1) {
+                    if (isCancel)
+                        break;
 
-                timer += Time.deltaTime;
-                await UniTask.Yield();
+                    timer += Time.deltaTime;
+                    await UniTask.Yield();
+                }
             }
         }
+
+        if (!_view.IsActiveSelf)
+            return;
 
         isCancel = true;
 

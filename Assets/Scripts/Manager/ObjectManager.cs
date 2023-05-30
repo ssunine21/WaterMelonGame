@@ -52,9 +52,6 @@ public class ObjectManager : MonoBehaviour {
 	private List<MainObject> _mainObjecs = new List<MainObject>();
 	private Queue<ParticleSystem> particleSystems = new Queue<ParticleSystem>();
 
-	private static Queue<GameObject> garbageObjectContainer;
-
-
 	private float _initY;
 
 	public GameObject _currBackground {
@@ -64,7 +61,6 @@ public class ObjectManager : MonoBehaviour {
 
 	private void Start() {
 		_objParent = new GameObject("objParent");
-		garbageObjectContainer = new Queue<GameObject>();
 
 		GameManager.OnBindGoHome += InitObj;
 		
@@ -114,7 +110,9 @@ public class ObjectManager : MonoBehaviour {
 		target.mergeLevel += 1;
 		GetObject(target.mergeLevel, target.transform.position).GetComponent<MainObject>().Setting();
 		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
-		AddMergedObjectToGarbage(new GameObject[] { target.gameObject, curr.gameObject });
+
+		DestroyObject(target);
+		DestroyObject(curr);
 
 		PlayerParticle(target.transform.position).Forget();
 		if (DataManager.init.gameData.isVibration)
@@ -134,22 +132,7 @@ public class ObjectManager : MonoBehaviour {
 		particleSystems.Enqueue(particle);
 	}
 
-	public void AddMergedObjectToGarbage(GameObject[] gameObjects) {
-		if (garbageObjectContainer.Count > GARBAGE_COUNT) {
-			for (int i = 0; i < GARBAGE_COUNT; ++i) {
-				Destroy(garbageObjectContainer.Dequeue());
-			}
-		}
-
-		foreach (GameObject gameObject in gameObjects) {
-
-			garbageObjectContainer.Enqueue(gameObject);
-			gameObject.SetActive(false);
-		}
-	}
-
 	public void InitObj() {
-		garbageObjectContainer.Clear();
 		DataManager.init.gameData.objectData.Clear();
 
 		foreach (var obj in _mainObjecs) {
@@ -180,7 +163,8 @@ public class ObjectManager : MonoBehaviour {
 		foreach (var random in randomObjects) {
 			MainObject mainObject = GetObject(random.mergeLevel + 1, random.transform.position);
 			mainObject.Setting();
-			Destroy(random.gameObject);
+
+			DestroyObject(random);
 		}
 	}
 
@@ -190,7 +174,7 @@ public class ObjectManager : MonoBehaviour {
 				ObjectKey key = (ObjectKey)Random.Range(0, (int)ObjectKey.Nine);
 				MainObject mainObject = GetObject(key, random.transform.position);
 				mainObject.Setting();
-				Destroy(random.gameObject);
+				DestroyObject(random);
 			}
 		}
 	}
@@ -199,21 +183,26 @@ public class ObjectManager : MonoBehaviour {
 		var randomObjects = GetRandomItems(count);
 		foreach(var random in randomObjects) {
 			PlayerParticle(random.transform.position).Forget();
-			Destroy(random.gameObject);
+			DestroyObject(random);
         }
 	}
 
-	public void DestroyHalfMainObject()
-    {
-		DestroyItem(_mainObjecs.Count / 2);
-    }
+	public void DestroyObject(MainObject obj) {
+		_mainObjecs.Remove(obj);
+		Destroy(obj.gameObject);
+	}
+
+	public void DestroyHalf() {
+		int count = _mainObjecs.Count / 2;
+		DestroyItem(count);
+	}
 
 	private List<MainObject> GetRandomItems(int count) {
 		if (_mainObjecs.Count <= count)
-			return _mainObjecs.Where(x => x.isDropped).ToList();
+			return _mainObjecs.Where(x => x.isDropped && x.isActiveAndEnabled).ToList();
 		else {
 			System.Random random = new System.Random();
-			return _mainObjecs.Where(x => x.isDropped).OrderBy(x => random.Next()).Take(count).ToList();
+			return _mainObjecs.Where(x => x.isDropped && x.isActiveAndEnabled).OrderBy(x => random.Next()).Take(count).ToList();
 		}
     }
 

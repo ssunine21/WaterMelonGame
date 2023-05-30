@@ -393,6 +393,7 @@ MonoBehaviour:
   _textScore: {fileID: 6888161390487913935}
   _textTempScore: {fileID: 3315020719477408785}
   _buttonCancel: {fileID: 1262110050734312963}
+  _buttonAds: {fileID: 2583463281056507082}
   _panel: {fileID: 8608689896061393586}
 --- !u!1 &4767668862376613275
 GameObject:
@@ -1068,6 +1069,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4374016017483621365}
     m_Modifications:
+    - target: {fileID: 1197342056656863798, guid: f0a921f1910f37e429c45adf3d3ac01b,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688136485778777320, guid: f0a921f1910f37e429c45adf3d3ac01b,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319255222201131668, guid: f0a921f1910f37e429c45adf3d3ac01b,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3096176925185820754, guid: f0a921f1910f37e429c45adf3d3ac01b,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1191,7 +1207,7 @@ PrefabInstance:
     - target: {fileID: 3096176925421559675, guid: f0a921f1910f37e429c45adf3d3ac01b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -415
+      value: -415.0001
       objectReference: {fileID: 0}
     - target: {fileID: 3096176925421559675, guid: f0a921f1910f37e429c45adf3d3ac01b,
         type: 3}
@@ -1208,22 +1224,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6467588819466206622, guid: f0a921f1910f37e429c45adf3d3ac01b,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5669199190773587409, guid: f0a921f1910f37e429c45adf3d3ac01b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0a921f1910f37e429c45adf3d3ac01b, type: 3}
---- !u!1 &873705384374274403 stripped
+--- !u!1 &4270449653772446880 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2131466774291495609, guid: f0a921f1910f37e429c45adf3d3ac01b,
+  m_CorrespondingSourceObject: {fileID: 3096176925421559674, guid: f0a921f1910f37e429c45adf3d3ac01b,
     type: 3}
   m_PrefabInstance: {fileID: 1275780762058666970}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4705426121244747184
+--- !u!114 &2583463281056507082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873705384374274403}
+  m_GameObject: {fileID: 4270449653772446880}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c2274ce0a148e6449a57bf419e7e5dd, type: 3}
@@ -1257,26 +1278,14 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 3574694278909923662}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  UpScale: 1.05
-  DownScale: 0.95
+  UpScale: 1.02
+  DownScale: 0.98
   LockPanel: {fileID: 0}
   UnLockPanel: {fileID: 0}
---- !u!114 &3574694278909923662 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2319255222201131668, guid: f0a921f1910f37e429c45adf3d3ac01b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1275780762058666970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873705384374274403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &4270449653772446881 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3096176925421559675, guid: f0a921f1910f37e429c45adf3d3ac01b,
