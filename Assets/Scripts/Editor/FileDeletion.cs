@@ -30,27 +30,27 @@ public class FileDeletion : Editor
         DatabaseReference database;
 
         // Firebase 초기화GetReference(TITLE)
-        FirebaseDatabase.DefaultInstance.GetReferenceFromUrl("https://mergegame-e68c3-default-rtdb.firebaseio.com");
+        //FirebaseDatabase.DefaultInstance.GetReferenceFromUrl("https://mergegame-e68c3-default-rtdb.firebaseio.com");
 
         // 데이터베이스 레퍼런스 설정
-        database = FirebaseDatabase.DefaultInstance.RootReference;
+        //database = FirebaseDatabase.DefaultInstance.GetReference("RANK").get;
 
-        try
-        {
-            string path = "RANK";
+        try {
+            FirebaseDatabase.DefaultInstance
+                .GetReference("RANK").OrderByChild("score").EqualTo(0)
+                .GetValueAsync().ContinueWith(task => {
+                    if (task.IsFaulted) {
+                    } else if (task.IsCompleted) {
+                        DataSnapshot snapshot = task.Result;
 
-            // 데이터 조회
-            DataSnapshot dataSnapshot = database.Child(path).GetValueAsync().Result;
-            // 조회된 데이터에 대해 조건 적용 및 삭제
-            foreach (DataSnapshot childSnapshot in dataSnapshot.Children)
-            {
-                Debug.Log(childSnapshot.Key);
-            }
-
+                        foreach (var item in snapshot.Children) {
+                            FirebaseDatabase.DefaultInstance.GetReference("RANK").Child(item.Key).RemoveValueAsync();
+                            Debug.Log(item.Key);
+                        }
+                    }
+                });
             Debug.Log("조건에 맞는 데이터가 성공적으로 삭제되었습니다.");
-        }
-        catch (System.Exception e)
-        {
+        } catch (System.Exception e) {
             Debug.LogError("데이터 삭제 중 오류가 발생했습니다: " + e.Message);
         }
     }

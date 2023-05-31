@@ -66,7 +66,7 @@ public class DataManager : MonoBehaviour {
 				//if (gameData.key.Equals("")) {
 				//	InitFirebaseData();
 				//} else {
-				//	LoadFirebaseDate();
+					LoadFirebaseDate();
 				//}
 
 			}
@@ -77,10 +77,10 @@ public class DataManager : MonoBehaviour {
 	}
 
 	private void LoadFirebaseDate() {
-		FirebaseDatabase.DefaultInstance.GetReference(TITLE)
-			.OrderByKey()
-			.EqualTo(gameData.key)
-			.ChildAdded += HandleChildAddedUserData;
+		//		FirebaseDatabase.DefaultInstance.GetReference(TITLE)
+		//		.OrderByKey()
+		//	.EqualTo(gameData.key)
+		//.ChildAdded += HandleChildAddedUserData;
 	}
 
 	private void HandleChildAddedUserData(object sender, ChildChangedEventArgs arge) {

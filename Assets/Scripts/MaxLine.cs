@@ -10,6 +10,7 @@ public class MaxLine : MonoBehaviour {
     private static readonly float DELAY_GAMEOVER = 1.5f;
     private static readonly int isWaringToHash = Animator.StringToHash("isWaring");
     private bool isWaring = false;
+    private Transform _underGround;
 
     public static MaxLine init;
     private void Awake() {
@@ -37,6 +38,7 @@ public class MaxLine : MonoBehaviour {
     private Animator animator;
 
     private void Start() {
+        _underGround = GameObject.Find("UnderGround").GetComponent<Transform>();
         ObjectHeightAsync();
     }
 
@@ -49,9 +51,7 @@ public class MaxLine : MonoBehaviour {
     }
 
     private void ObjectHeightAsync() {
-        float hight = GameManager.Height / 4 * 3.1f;
-        Vector2 pos = Camera.main.ScreenToWorldPoint(Vector2.one * hight);
-        pos.x = 0;
-        this.transform.position = pos;
+        this.transform.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.MaxLineHeight).y);
+        _underGround.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.GroundHeight).y);
     }
 }

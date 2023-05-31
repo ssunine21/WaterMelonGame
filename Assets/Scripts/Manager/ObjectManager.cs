@@ -69,15 +69,15 @@ public class ObjectManager : MonoBehaviour {
 	}
 
 	private void ObjectsSizeAsync() {
-		float maxWidth = Screen.width;//> 1080 ? 1080 : Screen.width;
+		/*float maxWidth = Screen.width;//> 1080 ? 1080 : Screen.width;
 		float maxHeight = Screen.height;// > 1920 ? 1920 : Screen.height;
 		if (maxHeight < maxWidth) maxWidth = 1080;
 		float screenRate = maxWidth / maxHeight;
-		float objRate = screenRate / 0.5625f;
+		float objRate = screenRate / 0.5625f;*/
 
-		_objParent.transform.localScale = Vector3.one * objRate;
+		//_objParent.transform.localScale = Vector3.one * objRate;
 
-		float hight = maxWidth * 1.5f;
+		float hight = GameManager.ObjectHeight;
 		_initY = Camera.main.ScreenToWorldPoint(Vector2.one * hight).y;
 	}
 
@@ -208,8 +208,8 @@ public class ObjectManager : MonoBehaviour {
 
 	private float GetPos(bool isLeft) {
 		Vector2 pos;
-		float maxWidth = Screen.width;
-		float maxHeight = Screen.height;
+		float maxWidth = GameManager.Width;
+		float maxHeight = GameManager.Height;
 
 		if (maxHeight < maxWidth) maxWidth = 1080;
 

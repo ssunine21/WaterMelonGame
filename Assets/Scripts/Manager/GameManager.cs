@@ -16,8 +16,13 @@ public class GameManager : MonoBehaviour {
 	public static bool IsGamePause;
 	public static GameManager init;
 
-	public static float Height => (Width / 9) * 16;
-	public static float Width => Screen.width > 1080 ? 1080 : Screen.width;
+	public static float Height;
+	public static float Width;
+
+	public static float GroundHeight => Height * 0.03f;
+	public static float GroundColiderHeight => Height * 0.001f * 2f;
+	public static float MaxLineHeight => Height * 0.25f * 3.1f;
+	public static float ObjectHeight => Height * 0.25f * 3.7f;
 
 	public bool isEnterGame = false;
 
@@ -44,9 +49,22 @@ public class GameManager : MonoBehaviour {
 
 		Application.targetFrameRate = 60;
 
+		float width = Screen.width;
+		float defaultValue = width / 9 * 16;
+		if (Screen.height < defaultValue) {
+			Height = Screen.height;
+			Width = Height / 16 * 9;
+		} else {
+			Height = defaultValue;
+			Width = width;
+		}
+
 		OnBindNewGame += GameStart;
 		OnBindStartGame += GameStart;
 		OnBindGoHome += GameEnd;
+	}
+
+	private void Start() {
 	}
 
     public void GameStart() {
