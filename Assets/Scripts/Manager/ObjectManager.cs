@@ -43,7 +43,6 @@ public class ObjectManager : MonoBehaviour {
 	public List<MainObject> MainObjects => _mainObjecs;
 	public float MinLeftX => GetPos(true);
 	public float MaxRightX => GetPos(false);
-	public float GetY => -7.4f;
 
 	public int currBackgroundNum;
 	public int currStyleNum;
@@ -53,11 +52,6 @@ public class ObjectManager : MonoBehaviour {
 	private Queue<ParticleSystem> particleSystems = new Queue<ParticleSystem>();
 
 	private float _initY;
-
-	public GameObject _currBackground {
-		get { return currBackground; }
-	}
-	private GameObject currBackground;
 
 	private void Start() {
 		_objParent = new GameObject("objParent");
@@ -69,13 +63,12 @@ public class ObjectManager : MonoBehaviour {
 	}
 
 	private void ObjectsSizeAsync() {
-		/*float maxWidth = Screen.width;//> 1080 ? 1080 : Screen.width;
-		float maxHeight = Screen.height;// > 1920 ? 1920 : Screen.height;
-		if (maxHeight < maxWidth) maxWidth = 1080;
+		float maxWidth = GameManager.Width;//> 1080 ? 1080 : Screen.width;
+		float maxHeight = GameManager.Height;// > 1920 ? 1920 : Screen.height;
 		float screenRate = maxWidth / maxHeight;
-		float objRate = screenRate / 0.5625f;*/
+		float objRate = screenRate / 0.5625f;
 
-		//_objParent.transform.localScale = Vector3.one * objRate;
+		_objParent.transform.localScale = Vector3.one * objRate;
 
 		float hight = GameManager.ObjectHeight;
 		_initY = Camera.main.ScreenToWorldPoint(Vector2.one * hight).y;
@@ -91,8 +84,10 @@ public class ObjectManager : MonoBehaviour {
 			pos = new Vector3(0, _initY, 0);
 
 		int index = (int)key;
-		var currObject = Instantiate(objects[index], pos.Value, Quaternion.identity).GetComponent<MainObject>();
-		currObject.transform.parent = _objParent.transform;
+		var currObject = Instantiate(objects[index], _objParent.transform).GetComponent<MainObject>();
+		// pos.Value, Quaternion.identity).GetComponent<MainObject>();
+																		   //currObject.transform.parent = _objParent.transform;
+		currObject.transform.position = pos.Value;
 		currObject.SpriteRenderer.sprite = objectSprites[(int)key];
 		currObject.SpriteRenderer.transform.localPosition = Vector3.zero;
 
