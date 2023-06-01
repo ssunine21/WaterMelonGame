@@ -25,7 +25,7 @@ public class MaxLine : MonoBehaviour {
 
     public float WaringYPosition {
         get {
-            return this.transform.position.y - 100f;
+            return this.transform.position.y - 5f;
         }
     }
 
@@ -42,12 +42,8 @@ public class MaxLine : MonoBehaviour {
         ObjectHeightAsync();
     }
 
-    public void WaringLine(bool flag) {
-        animator.SetBool(isWaringToHash, flag);
-    }
-
-    public void StopFlickerAnim() {
-        animator.SetBool(isWaringToHash, false);
+    public void WaringLine() {
+        animator.SetTrigger(isWaringToHash);
     }
 
     private void ObjectHeightAsync() {

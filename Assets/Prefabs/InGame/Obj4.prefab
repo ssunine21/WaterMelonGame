@@ -133,7 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mergeLevel: 4
   _spriteRenderer: {fileID: 8441042485893308142}
-  _particle: {fileID: 0}
   isReady: 0
 --- !u!95 &-2288195884230474674
 Animator:
@@ -167,7 +166,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.01
   m_GravityScale: 0

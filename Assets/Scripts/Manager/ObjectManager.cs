@@ -63,10 +63,8 @@ public class ObjectManager : MonoBehaviour {
 	}
 
 	private void ObjectsSizeAsync() {
-		float maxWidth = GameManager.Width;//> 1080 ? 1080 : Screen.width;
-		float maxHeight = GameManager.Height;// > 1920 ? 1920 : Screen.height;
-		float screenRate = maxWidth / maxHeight;
-		float objRate = screenRate / 0.5625f;
+		float objRate = 1;// GameManager.Width / 720f;
+		// screenRate / 0.5625f;
 
 		_objParent.transform.localScale = Vector3.one * objRate;
 

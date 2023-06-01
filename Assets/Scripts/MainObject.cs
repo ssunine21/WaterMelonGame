@@ -50,7 +50,6 @@ public class MainObject : MonoBehaviour {
 	private IEnumerator CoAsyncPosition() {
 		float waringLineTime = 0;
 		float overLineTime = 0;
-
 		Vector2 tempPosition;
 
 		while (true) {
@@ -71,9 +70,9 @@ public class MainObject : MonoBehaviour {
 			transform.position = tempPosition;
 
 			if (isDropped && isReady) {
-				if (waringLineTime > 0.5f) {
-					waringLineTime = 0;
-					MaxLine.init.WaringLine(GetYPosition() > MaxLine.init.WaringYPosition);
+				if (waringLineTime > 1f
+					&& GetYPosition() > MaxLine.init.WaringYPosition) {
+					MaxLine.init.WaringLine();
 				}
 
 				if(GetYPosition() > MaxLine.init.OverYPosition) 
@@ -87,7 +86,8 @@ public class MainObject : MonoBehaviour {
 				overLineTime = 0;
 			}
 
-			waringLineTime += Time.deltaTime;
+			if (isDropped)
+				waringLineTime += Time.deltaTime;
 			yield return null;
 		}
 	}
@@ -147,7 +147,7 @@ public class MainObject : MonoBehaviour {
 
 	public void ObjectFlickerAnimation() {
 		if(!GameManager.IsGamePause) {
-			//StartCoroutine(CoFlicker());
+			StartCoroutine(CoFlicker());
         }
 	}
 
@@ -155,7 +155,7 @@ public class MainObject : MonoBehaviour {
 		return (this.transform.position.y + radius);
     }
 
-	private float duraitionSeconds = 1f;
+	private float duraitionSeconds = 0.7f;
 	private WaitForSeconds _wfs = new WaitForSeconds(3f);
 
 	private IEnumerator CoFlicker() {
