@@ -47,8 +47,6 @@ public class AdsManager : MonoBehaviour {
     private RewardedAd rerollItemRewardedAd;
     private RewardedAd restartGameRewardedAd;
 
-    private bool isPrevSoundOn = false;
-
     public void Start() {
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => {
