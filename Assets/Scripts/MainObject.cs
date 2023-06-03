@@ -35,8 +35,6 @@ public class MainObject : MonoBehaviour {
 	}
 	public bool isReady;
 	private bool isMerging = false;
-	private bool isOver = false;
-
 
 	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
@@ -55,15 +53,14 @@ public class MainObject : MonoBehaviour {
 		while (true) {
 			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 2f);
 			tempPosition = transform.position;
-			_rigidbody.freezeRotation = true;
-			if (transform.position.x - radius < ObjectManager.init.MinLeftX)
+			if (transform.position.x - radius <= ObjectManager.init.MinLeftX)
 			{
-				_rigidbody.freezeRotation = false;
+				_rigidbody.angularVelocity = 0;
 				tempPosition.x = ObjectManager.init.MinLeftX + radius;
 			}
-			else if (transform.position.x + radius > ObjectManager.init.MaxRightX)
+			else if (transform.position.x + radius >= ObjectManager.init.MaxRightX)
 			{
-				_rigidbody.freezeRotation = false;
+				_rigidbody.angularVelocity = 0;
 				tempPosition.x = ObjectManager.init.MaxRightX - radius;
 			}
 
@@ -81,7 +78,7 @@ public class MainObject : MonoBehaviour {
 					overLineTime = 0;
 			}
 
-			if(overLineTime > 3f) {
+			if(overLineTime > 2.3f) {
 				ObjectFlickerAnimation();
 				overLineTime = 0;
 			}
@@ -155,7 +152,7 @@ public class MainObject : MonoBehaviour {
 		return (this.transform.position.y + radius);
     }
 
-	private float duraitionSeconds = 0.7f;
+	private float duraitionSeconds = 0.5f;
 	private WaitForSeconds _wfs = new WaitForSeconds(3f);
 
 	private IEnumerator CoFlicker() {

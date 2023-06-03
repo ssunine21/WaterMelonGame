@@ -42,6 +42,14 @@ public static class Definition {
 		Reroll,
     }
 
+	public enum AudioType
+    {
+		Background,
+		UIButton,
+		Coin,
+		Destroy
+    }
+
 	public static Color OriginColor = new Color(227f / 255f, 139f / 255f, 41f / 255f);
 	public static Color GrayColor = new Color(174f / 255f, 174f / 255f, 174f / 255f);
 

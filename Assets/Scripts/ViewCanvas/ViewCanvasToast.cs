@@ -93,6 +93,7 @@ public class ViewCanvasToast : ViewCanvas {
         button.enabled = false;
         _wrapped.CloseToast(() => {
             _toast.SetActive(false);
+            SetActive(false);
             button.enabled = true;
         });
     }

@@ -7,9 +7,7 @@ using DG.Tweening;
 public class MaxLine : MonoBehaviour {
     public float LineHeight => transform.position.y;
 
-    private static readonly float DELAY_GAMEOVER = 1.5f;
     private static readonly int isWaringToHash = Animator.StringToHash("isWaring");
-    private bool isWaring = false;
     private Transform _underGround;
 
     public static MaxLine init;
@@ -47,7 +45,7 @@ public class MaxLine : MonoBehaviour {
     }
 
     private void ObjectHeightAsync() {
-        this.transform.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.MaxLineHeight).y);
+        transform.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.MaxLineHeight).y);
         _underGround.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.GroundHeight).y);
     }
 }

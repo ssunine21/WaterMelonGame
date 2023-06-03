@@ -23,14 +23,19 @@ public class ControllerOption {
         }
 
         _view.Music.callback += () => {
+
             DataManager.init.gameData.isBGMVolum = _view.Music.IsToggled();
+            AudioManager.Init.SetOption();
             DataManager.init.Save();
         };
         _view.Effect.callback += () => {
+
             DataManager.init.gameData.isEffectVolum = _view.Effect.IsToggled();
+            AudioManager.Init.SetOption();
             DataManager.init.Save();
         };
         _view.Vibration.callback += () => {
+
             DataManager.init.gameData.isVibration = _view.Vibration.IsToggled();
             DataManager.init.Save();
         };

@@ -31,6 +31,7 @@ public class DataManager : MonoBehaviour {
 
     private void Start() {
 		PlayerCoin.OnChangeValue += CoinFirebaseSync;
+		GameManager.OnBindGoHome += Save;
     }
 
     private string dataPath;

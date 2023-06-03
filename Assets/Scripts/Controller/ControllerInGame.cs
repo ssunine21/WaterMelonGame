@@ -25,6 +25,14 @@ public class ControllerInGame {
                     PlayerItem.Comsume(key);
                     ObjectManager.init.DestroyItem(4);
                 }
+                else if (_view.ImageDestoryItem.isActiveAndEnabled)
+                {
+                    AdsManager.init.ShowAdDestroyItem(() =>
+                    {
+                        DataManager.init.gameData.watchAdsDestroyItem = true;
+                        UpdateItemCount();
+                    });
+                }
             });
         });
         _view.ButtonRankUpItem.onClick.AddListener(() => {
@@ -35,15 +43,32 @@ public class ControllerInGame {
                     PlayerItem.Comsume(key);
                     ObjectManager.init.RankUpItem();
                 }
+                else if (_view.ImageRankUpItem.isActiveAndEnabled)
+                {
+                    AdsManager.init.ShowAdRankUpItem(() =>
+                    {
+                        DataManager.init.gameData.watchAdsRankupItem = true;
+                        UpdateItemCount();
+                    });
+                }
             });
         });
         _view.ButtonRerollItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
             viewToastMessage.Show("?????? ?????????????????", () => {
                 var key = Definition.Item.Reroll;
-                if (PlayerItem.GetCount(key) > 0) {
+                if (PlayerItem.GetCount(key) > 0)
+                {
                     PlayerItem.Comsume(key);
                     ObjectManager.init.RerollItem();
+                }
+                else if (_view.ImageRerollItem.isActiveAndEnabled)
+                {
+                    AdsManager.init.ShowAdRerollItem(() =>
+                    {
+                        DataManager.init.gameData.watchAdsRerollItem = true;
+                        UpdateItemCount();
+                    });
                 }
             });
         });
@@ -58,7 +83,12 @@ public class ControllerInGame {
         PlayerItem.OnChangeItem += (key) => UpdateItemCount();
     }
 
-    private void InitNewStart() {
+    private void InitNewStart()
+    {
+        DataManager.init.gameData.watchAdsDestroyItem = false;
+        DataManager.init.gameData.watchAdsRankupItem = false;
+        DataManager.init.gameData.watchAdsRerollItem = false;
+
         UpdateView();
         InitObject();
         Main().Forget();
@@ -94,10 +124,21 @@ public class ControllerInGame {
         _view.SetActive(false);
     }
 
-    private void UpdateItemCount() {
-        _view.TextDestoryItemCount.text = DataManager.init.gameData.destroyItemCount.ToString();
-        _view.TextRankUpItemCount.text = DataManager.init.gameData.rankupItemCount.ToString();
-        _view.TextRerollItemCount.text = DataManager.init.gameData.rerollItemCount.ToString();
+    private void UpdateItemCount()
+    {
+        int destroyCount = DataManager.init.gameData.destroyItemCount;
+        int rankupCount = DataManager.init.gameData.rankupItemCount;
+        int rerollCount = DataManager.init.gameData.rerollItemCount;
+
+        _view.TextDestoryItemCount.text = destroyCount.ToString();
+        _view.TextRankUpItemCount.text = rankupCount.ToString();
+        _view.TextRerollItemCount.text = rerollCount.ToString();
+
+        _view.ImageDestoryItem.enabled = !DataManager.init.gameData.watchAdsDestroyItem && destroyCount == 0;
+        _view.ImageRankUpItem.enabled = !DataManager.init.gameData.watchAdsRankupItem && rankupCount == 0;
+        _view.ImageRerollItem.enabled = !DataManager.init.gameData.watchAdsRerollItem && rerollCount == 0;
+
+        DataManager.init.Save();
     }
 
     private void UpdateWallpaper() {
@@ -137,13 +178,19 @@ public class ControllerInGame {
                 isButtonClick = false;
                 Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 hits = Physics2D.RaycastAll(clickPosition, Vector2.zero);
-                foreach (var hit in hits) {
+
+                foreach (var hit in hits)
+                {
                     ButtonExpansion button = hit.transform.GetComponent<ButtonExpansion>();
-                    if(button != null) {
+                    if (button != null)
+                    {
                         isButtonClick = true;
                         break;
                     }
                 }
+
+                if (ViewCanvas.Get<ViewCanvasToast>().IsActiveSelf)
+                    isButtonClick = true;
 
                 while (!isButtonClick) {
                     mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -25,18 +25,6 @@ public class GameManager : MonoBehaviour {
 	public static float ObjectHeight => Height * 0.25f * 3.7f;
 
 	public bool isEnterGame = false;
-
-	private bool _isPremium;
-	public bool isPremium {
-        get { return _isPremium; }
-		set {
-			if (value) {
-				_isPremium = true;
-				BuyPremium();
-			}
-		}
-	}
-
 	public bool isDoubleCoin;
 
 	private void Awake() {
@@ -65,6 +53,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Start() {
+		AudioManager.Init.Play(Definition.AudioType.Background);
 	}
 
     public void GameStart() {
@@ -78,9 +67,4 @@ public class GameManager : MonoBehaviour {
 		IsGameStart = false;
 		IsGamePause = false;
     }
-
-    public void BuyPremium() {
-		AdsManager.init.DestroyBannerAd();
-		isPremium = true;
-	}
 }

@@ -72,7 +72,14 @@ public class ControllerShop {
             .SetAmount("500")
             .SetButtonAction(() => {
                 if (DataManager.init.gameData.currDailyCoinCount > 0)
-                    AdsManager.init.ShowAdCoinRewarded();
+                {
+                    if (DataManager.init.gameData.isPremium)
+                    {
+                        AdsManager.init.HandleUserCoinReward(null, null);
+                    }
+                    else
+                        AdsManager.init.ShowAdCoinRewarded();
+                }
             });
         _view.ProductDoubleCoin
             .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.DoubleCoin))
@@ -100,15 +107,15 @@ public class ControllerShop {
     }
 
     private async UniTaskVoid DailyRewardTimeUpdate() {
-        DataManager.init.gameData.initTimeDailyRewardTicks = DateTime.Today.AddDays(1).Ticks;
-
-
         var todayDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+
         while (true) {
             if(DataManager.init.gameData.initTimeDailyRewardTicks < DateTime.Now.Ticks) {
                 DataManager.init.gameData.currDailyCoinCount = 5;
-                DataManager.init.gameData.initTimeDailyRewardTicks = DateTime.Now.AddMinutes(1).Ticks;//todayDate.AddDays(1).Ticks;
+                DataManager.init.gameData.initTimeDailyRewardTicks = todayDate.AddDays(1).Ticks;
                 PlayerItem.OnChangeCurrDailyCoinCount?.Invoke();
+
+                DataManager.init.Save();
             }
             else {
                 var time = new DateTime(DataManager.init.gameData.initTimeDailyRewardTicks - DateTime.Now.Ticks);

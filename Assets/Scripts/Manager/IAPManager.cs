@@ -7,7 +7,7 @@ using UnityEngine.Purchasing;
 public class IAPManager : MonoBehaviour, IStoreListener {
 	public UnityAction OnBindInitialized;
 
-	public const string PREMIUM = "premium";
+	public const string PREMIUM = "com.bognstudio.mergegame.premium";
 	public const string DOUBLE_COIN = "com.bognstudio.mergegame.doublecoin";
 	public const string COIN_DUMMY = "com.bognstudio.mergegame.coindummy";
 	public const string COIN_POKET = "com.bognstudio.mergegame.coinpoket";
@@ -83,7 +83,7 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 		extensionProvider = extension;
 
 		if (HadPurchased(PREMIUM)) {
-			GameManager.init.isPremium = true;
+			DataManager.init.gameData.isPremium = true;
 		}
 		
 		if (HadPurchased(DOUBLE_COIN)) {
@@ -108,7 +108,8 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 
 		switch (purchaseEvent.purchasedProduct.definition.id) {
 			case PREMIUM:
-				GameManager.init.isPremium = true;
+				DataManager.init.gameData.isPremium = true;
+				DataManager.init.Save();
 				break;
 
 			case DOUBLE_COIN:

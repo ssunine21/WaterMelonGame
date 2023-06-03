@@ -25,7 +25,10 @@ public class ControllerGameOver {
 
         _view.ButtonStartAds.onClick.AddListener(() =>
         {
-            AdsManager.init.ShowAdRestartGame();
+            if (DataManager.init.gameData.isPremium)
+                AdsManager.init.HandleUserRestartGameReward(null, null);
+            else
+                AdsManager.init.ShowAdRestartGame();
         });
 
         GameManager.OnBindGameOver += () => UpdateVisible(true);

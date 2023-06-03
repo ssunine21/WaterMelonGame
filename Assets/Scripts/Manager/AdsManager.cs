@@ -27,8 +27,6 @@ public class AdsManager : MonoBehaviour {
     //private static readonly string iOS_REWARD_ID = "ca-app-pub-3940256099942544/1712485313";
 
     public static AdsManager init = null;
-    public bool isPremium = false;
-
     List<string> deviceIds = new List<string>();
 
     private void Awake() {
@@ -46,6 +44,7 @@ public class AdsManager : MonoBehaviour {
     private RewardedAd coinRewardedAd;
     private RewardedAd rankUpItemRewardedAd;
     private RewardedAd destroyItemRewardedAd;
+    private RewardedAd rerollItemRewardedAd;
     private RewardedAd restartGameRewardedAd;
 
     private bool isPrevSoundOn = false;
@@ -63,27 +62,30 @@ public class AdsManager : MonoBehaviour {
         GameManager.OnBindGoHome += DestroyBannerAd;
     }
 
-    private void RequestBannerAd() {
-        if (!isPremium) {
+    private void RequestBannerAd()
+    {
+        if (DataManager.init.gameData.isPremium)
+            return;
+
 #if UNITY_ANDROID
-            string adUnitId = AND_BANNER_ID;
+        string adUnitId = AND_BANNER_ID;
 #elif UNITY_IPHONE
             string adUnitId = iOS_BANNER_ID;
 #else
             string adUnitId = "unexpected_platform";
 #endif
 
-            if(bannerView != null) {
-                bannerView.Destroy();
-            }
-
-            this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
-
-            this.bannerView.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
-
-            this.bannerView.LoadAd(CreateAdRequest());
-            AboveAds();
+        if (bannerView != null)
+        {
+            bannerView.Destroy();
         }
+
+        this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
+
+        this.bannerView.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
+
+        this.bannerView.LoadAd(CreateAdRequest());
+        AboveAds();
     }
 
     private AdRequest CreateAdRequest() {
@@ -111,7 +113,10 @@ public class AdsManager : MonoBehaviour {
     }
 
     public void ShowInterstitialAd() {
-        if (interstitialAd.IsLoaded() && !isPremium) {
+        if (DataManager.init.gameData.isPremium)
+            return;
+
+        if (interstitialAd.IsLoaded()) {
             interstitialAd.Show();
         }
     }
@@ -141,6 +146,9 @@ public class AdsManager : MonoBehaviour {
         this.destroyItemRewardedAd = CreateAndLoadRewardedAd();
         this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
 
+        this.rerollItemRewardedAd = CreateAndLoadRewardedAd();
+        this.rerollItemRewardedAd.OnUserEarnedReward += HandleUserRerollItemReward;
+
         this.restartGameRewardedAd = CreateAndLoadRewardedAd();
         this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
     }
@@ -169,15 +177,28 @@ public class AdsManager : MonoBehaviour {
         }
     }
 
-    public void ShowAdRankUpItem() {
+    public void ShowAdRankUpItem(Action callback) {
         if (this.rankUpItemRewardedAd.IsLoaded()) {
                 this.rankUpItemRewardedAd.Show();
+            callback?.Invoke();
         }
     }
 
-    public void ShowAdDestroyItem() {
-        if (this.destroyItemRewardedAd.IsLoaded()) {
-                this.destroyItemRewardedAd.Show();
+    public void ShowAdDestroyItem(Action callback)
+    {
+        if (this.destroyItemRewardedAd.IsLoaded())
+        {
+            this.destroyItemRewardedAd.Show();
+            callback?.Invoke();
+        }
+    }
+
+    public void ShowAdRerollItem(Action callback)
+    {
+        if (this.rerollItemRewardedAd.IsLoaded())
+        {
+            this.rerollItemRewardedAd.Show();
+            callback?.Invoke();
         }
     }
 
@@ -195,8 +216,14 @@ public class AdsManager : MonoBehaviour {
         PlayerItem.OnChangeCurrDailyCoinCount?.Invoke();
     }
 
-    public void HandleUserRankUpItemReward(object sender, Reward args) {
+    public void HandleUserRankUpItemReward(object sender, Reward args)
+    {
         ObjectManager.init.RankUpItem();
+    }
+
+    public void HandleUserRerollItemReward(object sender, Reward args)
+    {
+        ObjectManager.init.RerollItem();
     }
 
     public void HandleUserDestroyItemReward(object sender, Reward args)
@@ -213,7 +240,7 @@ public class AdsManager : MonoBehaviour {
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args) {
-        SoundOff();
+        AudioManager.Init.Mute(true);
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args) {
@@ -223,15 +250,23 @@ public class AdsManager : MonoBehaviour {
         } else if (sender == rankUpItemRewardedAd) {
             rankUpItemRewardedAd = CreateAndLoadRewardedAd();
             this.rankUpItemRewardedAd.OnUserEarnedReward += HandleUserRankUpItemReward;
-        } else if (sender == destroyItemRewardedAd) {
+        }
+        else if (sender == destroyItemRewardedAd)
+        {
             destroyItemRewardedAd = CreateAndLoadRewardedAd();
             this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
-        }else if (sender == restartGameRewardedAd){
+        }
+        else if (sender == rerollItemRewardedAd)
+        {
+            rerollItemRewardedAd = CreateAndLoadRewardedAd();
+            this.rerollItemRewardedAd.OnUserEarnedReward += HandleUserRerollItemReward;
+        }
+        else if (sender == restartGameRewardedAd){
             restartGameRewardedAd = CreateAndLoadRewardedAd();
             this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
         }
 
-        SoundOn();
+        AudioManager.Init.Mute(false);
     }
 
     public void HandleRewardedAdFailedToLoaded(object sender, AdErrorEventArgs args) {
@@ -239,15 +274,8 @@ public class AdsManager : MonoBehaviour {
     }
 
     public void DestroyBannerAd() {
-        this.bannerView.Destroy();
-    }
-
-    private void SoundOn() {
-        CameraControl.init.audioSource.mute = true;
-    }
-
-    private void SoundOff() {
-        CameraControl.init.audioSource.mute = false;
+        if (this.bannerView != null)
+            this.bannerView.Destroy();
     }
 }
 

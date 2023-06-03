@@ -8,12 +8,15 @@ public static class PlayerCoin {
     public static int Coin => DataManager.init.gameData.coin;
 
     public static void Earn(int value) {
+        AudioManager.Init.Play(Definition.AudioType.Coin);
         DataManager.init.gameData.coin += value;
         DataManager.init.Save();
         OnChangeValue?.Invoke();
     }
 
-    public static bool Consume(int value) {
+    public static bool Consume(int value)
+    {
+        AudioManager.Init.Play(Definition.AudioType.Coin);
         if (DataManager.init.gameData.coin >= value) {
             DataManager.init.gameData.coin -= value;
             OnChangeValue?.Invoke();

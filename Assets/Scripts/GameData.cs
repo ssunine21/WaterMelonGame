@@ -18,6 +18,10 @@ namespace DataInfo {
 		public int currDailyCoinCount;
 		public long initTimeDailyRewardTicks;
 
+		public bool watchAdsDestroyItem;
+		public bool watchAdsRankupItem;
+		public bool watchAdsRerollItem;
+
 		public string key;
 
 		public bool[] styleProducts;

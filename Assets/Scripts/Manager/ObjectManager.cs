@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ObjectManager : MonoBehaviour {
-	private static readonly int GARBAGE_COUNT = 10;
 	private static readonly int MAX_CREATE_OBJECT_NUMBER = 5;
 	private List<Sprite> objectSprites = new List<Sprite>();
 
@@ -107,6 +106,8 @@ public class ObjectManager : MonoBehaviour {
 		DestroyObject(target);
 		DestroyObject(curr);
 
+		AudioManager.Init.Play(Definition.AudioType.Destroy);
+
 		PlayerParticle(target.transform.position).Forget();
 		if (DataManager.init.gameData.isVibration)
 			Vibratior.Vibrate();
@@ -161,8 +162,10 @@ public class ObjectManager : MonoBehaviour {
 		}
 	}
 
-	public void RerollItem() {
-		foreach (var random in _mainObjecs) {
+	public void RerollItem()
+	{
+		var randomObjects = GetRandomItems(_mainObjecs.Count - 1);
+		foreach (var random in randomObjects) {
 			if (random.isDropped) {
 				ObjectKey key = (ObjectKey)Random.Range(0, (int)ObjectKey.Nine);
 				MainObject mainObject = GetObject(key, random.transform.position);

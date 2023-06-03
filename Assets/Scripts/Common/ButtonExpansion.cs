@@ -16,6 +16,8 @@ public class ButtonExpansion : Button {
     private RectTransform rectTr;
     private CancellationTokenSource _cts;
 
+    [SerializeField] private AudioClip _clickAudioClip;
+
     protected override void Start() {
         rectTr = GetComponent<RectTransform>();
         _cts = new CancellationTokenSource();
@@ -26,6 +28,9 @@ public class ButtonExpansion : Button {
             base.OnPointerClick(eventData);
 
         isDoubleClick = true;
+
+        AudioManager.Init.Play(Definition.AudioType.UIButton);
+
         Scale();
     }
 

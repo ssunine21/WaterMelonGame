@@ -17,6 +17,10 @@ public class ViewCanvasInGame : ViewCanvas {
     public TMP_Text TextRankUpItemCount => _textRankUpItemCount;
     public TMP_Text TextRerollItemCount => _textRerollItemCount;
 
+    public Image ImageDestoryItem => _imageDestoryItem;
+    public Image ImageRankUpItem => _imageRankUpItem;
+    public Image ImageRerollItem => _imageRerollItem;
+
     [SerializeField] private GameObject[] _background;
     [SerializeField] private ButtonExpansion _buttonBack;
     [SerializeField] private Transform _ballParent;
@@ -30,6 +34,10 @@ public class ViewCanvasInGame : ViewCanvas {
     [SerializeField] private TMP_Text _textDestoryItemCount;
     [SerializeField] private TMP_Text _textRankUpItemCount;
     [SerializeField] private TMP_Text _textRerollItemCount;
+
+    [SerializeField] private Image _imageDestoryItem;
+    [SerializeField] private Image _imageRankUpItem;
+    [SerializeField] private Image _imageRerollItem;
 
     private WaitForSeconds _wfs = new WaitForSeconds(0.01f);
 

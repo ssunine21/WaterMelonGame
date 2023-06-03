@@ -27,8 +27,6 @@ public class FileDeletion : Editor
     [MenuItem("Custom/Delete Firebase UserData")]
     static void DeleteFirebase()
     {
-        DatabaseReference database;
-
         // Firebase 초기화GetReference(TITLE)
         //FirebaseDatabase.DefaultInstance.GetReferenceFromUrl("https://mergegame-e68c3-default-rtdb.firebaseio.com");
 
