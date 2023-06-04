@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class DataManager : MonoBehaviour {
 	static readonly private string TITLE = "RANK";
 	static readonly private string COIN = "coin";
-	static readonly private string SCORE = "score";
+	static readonly private string LASTJOIN = "lastjoin";
 
 	static readonly public string FileName = "/gameData.dat";
 
@@ -24,7 +24,7 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+	//	databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
@@ -55,7 +55,8 @@ public class DataManager : MonoBehaviour {
 		try {
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-			using (var file = File.Open(dataPath, FileMode.OpenOrCreate)) {
+			using (var file = File.Open(dataPath, FileMode.OpenOrCreate))
+			{
 				if (file.Length <= 0)
 				{
 					gameData = new DataInfo.GameData();
@@ -64,13 +65,14 @@ public class DataManager : MonoBehaviour {
 
 				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 
-
-				//if (gameData.key.Equals("")) {
-				//	InitFirebaseData();
-				//} else {
-				//	LoadFirebaseDate();
-				//}
-
+				if (gameData.key == null || gameData.key.Equals(""))
+				{
+					InitFirebaseData();
+				}
+				else
+				{
+					LoadFirebaseDate();
+				}
 			}
 
 		} catch (System.Exception e) {
@@ -78,11 +80,16 @@ public class DataManager : MonoBehaviour {
 		}
 	}
 
-	private void LoadFirebaseDate() {
-		//		FirebaseDatabase.DefaultInstance.GetReference(TITLE)
-		//		.OrderByKey()
-		//	.EqualTo(gameData.key)
-		//.ChildAdded += HandleChildAddedUserData;
+	private void LoadFirebaseDate()
+	{
+
+#if UNITY_EDITOR
+		return;
+#endif
+		FirebaseDatabase.DefaultInstance.GetReference(TITLE)
+			.OrderByKey()
+			.EqualTo(gameData.key)
+			.ChildAdded += HandleChildAddedUserData;
 	}
 
 	private void HandleChildAddedUserData(object sender, ChildChangedEventArgs arge) {
@@ -96,17 +103,18 @@ public class DataManager : MonoBehaviour {
 	}
 
 	public void InitFirebaseData() {
+#if UNITY_EDITOR
+		return;
+#endif
+		var timespan = new System.TimeSpan(System.DateTime.Now.Ticks);
 		gameData.key = databaseReference.Child(TITLE).Push().Key;
-		User user = new User(gameData.bestScore, gameData.coin);
+
+		User user = new User(gameData.bestScore, gameData.coin, timespan.Days);
 		string json = JsonUtility.ToJson(user);
-		//databaseReference.Child(TITLE).Child(gameData.key).SetRawJsonValueAsync(json);
+		databaseReference.Child(TITLE).Child(gameData.key).SetRawJsonValueAsync(json);
 	}
 
 	public void CoinFirebaseSync() {
-	//	databaseReference.Child(TITLE).Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
-	}
-
-	public void ScoreFirebaseSync() {
-		//databaseReference.Child(TITLE).Child(gameData.key).Child(SCORE).SetValueAsync(gameData.bestScore);
+//		databaseReference.Child(TITLE).Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
 	}
 }
