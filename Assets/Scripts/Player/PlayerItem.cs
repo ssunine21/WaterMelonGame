@@ -10,7 +10,7 @@ public static class PlayerItem {
     public static bool IsCanBuy(Definition.Item key) {
         if(PlayerCoin.Coin < GetCost(key)) {
             var toastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            toastMessage.ShowOneTimeMessage("코인이 부족합니다.");
+            toastMessage.ShowOneTimeMessage("?????? ??????????.");
             return false;
         }
 
@@ -55,11 +55,11 @@ public static class PlayerItem {
     public static int GetCost(Definition.Item key) {
         switch (key) {
             case Definition.Item.Destruction:
-                return 1000;
+                return 500;
             case Definition.Item.RankUp:
-                return 1000;
+                return 500;
             case Definition.Item.Reroll:
-                return 1000;
+                return 500;
             default:
                 return 0;
         }

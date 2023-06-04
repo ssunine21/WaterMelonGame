@@ -51,7 +51,7 @@ public class MainObject : MonoBehaviour {
 		Vector2 tempPosition;
 
 		while (true) {
-			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 2f);
+			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 1f);
 			tempPosition = transform.position;
 			if (transform.position.x - radius <= ObjectManager.init.MinLeftX)
 			{

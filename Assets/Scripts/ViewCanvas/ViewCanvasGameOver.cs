@@ -16,11 +16,16 @@ public class ViewCanvasGameOver : ViewCanvas {
     public TMP_Text TextTempTotalScore => _textTempScore;
     public RectTransform RectTotalScore => _textScore.GetComponent<RectTransform>();
 
+    public TMP_Text TextCoin => _textCoin;
+    public GameObject PanelCoin => _panelCoin;
 
     [Header("Timer")]
     [SerializeField] private GameObject _panelTimer;
     [SerializeField] private Image _imageTimer;
     [SerializeField] private TMP_Text _textTimer;
+
+    [SerializeField] private GameObject _panelCoin;
+    [SerializeField] private TMP_Text _textCoin;
 
     [Space]
     [SerializeField] private TMP_Text _textScore;
@@ -40,6 +45,11 @@ public class ViewCanvasGameOver : ViewCanvas {
         }
 
         _timer = StartCoroutine(CoTimer());
+    }
+
+    public void SetCoin(int value)
+    {
+        _textCoin.text = value.ToString();
     }
 
     private IEnumerator CoTimer() {

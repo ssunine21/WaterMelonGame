@@ -100,7 +100,7 @@ public class ObjectManager : MonoBehaviour {
 	public void MergeObject(MainObject target, MainObject curr) {
 		if (target.mergeLevel == ObjectKey.Max) 
 			return;
-		target.mergeLevel += 10;
+		target.mergeLevel += 1;
 		GetObject(target.mergeLevel, target.transform.position).GetComponent<MainObject>().Setting();
 		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
 

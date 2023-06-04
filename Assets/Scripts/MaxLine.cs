@@ -9,6 +9,8 @@ public class MaxLine : MonoBehaviour {
 
     private static readonly int isWaringToHash = Animator.StringToHash("isWaring");
     private Transform _underGround;
+    private BoxCollider2D _leftBlock;
+    private BoxCollider2D _rightBlock;
 
     public static MaxLine init;
     private void Awake() {
@@ -35,8 +37,11 @@ public class MaxLine : MonoBehaviour {
 
     private Animator animator;
 
-    private void Start() {
+    private void Start()
+    {
         _underGround = GameObject.Find("UnderGround").GetComponent<Transform>();
+        _leftBlock = GameObject.Find("leftBlock").GetComponent<BoxCollider2D>();
+        _rightBlock = GameObject.Find("rightBlock").GetComponent<BoxCollider2D>();
         ObjectHeightAsync();
     }
 
@@ -47,5 +52,7 @@ public class MaxLine : MonoBehaviour {
     private void ObjectHeightAsync() {
         transform.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.MaxLineHeight).y);
         _underGround.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.GroundHeight).y);
+        _rightBlock.transform.position = new Vector2(ObjectManager.init.MaxRightX + _rightBlock.size.x * 0.5f, 0);
+        _leftBlock.transform.position = new Vector2(ObjectManager.init.MinLeftX - _leftBlock.size.x * 0.5f, 0);
     }
 }

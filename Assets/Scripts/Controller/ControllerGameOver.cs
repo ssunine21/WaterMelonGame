@@ -43,7 +43,9 @@ public class ControllerGameOver {
             StartTimer().Forget();
     }
 
-    private async UniTaskVoid StartTimer() {
+    private async UniTaskVoid StartTimer()
+    {
+        _view.PanelCoin.SetActive(false);
         _view.PanelTimer.SetActive(true);
         _view.TextTotalScore.gameObject.SetActive(false);
         _view.TextTempTotalScore.gameObject.SetActive(false);
@@ -95,7 +97,13 @@ public class ControllerGameOver {
         DataScore.SetCurrScore(finalScore);
         DataScore.SetBestScore(finalScore);
 
+        int coin = Mathf.Clamp(Mathf.FloorToInt(finalScore * 0.013f), 0, 3500);
+        _view.SetCoin(coin);
+        PlayerCoin.Earn(coin);
+
         await UniTask.Delay(700);
+
+        _view.PanelCoin.SetActive(true);
         _view.TextTempTotalScore.gameObject.SetActive(true);
         _view.TextTotalScore.text = finalScore.ToString();
 

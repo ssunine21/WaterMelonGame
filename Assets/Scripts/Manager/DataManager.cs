@@ -24,7 +24,7 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		//databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+		databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
@@ -64,10 +64,11 @@ public class DataManager : MonoBehaviour {
 
 				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 
+
 				//if (gameData.key.Equals("")) {
 				//	InitFirebaseData();
 				//} else {
-					LoadFirebaseDate();
+				//	LoadFirebaseDate();
 				//}
 
 			}

@@ -206,6 +206,8 @@ public class ControllerInGame {
                             currBall = ObjectManager.init.GetRandomObject();
                             DataManager.init.gameData.currObjectKey = currBall.mergeLevel;
                             await UniTask.Delay(300);
+
+                            DataManager.init.Save();
                         }
                         _isHoldingBall = false;
                         break;
