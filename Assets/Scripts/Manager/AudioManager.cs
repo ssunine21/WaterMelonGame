@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
 	public static AudioManager Init => _init;
 
 	[SerializeField] private List<AudioList> audioLists;
-	
+
 	private static AudioManager _init;
-	private void Awake()
-	{
-		if (_init == null)
-		{
+	private void Awake() {
+		if (_init == null) {
 			_init = this;
-		}
-		else if (_init != this)
-		{
+		} else if (_init != this) {
 			Destroy(this.gameObject);
 		}
 		DontDestroyOnLoad(this.gameObject);
@@ -24,43 +19,33 @@ public class AudioManager : MonoBehaviour
 		NewAudioSources();
 	}
 
-    private void Start()
-    {
+	private void Start() {
 		SetOption();
-    }
+	}
 
-    private void NewAudioSources()
-    {
-		foreach(var audio in audioLists)
-        {
+	private void NewAudioSources() {
+		foreach (var audio in audioLists) {
 			audio.SetAudioClip();
-        }
-    }
-
-	public void Play(Definition.AudioType type)
-    {
-		foreach (var audio in audioLists)
-		{
-			if(audio.Type == type)
-            {
-				audio.Play();
-				break;
-            }
 		}
 	}
 
-	public void Mute(bool flag)
-    {
-		foreach(var audio in audioLists)
-        {
-			audio.AudioSource.mute = flag;
-        }
-    }
+	public void Play(Definition.AudioType type) {
+		foreach (var audio in audioLists) {
+			if (audio.Type == type) {
+				audio.Play();
+				break;
+			}
+		}
+	}
 
-	public void SetOption()
-    {
-		foreach (var audio in audioLists)
-		{
+	public void Mute(bool flag) {
+		foreach (var audio in audioLists) {
+			audio.AudioSource.mute = flag;
+		}
+	}
+
+	public void SetOption() {
+		foreach (var audio in audioLists) {
 			if (audio.Type == Definition.AudioType.Background)
 				audio.AudioSource.volume = DataManager.init.gameData.isBGMVolum ? 1 : 0;
 			else
@@ -69,8 +54,7 @@ public class AudioManager : MonoBehaviour
 	}
 
 	[System.Serializable]
-	public class AudioList
-    {
+	public class AudioList {
 		public Definition.AudioType Type => type;
 		public AudioSource AudioSource => _audioSource;
 
@@ -79,23 +63,18 @@ public class AudioManager : MonoBehaviour
 
 		private AudioSource _audioSource;
 
-		public void SetAudioClip()
-		{
+		public void SetAudioClip() {
 			_audioSource = new GameObject("audioSource").AddComponent<AudioSource>();
 			_audioSource.clip = _audioClip;
 		}
 
-		public void Play()
-        {
-			if (type == Definition.AudioType.Background)
-			{
+		public void Play() {
+			if (type == Definition.AudioType.Background) {
 				_audioSource.loop = true;
 				_audioSource.Play();
-			}
-            else
-            {
+			} else {
 				_audioSource.PlayOneShot(_audioClip);
-            }
-        }
-    }
+			}
+		}
+	}
 }

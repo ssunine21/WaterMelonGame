@@ -14,29 +14,11 @@ public static class DataScore {
 	public static void SetBestScore(int score) {
 		if (score < CurrScore) return;
 		DataManager.init.gameData.bestScore = score;
-    }
-
-	public static void EarnBestScore(int score) {
-		DataManager.init.gameData.bestScore += score;
+		GooglePlayGamesManager.UpdateLeaderboard();
     }
 
 	public static void EarnCurrScore(int score) {
 		DataManager.init.gameData.currScore += score;
 		OnBindChangeCurrScore?.Invoke();
-	}
-	public static void ConsumeDestroyItem(int count) {
-		DataManager.init.gameData.destroyItemCount -= count;
-	}
-
-	public static void EarnDestroyItem(int count) {
-		DataManager.init.gameData.destroyItemCount += count;
-	}
-
-	public static void ConsumeRankUpItem(int count) {
-		DataManager.init.gameData.rankupItemCount -= count;
-	}
-
-	public static void EarnRankUpItem(int count) {
-		DataManager.init.gameData.rankupItemCount += count;
 	}
 }

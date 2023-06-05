@@ -17,12 +17,14 @@ public class MainObject : MonoBehaviour {
 	}
 
 	public SpriteRenderer SpriteRenderer => _spriteRenderer;
+	public CircleCollider2D CircleTrigger => _circleTrigger;
 
 	[SerializeField] private SpriteRenderer _spriteRenderer;
 
 	private Sprite sprite;
 	private Rigidbody2D _rigidbody;
-	private Vector3 screenPos;
+	private CircleCollider2D _circleCollider;
+	private CircleCollider2D _circleTrigger;
 
 	public bool isDropped {
 		get {
@@ -34,14 +36,11 @@ public class MainObject : MonoBehaviour {
 		}
 	}
 	public bool isReady;
-	private bool isMerging = false;
+	private bool isMerging = true;
 
 	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		radius = GetRadius();
-
-		screenPos.x = Camera.main.ViewportToWorldPoint(Vector2.zero).x;
-		screenPos.y = Camera.main.ViewportToWorldPoint(Vector2.one).x;
 		StartCoroutine(CoAsyncPosition());
 	}
 
@@ -94,10 +93,15 @@ public class MainObject : MonoBehaviour {
 
 		try {
 			radius = GetRadius();
-			gameObject.AddComponent<CircleCollider2D>();
-			gameObject.GetComponent<CircleCollider2D>().radius = radius;
-			gameObject.GetComponent<Rigidbody2D>().gravityScale = GRAVITY_SCALE;
+			if (_circleCollider == null)
+				_circleCollider = gameObject.AddComponent<CircleCollider2D>();
+			_circleCollider.radius = radius - 0.001f;
+			if (_circleTrigger == null)
+				_circleTrigger = gameObject.AddComponent<CircleCollider2D>();
+			_circleTrigger.radius = radius;
+			_circleTrigger.isTrigger = true;
 
+			GetComponent<Rigidbody2D>().gravityScale = GRAVITY_SCALE;
 		} catch (System.NullReferenceException e) {
 			Debug.Log(e.StackTrace);
 		}
@@ -110,14 +114,14 @@ public class MainObject : MonoBehaviour {
 		return sprite.rect.width / (sprite.pixelsPerUnit * 0.01f) * 0.005f;
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
 		if (IsEquals(collision.gameObject) && !isMerging) {
 			isMerging = true;
 			TargetPosCheckAndMerge(collision.gameObject);
 		}
 	}
 
-	private void OnCollisionStay2D(Collision2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
 		if (IsEquals(collision.gameObject) && !isMerging) {
 			isMerging = true;
 			TargetPosCheckAndMerge(collision.gameObject);
@@ -139,7 +143,12 @@ public class MainObject : MonoBehaviour {
 	}
 
 	private void Merge(GameObject collision) {
-		ObjectManager.init.MergeObject(collision.GetComponent<MainObject>(), this);
+		var mainObject = collision.GetComponent<MainObject>();
+
+		if (mainObject == null) 
+			return;
+
+		ObjectManager.init.MergeObject(mainObject, this);
 	}
 
 	public void ObjectFlickerAnimation() {
@@ -169,8 +178,13 @@ public class MainObject : MonoBehaviour {
 		GameManager.OnBindGameOver?.Invoke();
     }
 
+	private WaitForSeconds wfs = new WaitForSeconds(0.3f);
+	private WaitForSeconds wfs2 = new WaitForSeconds(0.2f);
 	private IEnumerator CoReady() {
-		yield return new WaitForSeconds(0.5f);
+		yield return wfs2;
+		isMerging = false;
+
+		yield return wfs;
 		isReady = true;
 	}
 }

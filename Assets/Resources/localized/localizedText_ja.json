@@ -1,115 +1,169 @@
 {
   "items": [
     {
+      "key": "AppName",
+      "value": "スイカゲーム"
+
+    },
+    {
       "key": "Title",
       "value": "スイカゲーム"
+
     },
     {
       "key": "StartGame",
       "value": "ゲーム開始"
+
     },
     {
       "key": "NewGame",
       "value": "新しいゲーム"
+
     },
     {
       "key": "Main",
       "value": "メイン"
+
     },
     {
       "key": "Store",
       "value": "ストア"
+
     },
     {
       "key": "IsPurchase",
-      "value": "購入なさいますか？"
+      "value": "ご購入いただきますか？"
+
+    },
+    {
+      "key": "IsNotCoin",
+      "value": "コインが足りません。"
+
     },
     {
       "key": "Check",
       "value": "確認"
+
     },
     {
       "key": "Cancel",
       "value": "キャンセル"
+
     },
     {
-      "key": "CoinDummy",
-      "value": "コインの山"
+      "key": "CoinPack",
+      "value": "コインパッケージ"
+
     },
     {
-      "key": "CoinPurse",
-      "value": "コインパース"
+      "key": "CoinBundle",
+      "value": "コインバンドル"
+
     },
     {
-      "key": "CoinBox",
+      "key": "CoinChest",
       "value": "コインボックス"
+
     },
     {
       "key": "Bonus",
       "value": "ボーナス"
-    },
 
+    },
     {
       "key": "Object",
       "value": "オブジェクト"
+
     },
     {
       "key": "Background",
       "value": "背景"
+
     },
     {
       "key": "Special",
       "value": "スペシャル"
-    },
 
+    },
     {
       "key": "Destruction",
       "value": "破壊"
+
     },
     {
       "key": "RankUp",
-      "value": "ランクアップ"
+      "value": "昇進"
+
     },
     {
       "key": "Reroll",
-      "value": "リロール"
+      "value": "再振り"
+
     },
     {
       "key": "FreeCoin",
       "value": "無料コイン"
+
     },
     {
       "key": "DoubleCoin",
       "value": "ダブルコイン"
+
     },
     {
       "key": "RemoveAds",
-      "value": "広告削除"
-    },
+      "value": "広告スキップ"
 
+    },
     {
       "key": "DestructionDesc",
-      "value": "ボールを4つ削除します。（ランダム）"
+      "value": "ボール4つを破壊します。 (ランダム)"
+
     },
     {
       "key": "RankUpDesc",
-      "value": "ボールを2つレベルアップします。（ランダム）"
+      "value": "ボールのグレードを2つ上げます。(ランダム)"
+
     },
     {
       "key": "RerollDesc",
-      "value": "すべてのボールを反転させます。"
+      "value": "すべてのボールがリロールされます。"
+
     },
     {
       "key": "FreeCoinDesc",
-      "value": "デイリー購入"
+      "value": "デイリーリワード"
+
     },
     {
       "key": "DoubleCoinDesc",
-      "value": "コイン獲得量が2倍になります。"
+      "value": "コインの獲得量が2倍に増加します。"
+
     },
     {
       "key": "RemoveAdsDesc",
-      "value": "すべての広告を削除します。"
+      "value": "全ての広告がスキップされます！"
+
+    },
+    {
+      "key": "WaringNewStart",
+      "value": "進行中のゲームがあります。新しいゲームを開始しますか？"
+
+    },
+    {
+      "key": "BGM",
+      "value": "BGM"
+
+    },
+    {
+      "key": "Effect",
+      "value": "SE"
+
+    },
+    {
+      "key": "Vibration",
+      "value": "振動"
+
     }
   ]
 }

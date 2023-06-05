@@ -19,7 +19,16 @@ public class ControllerMainMenu {
         _view.NewGmae.onClick.AddListener(NewGame);
         _view.StartGame.onClick.AddListener(() => GameManager.OnBindStartGame?.Invoke());
         _view.Option.onClick.AddListener(() => OnBindMenu?.Invoke(0));
-        _view.Leaderboard.onClick.AddListener(() => Social.ShowLeaderboardUI());
+        _view.Leaderboard.onClick.AddListener(() => {
+            if (GooglePlayGamesManager.IsLogin)
+                Social.ShowLeaderboardUI();
+            else {
+                GooglePlayGamesManager.Login(success => {
+                    if (success)
+                        Social.ShowLeaderboardUI();
+                });
+            }
+        });
 
         ControllerMainNav.OnSelectMenu += SetVisible;
         GameManager.OnBindNewGame += () => _view.SetActive(false);
@@ -32,7 +41,7 @@ public class ControllerMainMenu {
         if (DataManager.init.gameData.objectData != null
             || DataManager.init.gameData.objectData.Count >= 0)
         {
-            ViewCanvas.Get<ViewCanvasToast>().Show("저장된 게임이 있습니. 새로 시작하시겠습니까?",
+            ViewCanvas.Get<ViewCanvasToast>().Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.WaringNewStart),
                 GameManager.OnBindNewGame.Invoke);
         }
         else

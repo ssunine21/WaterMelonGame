@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 public class User {
-	public int score;
 	public int coin;
 	public int lastjoin;
 
-	public User(int bestScore, int coin, int lastjoin) {
-		this.score = bestScore;
+	public User(int coin, int lastjoin) {
 		this.coin = coin;
 		this.lastjoin = lastjoin;
 	}

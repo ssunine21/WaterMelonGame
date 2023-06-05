@@ -29,6 +29,8 @@ public class ControllerShop {
             _view.ProductCoin0.SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.COIN_DUMMY));
             _view.ProductCoin1.SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.COIN_POKET));
             _view.ProductCoin2.SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.COIN_BOX));
+            _view.ProductDoubleCoin.SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.DOUBLE_COIN));
+            _view.ProductPremium.SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.PREMIUM));
         };
 
         _view.ProductItem0
@@ -48,22 +50,19 @@ public class ControllerShop {
             .SetButtonAction(() => { if (PlayerItem.IsCanBuy(Definition.Item.Reroll)) { PlayerItem.Earn(Definition.Item.Reroll); PlayerCoin.Consume(PlayerItem.GetCost(Definition.Item.Reroll)); } });
 
         _view.ProductCoin0
-            .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CoinDummy))
+            .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CoinPack))
             .SetDescription($"1,500 + <#E38B29>1,500 {LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Bonus)}</color>")
             .SetAmount("3,000")
-            .SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.COIN_DUMMY))
             .SetButtonAction(() => IAPManager.init.Purchase(IAPManager.COIN_DUMMY));
         _view.ProductCoin1
-            .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CoinPurse))
+            .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CoinBundle))
             .SetDescription($"4,000 + <#E38B29>4,000 {LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Bonus)}</color>")
             .SetAmount("8,000")
-            .SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.COIN_POKET))
             .SetButtonAction(() => IAPManager.init.Purchase(IAPManager.COIN_POKET));
         _view.ProductCoin2
-            .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CoinBox))
+            .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CoinChest))
             .SetDescription($"8,000 + <#E38B29>8,000 {LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Bonus)}</color>")
             .SetAmount("16,000")
-            .SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.COIN_BOX))
             .SetButtonAction(() => IAPManager.init.Purchase(IAPManager.COIN_BOX));
 
         _view.ProductWatchAds
@@ -84,12 +83,10 @@ public class ControllerShop {
         _view.ProductDoubleCoin
             .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.DoubleCoin))
             .SetDescription(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.DoubleCoinDesc))
-            .SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.DOUBLE_COIN))
             .SetButtonAction(() => IAPManager.init.Purchase(IAPManager.DOUBLE_COIN));
         _view.ProductPremium
             .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.RemoveAds))
             .SetDescription(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.RemoveAdsDesc))
-            .SetPrice(IAPManager.init.GetLocalizedPriceString(IAPManager.PREMIUM))
             .SetButtonAction(() => IAPManager.init.Purchase(IAPManager.PREMIUM));
 
         _view.ButtonCoinPlus.onClick.AddListener(() => _view.ButtonMenus[2].onClick.Invoke());
@@ -162,7 +159,7 @@ public class ControllerShop {
                                 OnSelectObjectItem?.Invoke(index);
                             }
                             else {
-                                viewToastMessage.ShowOneTimeMessage("?????? ??????????.");
+                                viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
                             }
                         });
                 });
@@ -188,7 +185,7 @@ public class ControllerShop {
 
                                 OnSelectBackgroundItem?.Invoke(index);
                             } else {
-                                viewToastMessage.ShowOneTimeMessage("?????? ??????????.");
+                                viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
                             }
                         });
                 });
@@ -285,5 +282,6 @@ public class ControllerShop {
 
     private void SetVisible(int index) {
         _view.SetActive(_navIndex == index);
+        UpdateCoin();
     }
 }

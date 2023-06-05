@@ -1,54 +1,70 @@
 {
   "items": [
     {
+      "key": "AppName",
+      "value": "Watermelon Game"
+    },
+    {
       "key": "Title",
-      "value": "WaterMelon"
+      "value": "Watermelon Game"
+
     },
     {
       "key": "StartGame",
-      "value": "Start Game"
+      "value": "Start game"
+
     },
     {
       "key": "NewGame",
       "value": "New Game"
+
     },
     {
       "key": "Main",
       "value": "Main"
+
     },
     {
       "key": "Store",
       "value": "Store"
+
     },
     {
       "key": "IsPurchase",
-      "value": "Would you like to purchase it?"
+      "value": "Would you like to make a purchase?"
+
+    },
+    {
+      "key": "IsNotCoin",
+      "value": "Not enough coins."
+
     },
     {
       "key": "Check",
       "value": "Confirm"
+
     },
     {
       "key": "Cancel",
       "value": "Cancel"
+
     },
     {
-      "key": "CoinDummy",
-      "value": "Coin Dummy"
+      "key": "CoinPack",
+      "value": "Coin Pack"
     },
     {
-      "key": "CoinPurse",
-      "value": "Coin Poket"
+      "key": "CoinBundle",
+      "value": "Coin Bundle"
     },
     {
-      "key": "CoinBox",
-      "value": "Coin Box"
+      "key": "CoinChest",
+      "value": "Coin Chest"
     },
     {
       "key": "Bonus",
       "value": "bonus"
     },
-
     {
       "key": "Object",
       "value": "OBJECT"
@@ -61,55 +77,85 @@
       "key": "Special",
       "value": "SPECIAL"
     },
-
     {
       "key": "Destruction",
       "value": "Destruction"
+
     },
     {
       "key": "RankUp",
-      "value": "Rank Up"
+      "value": "Promotion"
+
     },
     {
       "key": "Reroll",
-      "value": "Re-roll"
+      "value": "Reroll"
+
     },
     {
       "key": "FreeCoin",
-      "value": "Free Coin"
+      "value": "Free coins"
+
     },
     {
       "key": "DoubleCoin",
-      "value": "Double Coin"
+      "value": "Double coins"
+
     },
     {
       "key": "RemoveAds",
-      "value": "Remove Ads"
-    },
+      "value": "Ad Block"
 
+    },
     {
       "key": "DestructionDesc",
-      "value": "Delete four balls. (Random)"
+      "value": "Destroys 4 balls. (Random)"
+
     },
     {
       "key": "RankUpDesc",
-      "value": "Level up two balls. (Random)"
+      "value": "Increase the grade of 2 balls. (Random)"
+
     },
     {
       "key": "RerollDesc",
-      "value": "Changes all balls."
+      "value": "All balls are rerolled."
+
     },
     {
       "key": "FreeCoinDesc",
-      "value": "Daily purchase"
+      "value": "Daily Reward"
+
     },
     {
       "key": "DoubleCoinDesc",
-      "value": "Coin acquisition amount is doubled"
+      "value": "Coin acquisition rate doubles."
+
     },
     {
       "key": "RemoveAdsDesc",
-      "value": "Remove all ads."
+      "value": "Removes all Ads forever."
+
+    },
+    {
+      "key": "WaringNewStart",
+      "value": "You have a game in progress. Would you like to start a new game?"
+
+    },
+    {
+      "key": "BGM",
+      "value": "BGM"
+
+    },
+    {
+      "key": "Effect",
+      "value": "Sound FX"
+
+    },
+    {
+      "key": "Vibration",
+      "value": "Vibration"
+
     }
   ]
 }

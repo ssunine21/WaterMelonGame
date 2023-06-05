@@ -19,7 +19,7 @@ public class ControllerInGame {
         });
         _view.ButtonDestroyItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            viewToastMessage.Show("?????? ?????????????????", () => {
+            viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.DestructionDesc), () => {
                 var key = Definition.Item.Destruction;
                 if (PlayerItem.GetCount(key) > 0) {
                     PlayerItem.Comsume(key);
@@ -37,7 +37,7 @@ public class ControllerInGame {
         });
         _view.ButtonRankUpItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            viewToastMessage.Show("?????? ?????????????????", () => {
+            viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.RankUpDesc), () => {
                 var key = Definition.Item.RankUp;
                 if (PlayerItem.GetCount(key) > 0) {
                     PlayerItem.Comsume(key);
@@ -55,7 +55,7 @@ public class ControllerInGame {
         });
         _view.ButtonRerollItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            viewToastMessage.Show("?????? ?????????????????", () => {
+            viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.RerollDesc), () => {
                 var key = Definition.Item.Reroll;
                 if (PlayerItem.GetCount(key) > 0)
                 {

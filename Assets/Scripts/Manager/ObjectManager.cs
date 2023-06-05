@@ -83,8 +83,6 @@ public class ObjectManager : MonoBehaviour {
 
 		int index = (int)key;
 		var currObject = Instantiate(objects[index], _objParent.transform).GetComponent<MainObject>();
-		// pos.Value, Quaternion.identity).GetComponent<MainObject>();
-																		   //currObject.transform.parent = _objParent.transform;
 		currObject.transform.position = pos.Value;
 		currObject.SpriteRenderer.sprite = objectSprites[(int)key];
 		currObject.SpriteRenderer.transform.localPosition = Vector3.zero;
@@ -100,8 +98,13 @@ public class ObjectManager : MonoBehaviour {
 	public void MergeObject(MainObject target, MainObject curr) {
 		if (target.mergeLevel == ObjectKey.Max) 
 			return;
-		target.mergeLevel += 1;
-		GetObject(target.mergeLevel, target.transform.position).GetComponent<MainObject>().Setting();
+
+		target.CircleTrigger.isTrigger = false;
+		curr.CircleTrigger.isTrigger = false;
+
+		var data = GetObject(target.mergeLevel + 1, target.transform.position).GetComponent<MainObject>();
+		data.Setting();
+
 		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
 
 		DestroyObject(target);

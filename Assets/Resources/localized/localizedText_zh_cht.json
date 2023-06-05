@@ -1,115 +1,168 @@
 {
   "items": [
     {
+      "key": "AppName",
+      "value": "西瓜遊戲"
+
+    },
+    {
       "key": "Title",
       "value": "西瓜遊戲"
+
     },
     {
       "key": "StartGame",
       "value": "遊戲開始"
+
     },
     {
       "key": "NewGame",
       "value": "新遊戲"
+
     },
     {
       "key": "Main",
-      "value": "主要的"
+      "value": "主要"
+
     },
     {
       "key": "Store",
       "value": "商店"
+
     },
     {
       "key": "IsPurchase",
       "value": "您要購買嗎？"
+
+    },
+    {
+      "key": "IsNotCoin",
+      "value": "硬幣不足。"
+
     },
     {
       "key": "Check",
       "value": "確認"
+
     },
     {
       "key": "Cancel",
       "value": "取消"
     },
     {
-      "key": "CoinDummy",
-      "value": "堆疊的硬幣"
+      "key": "CoinPack",
+      "value": "硬幣套餐"
+
     },
     {
-      "key": "CoinPurse",
-      "value": "幣包"
+      "key": "CoinBundle",
+      "value": "硬幣捆綁銷售"
+
     },
     {
-      "key": "CoinBox",
-      "value": "幣盒"
+      "key": "CoinChest",
+      "value": "硬幣盒子"
+
     },
     {
       "key": "Bonus",
       "value": "獎金"
-    },
 
+    },
     {
       "key": "Object",
-      "value": "對象"
+      "value": "物件"
+
     },
     {
       "key": "Background",
       "value": "背景"
+
     },
     {
       "key": "Special",
-      "value": "特别"
-    },
+      "value": "特殊"
 
+    },
     {
       "key": "Destruction",
       "value": "破壞"
+
     },
     {
       "key": "RankUp",
-      "value": "提升等級"
+      "value": "晉升"
+
     },
     {
       "key": "Reroll",
-      "value": "重擲骰子"
+      "value": "重新擲骰"
+
     },
     {
       "key": "FreeCoin",
       "value": "免費硬幣"
+
     },
     {
       "key": "DoubleCoin",
       "value": "雙倍硬幣"
+
     },
     {
       "key": "RemoveAds",
-      "value": "移除廣告"
-    },
+      "value": "清除廣告"
 
+    },
     {
       "key": "DestructionDesc",
-      "value": "刪除四個球。（隨機）"
+      "value": "破壞4個球。(隨機)"
+
     },
     {
       "key": "RankUpDesc",
-      "value": "升級兩個球。（隨機）"
+      "value": "提升2顆球的等級。(隨機)"
+
     },
     {
       "key": "RerollDesc",
-      "value": "翻轉所有球。"
+      "value": "所有球重新擲骰。"
+
     },
     {
       "key": "FreeCoinDesc",
-      "value": "每日購買"
+      "value": "每日奖励"
+
     },
     {
       "key": "DoubleCoinDesc",
-      "value": "硬幣獲取量翻倍。"
+      "value": "金幣獲得量增加兩倍。"
+
     },
     {
       "key": "RemoveAdsDesc",
-      "value": "移除所有廣告。"
+      "value": "永久清除所有的廣告"
+
+    },
+    {
+      "key": "WaringNewStart",
+      "value": "您有進行中的遊戲。是否要開始新遊戲？"
+
+    },
+    {
+      "key": "BGM",
+      "value": "背景音"
+
+    },
+    {
+      "key": "Effect",
+      "value": "效果音"
+
+    },
+    {
+      "key": "Vibration",
+      "value": "震動"
+
     }
   ]
 }

@@ -16,8 +16,8 @@ public static class PlayerCoin {
 
     public static bool Consume(int value)
     {
-        AudioManager.Init.Play(Definition.AudioType.Coin);
         if (DataManager.init.gameData.coin >= value) {
+            AudioManager.Init.Play(Definition.AudioType.Coin);
             DataManager.init.gameData.coin -= value;
             OnChangeValue?.Invoke();
             DataManager.init.Save();

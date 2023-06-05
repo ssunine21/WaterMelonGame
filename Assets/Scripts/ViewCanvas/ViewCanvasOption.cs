@@ -15,4 +15,14 @@ public class ViewCanvasOption : ViewCanvas {
     [SerializeField] private UltimateClean.Switch _switchMusic;
     [SerializeField] private UltimateClean.Switch _switchEffect;
     [SerializeField] private UltimateClean.Switch _switchVibration;
+
+    [SerializeField] private TMP_Text _textBGM;
+    [SerializeField] private TMP_Text _textEffect;
+    [SerializeField] private TMP_Text _textVibration;
+
+    public void SetLocalizeText() {
+        _textBGM.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.BGM);
+        _textEffect.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Effect);
+        _textVibration.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Vibration);
+    }
 }

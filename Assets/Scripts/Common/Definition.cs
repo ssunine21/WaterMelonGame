@@ -7,17 +7,19 @@ public static class Definition {
 
 	public enum LocalizeKey {
 		None = -1,
+		AppName,
 		Title,
 		StartGame,
 		NewGame,
 		Main,
 		Store,
 		IsPurchase,
+		IsNotCoin,
 		Check,
 		Cancel,
-		CoinDummy,
-		CoinPurse,
-		CoinBox,
+		CoinPack,
+		CoinBundle,
+		CoinChest,
 		Bonus,
 		Object,
 		Background,
@@ -34,6 +36,10 @@ public static class Definition {
 		FreeCoinDesc,
 		DoubleCoinDesc,
 		RemoveAdsDesc,
+		WaringNewStart,
+		BGM,
+		Effect,
+		Vibration,
 	}
 
 	public enum Item {

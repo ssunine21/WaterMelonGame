@@ -24,7 +24,7 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-	//	databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+		databaseReference = FirebaseDatabase.DefaultInstance.GetReference(TITLE);
 		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
@@ -57,20 +57,11 @@ public class DataManager : MonoBehaviour {
 
 			using (var file = File.Open(dataPath, FileMode.OpenOrCreate))
 			{
-				if (file.Length <= 0)
-				{
+				if (file.Length <= 0) {
 					gameData = new DataInfo.GameData();
-					return;
-				}
-
-				gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
-
-				if (gameData.key == null || gameData.key.Equals(""))
-				{
 					InitFirebaseData();
-				}
-				else
-				{
+				} else {
+					gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 					LoadFirebaseDate();
 				}
 			}
@@ -82,39 +73,56 @@ public class DataManager : MonoBehaviour {
 
 	private void LoadFirebaseDate()
 	{
+		Debug.Log($"Load FirebaseKey : {gameData.key}");
+		databaseReference.Child(gameData.key)
+			.GetValueAsync().ContinueWith(task => {
+				if(task.IsCompleted) {
+					DataSnapshot snap = task.Result;
+					gameData.coin = int.Parse(snap.Child(COIN).Value.ToString());
+					LastTImeSync();
+				}
+			});
 
-#if UNITY_EDITOR
-		return;
-#endif
-		FirebaseDatabase.DefaultInstance.GetReference(TITLE)
-			.OrderByKey()
-			.EqualTo(gameData.key)
-			.ChildAdded += HandleChildAddedUserData;
-	}
+		if (gameData.lastJoin == 0) {
+			databaseReference
+				.Child(gameData.key)
+				.Child("deviceModel").RemoveValueAsync();
+			databaseReference
+				.Child(gameData.key)
+				.Child("flag").RemoveValueAsync();
+			databaseReference
+				.Child(gameData.key)
+				.Child("score").RemoveValueAsync();
+			databaseReference
+				.Child(gameData.key)
+				.Child("name").RemoveValueAsync();
 
-	private void HandleChildAddedUserData(object sender, ChildChangedEventArgs arge) {
-		if (arge.DatabaseError != null) {
-			Debug.LogError(arge.DatabaseError.Message);
-			return;
-		};
-
-		IDictionary data = (IDictionary)arge.Snapshot.Value;
-		gameData.coin = int.Parse(data[COIN].ToString());
+			gameData.currScore = 0;
+			gameData.bestScore = 0;
+		}
 	}
 
 	public void InitFirebaseData() {
-#if UNITY_EDITOR
-		return;
-#endif
 		var timespan = new System.TimeSpan(System.DateTime.Now.Ticks);
-		gameData.key = databaseReference.Child(TITLE).Push().Key;
+		gameData.key = databaseReference.Push().Key;
+		gameData.lastJoin = timespan.Days;
 
-		User user = new User(gameData.bestScore, gameData.coin, timespan.Days);
+		Debug.Log($"Init FirebaseKey : {gameData.key}");
+
+		User user = new User(gameData.coin, gameData.lastJoin);
 		string json = JsonUtility.ToJson(user);
-		databaseReference.Child(TITLE).Child(gameData.key).SetRawJsonValueAsync(json);
+		databaseReference.Child(gameData.key).SetRawJsonValueAsync(json);
 	}
 
 	public void CoinFirebaseSync() {
-//		databaseReference.Child(TITLE).Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
+		databaseReference.Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
+	}
+
+	public void LastTImeSync() {
+		var timespan = new System.TimeSpan(System.DateTime.Now.Ticks);
+		gameData.key = databaseReference.Push().Key;
+		gameData.lastJoin = timespan.Days;
+
+		databaseReference.Child(gameData.key).Child(LASTJOIN).SetValueAsync(gameData.lastJoin);
 	}
 }

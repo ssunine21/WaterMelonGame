@@ -7,7 +7,7 @@ using UnityEngine.Purchasing;
 public class IAPManager : MonoBehaviour, IStoreListener {
 	public UnityAction OnBindInitialized;
 
-	public const string PREMIUM = "com.bognstudio.mergegame.premium";
+	public const string PREMIUM = "premium";
 	public const string DOUBLE_COIN = "com.bognstudio.mergegame.doublecoin";
 	public const string COIN_DUMMY = "com.bognstudio.mergegame.coindummy";
 	public const string COIN_POKET = "com.bognstudio.mergegame.coinpoket";
