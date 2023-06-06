@@ -81,6 +81,9 @@ public class ControllerInGame {
         CoCurrSocreFlow().Forget();
 
         PlayerItem.OnChangeItem += (key) => UpdateItemCount();
+
+
+        _view.Underground.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.GroundHeight).y);
     }
 
     private void InitNewStart()

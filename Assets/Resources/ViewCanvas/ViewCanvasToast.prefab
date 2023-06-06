@@ -149,10 +149,10 @@ RectTransform:
   m_Father: {fileID: 4408886331765776041}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 354.74484}
-  m_SizeDelta: {x: -100, y: -1880.678}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 423}
+  m_SizeDelta: {x: 1146, y: 368.91614}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3946203284817382228
 CanvasRenderer:
@@ -209,17 +209,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
+  m_fontSize: 53
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 45
-  m_fontStyle: 1
+  m_fontSizeMax: 53
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 10
+  m_characterSpacing: 20
   m_wordSpacing: 0
   m_lineSpacing: 10
   m_lineSpacingMax: 0
@@ -816,6 +816,7 @@ MonoBehaviour:
   DownScale: 1
   LockPanel: {fileID: 0}
   UnLockPanel: {fileID: 0}
+  _clickAudioClip: {fileID: 0}
 --- !u!1001 &5372298225674949702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1057,6 +1058,7 @@ MonoBehaviour:
   DownScale: 0.95
   LockPanel: {fileID: 0}
   UnLockPanel: {fileID: 0}
+  _clickAudioClip: {fileID: 0}
 --- !u!224 &6951842894169918269 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3096176925421559675, guid: f0a921f1910f37e429c45adf3d3ac01b,
@@ -1278,6 +1280,7 @@ MonoBehaviour:
   DownScale: 0.95
   LockPanel: {fileID: 0}
   UnLockPanel: {fileID: 0}
+  _clickAudioClip: {fileID: 0}
 --- !u!114 &6085718741467256796 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3096176925185820755, guid: f0a921f1910f37e429c45adf3d3ac01b,

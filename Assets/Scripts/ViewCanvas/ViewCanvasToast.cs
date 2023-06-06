@@ -66,6 +66,7 @@ public class ViewCanvasToast : ViewCanvas {
     private IEnumerator CoOneTimeMessage() {
         float time = 0.5f;
 
+        SetActive(true);
         _oneTimeToast.SetActive(true);
 
         if (_oneTimeMessagePosition == Vector3.zero) {
@@ -86,7 +87,10 @@ public class ViewCanvasToast : ViewCanvas {
         yield return new WaitForSeconds(1f);
 
         rect.DOMoveY(rect.position.y + 0.5f, 0.5f).SetEase(Ease.OutCubic);
-        _textOneTimeMessage.DOColor(Color.clear, 0.5f);
+        _textOneTimeMessage.DOColor(Color.clear, 0.5f).OnComplete(() => {
+            _oneTimeToast.SetActive(false);
+            SetActive(false);
+        });
     }
 
     private void Close(ButtonExpansion button) {

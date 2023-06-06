@@ -159,7 +159,7 @@ public class ControllerShop {
                                 OnSelectObjectItem?.Invoke(index);
                             }
                             else {
-                                viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
+                                viewToastMessage.ShowOneTimeMessage(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
                             }
                         });
                 });
@@ -185,7 +185,7 @@ public class ControllerShop {
 
                                 OnSelectBackgroundItem?.Invoke(index);
                             } else {
-                                viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
+                                viewToastMessage.ShowOneTimeMessage(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
                             }
                         });
                 });

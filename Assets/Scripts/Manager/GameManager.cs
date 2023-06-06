@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
 	public static float Width;
 
 	public static float GroundHeight => Height * 0.03f;
-	public static float MaxLineHeight => Height * 0.25f * 3.1f;
-	public static float MaxLineWaringHeight => Height * 0.25f * 2.1f;
+	public static float MaxLineHeight => Height * 0.25f * 3.35f;
+	public static float MaxLineWaringHeight => Height * 0.25f * 2.4f;
 	public static float ObjectHeight => Height * 0.25f * 3.7f;
 
 	public bool isEnterGame = false;

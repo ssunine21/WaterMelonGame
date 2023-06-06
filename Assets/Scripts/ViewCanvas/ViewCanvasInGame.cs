@@ -21,6 +21,8 @@ public class ViewCanvasInGame : ViewCanvas {
     public Image ImageRankUpItem => _imageRankUpItem;
     public Image ImageRerollItem => _imageRerollItem;
 
+    public Transform Underground => _underground;
+
     [SerializeField] private GameObject[] _background;
     [SerializeField] private ButtonExpansion _buttonBack;
     [SerializeField] private Transform _ballParent;
@@ -38,6 +40,8 @@ public class ViewCanvasInGame : ViewCanvas {
     [SerializeField] private Image _imageDestoryItem;
     [SerializeField] private Image _imageRankUpItem;
     [SerializeField] private Image _imageRerollItem;
+
+    [SerializeField] private Transform _underground;
 
     private WaitForSeconds _wfs = new WaitForSeconds(0.01f);
 

@@ -10,7 +10,8 @@ public static class PlayerItem {
     public static bool IsCanBuy(Definition.Item key) {
         if(PlayerCoin.Coin < GetCost(key)) {
             var toastMessage = ViewCanvas.Get<ViewCanvasToast>();
-            toastMessage.ShowOneTimeMessage("?????? ??????????.");
+
+            toastMessage.ShowOneTimeMessage(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.IsNotCoin));
             return false;
         }
 
