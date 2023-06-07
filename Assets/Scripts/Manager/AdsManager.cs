@@ -208,7 +208,7 @@ public class AdsManager : MonoBehaviour {
     }
 
     public void HandleUserCoinReward(object sender, Reward args) {
-        PlayerCoin.Earn(500);
+        PlayerCoin.Earn(300);
         DataManager.init.gameData.currDailyCoinCount--;
         DataManager.init.Save();
         PlayerItem.OnChangeCurrDailyCoinCount?.Invoke();

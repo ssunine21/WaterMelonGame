@@ -2377,19 +2377,19 @@ struct StackFrame_tB901270D6679ED5D24D872C25D4AD053F22F3443_marshaled_com
 struct StackTrace_t7C150C7C14136F985311A83A93524B1019F70853  : public RuntimeObject
 {
 	// System.Diagnostics.StackFrame[] System.Diagnostics.StackTrace::frames
-	StackFrameU5BU5D_tF4310E8FAB8C2853A3F0843921BF9FBEC18ABBF7* ___frames_0;
+	StackFrameU5BU5D_tF4310E8FAB8C2853A3F0843921BF9FBEC18ABBF7* ___frames_2;
 	// System.Diagnostics.StackTrace[] System.Diagnostics.StackTrace::captured_traces
-	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces_1;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces_3;
 	// System.Boolean System.Diagnostics.StackTrace::debug_info
-	bool ___debug_info_2;
+	bool ___debug_info_4;
 };
 
 struct StackTrace_t7C150C7C14136F985311A83A93524B1019F70853_StaticFields
 {
 	// System.Boolean System.Diagnostics.StackTrace::isAotidSet
-	bool ___isAotidSet_3;
+	bool ___isAotidSet_5;
 	// System.String System.Diagnostics.StackTrace::aotid
-	String_t* ___aotid_4;
+	String_t* ___aotid_6;
 };
 
 // Cysharp.Threading.Tasks.CompilerServices.StateMachineUtility
@@ -6660,11 +6660,11 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F  : public Runti
 	// System.Uri UnityEngine.Networking.UnityWebRequest::m_Uri
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeCertificateHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
+	bool ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeDownloadHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
+	bool ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeUploadHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	bool ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 // Native definition for P/Invoke marshalling of UnityEngine.Networking.UnityWebRequest
 struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_pinvoke
@@ -6674,9 +6674,9 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_pinvo
 	UploadHandler_t7E504B1A83346248A0C8C4AF73A893226CB83EF6_marshaled_pinvoke ___m_UploadHandler_2;
 	CertificateHandler_t148B524FA5DB39F3ABADB181CD420FC505C33804_marshaled_pinvoke ___m_CertificateHandler_3;
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
-	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
-	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
-	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
+	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
+	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 // Native definition for COM marshalling of UnityEngine.Networking.UnityWebRequest
 struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_com
@@ -6686,9 +6686,9 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_com
 	UploadHandler_t7E504B1A83346248A0C8C4AF73A893226CB83EF6_marshaled_com* ___m_UploadHandler_2;
 	CertificateHandler_t148B524FA5DB39F3ABADB181CD420FC505C33804_marshaled_com* ___m_CertificateHandler_3;
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
-	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
-	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
-	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
+	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
+	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 
 // UnityEngine.Networking.UnityWebRequestAsyncOperation
@@ -32229,7 +32229,7 @@ IL_001c:
 		Type_t* L_9 = V_0;
 		NullCheck(L_9);
 		MethodInfoU5BU5D_tDF3670604A0AECF814A0B0BA09B91FBF0D6A3265* L_10;
-		L_10 = VirtualFuncInvoker1< MethodInfoU5BU5D_tDF3670604A0AECF814A0B0BA09B91FBF0D6A3265*, int32_t >::Invoke(100 /* System.Reflection.MethodInfo[] System.Type::GetMethods(System.Reflection.BindingFlags) */, L_9, ((int32_t)62));
+		L_10 = VirtualFuncInvoker1< MethodInfoU5BU5D_tDF3670604A0AECF814A0B0BA09B91FBF0D6A3265*, int32_t >::Invoke(101 /* System.Reflection.MethodInfo[] System.Type::GetMethods(System.Reflection.BindingFlags) */, L_9, ((int32_t)62));
 		V_1 = L_10;
 		// if (methods == null)
 		MethodInfoU5BU5D_tDF3670604A0AECF814A0B0BA09B91FBF0D6A3265* L_11 = V_1;
@@ -34920,7 +34920,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* UnityEqualityComparer_GetDefau
 		Type_t* L_0 = ___type0;
 		NullCheck(L_0);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_1;
-		L_1 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_0);
+		L_1 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_0);
 		V_0 = L_1;
 		// if (t.Equals(vector2Type)) return (object)UnityEqualityComparer.Vector2;
 		il2cpp_codegen_runtime_class_init_inline(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var);
@@ -35265,7 +35265,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_9 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_8, NULL);
 		NullCheck(L_9);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_10;
-		L_10 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_9);
+		L_10 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_9);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___vector2Type_8 = L_10;
 		// static readonly RuntimeTypeHandle vector3Type = typeof(Vector3).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_11 = { reinterpret_cast<intptr_t> (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_0_0_0_var) };
@@ -35273,7 +35273,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_12 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_11, NULL);
 		NullCheck(L_12);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_13;
-		L_13 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_12);
+		L_13 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_12);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___vector3Type_9 = L_13;
 		// static readonly RuntimeTypeHandle vector4Type = typeof(Vector4).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_14 = { reinterpret_cast<intptr_t> (Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3_0_0_0_var) };
@@ -35281,7 +35281,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_15 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_14, NULL);
 		NullCheck(L_15);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_16;
-		L_16 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_15);
+		L_16 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_15);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___vector4Type_10 = L_16;
 		// static readonly RuntimeTypeHandle colorType = typeof(Color).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_17 = { reinterpret_cast<intptr_t> (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_0_0_0_var) };
@@ -35289,7 +35289,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_18 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_17, NULL);
 		NullCheck(L_18);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_19;
-		L_19 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_18);
+		L_19 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_18);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___colorType_11 = L_19;
 		// static readonly RuntimeTypeHandle color32Type = typeof(Color32).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_20 = { reinterpret_cast<intptr_t> (Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B_0_0_0_var) };
@@ -35297,7 +35297,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_21 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_20, NULL);
 		NullCheck(L_21);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_22;
-		L_22 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_21);
+		L_22 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_21);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___color32Type_12 = L_22;
 		// static readonly RuntimeTypeHandle rectType = typeof(Rect).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_23 = { reinterpret_cast<intptr_t> (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D_0_0_0_var) };
@@ -35305,7 +35305,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_24 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_23, NULL);
 		NullCheck(L_24);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_25;
-		L_25 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_24);
+		L_25 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_24);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___rectType_13 = L_25;
 		// static readonly RuntimeTypeHandle boundsType = typeof(Bounds).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_26 = { reinterpret_cast<intptr_t> (Bounds_t367E830C64BBF235ED8C3B2F8CF6254FDCAD39C3_0_0_0_var) };
@@ -35313,7 +35313,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_27 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_26, NULL);
 		NullCheck(L_27);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_28;
-		L_28 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_27);
+		L_28 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_27);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___boundsType_14 = L_28;
 		// static readonly RuntimeTypeHandle quaternionType = typeof(Quaternion).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_29 = { reinterpret_cast<intptr_t> (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974_0_0_0_var) };
@@ -35321,7 +35321,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_30 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_29, NULL);
 		NullCheck(L_30);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_31;
-		L_31 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_30);
+		L_31 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_30);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___quaternionType_15 = L_31;
 		// public static readonly IEqualityComparer<Vector2Int> Vector2Int = new Vector2IntEqualityComparer();
 		Vector2IntEqualityComparer_t9F69F9DE69ABB66592537F4929F0D92D449566BC* L_32 = (Vector2IntEqualityComparer_t9F69F9DE69ABB66592537F4929F0D92D449566BC*)il2cpp_codegen_object_new(Vector2IntEqualityComparer_t9F69F9DE69ABB66592537F4929F0D92D449566BC_il2cpp_TypeInfo_var);
@@ -35359,7 +35359,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_38 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_37, NULL);
 		NullCheck(L_38);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_39;
-		L_39 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_38);
+		L_39 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_38);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___vector2IntType_21 = L_39;
 		// static readonly RuntimeTypeHandle vector3IntType = typeof(Vector3Int).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_40 = { reinterpret_cast<intptr_t> (Vector3Int_t65CB06F557251D18A37BD71F3655BA836A357376_0_0_0_var) };
@@ -35367,7 +35367,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_41 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_40, NULL);
 		NullCheck(L_41);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_42;
-		L_42 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_41);
+		L_42 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_41);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___vector3IntType_22 = L_42;
 		// static readonly RuntimeTypeHandle rangeIntType = typeof(RangeInt).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_43 = { reinterpret_cast<intptr_t> (RangeInt_tDFBE4FD13857C11F21F7C3DA6B60D05341B67268_0_0_0_var) };
@@ -35375,7 +35375,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_44 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_43, NULL);
 		NullCheck(L_44);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_45;
-		L_45 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_44);
+		L_45 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_44);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___rangeIntType_23 = L_45;
 		// static readonly RuntimeTypeHandle rectIntType = typeof(RectInt).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_46 = { reinterpret_cast<intptr_t> (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8_0_0_0_var) };
@@ -35383,7 +35383,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_47 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_46, NULL);
 		NullCheck(L_47);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_48;
-		L_48 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_47);
+		L_48 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_47);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___rectIntType_24 = L_48;
 		// static readonly RuntimeTypeHandle boundsIntType = typeof(BoundsInt).TypeHandle;
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_49 = { reinterpret_cast<intptr_t> (BoundsInt_t4E757DE5EFF9FCB42000F173360DDC63B5585485_0_0_0_var) };
@@ -35391,7 +35391,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityEqualityComparer__cctor_m27C5F8E0B6
 		L_50 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_49, NULL);
 		NullCheck(L_50);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_51;
-		L_51 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(111 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_50);
+		L_51 = VirtualFuncInvoker0< RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B >::Invoke(112 /* System.RuntimeTypeHandle System.Type::get_TypeHandle() */, L_50);
 		((UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_StaticFields*)il2cpp_codegen_static_fields_for(UnityEqualityComparer_t30B676AAE766B0B506730C808FC91D43D186542B_il2cpp_TypeInfo_var))->___boundsIntType_25 = L_51;
 		return;
 	}

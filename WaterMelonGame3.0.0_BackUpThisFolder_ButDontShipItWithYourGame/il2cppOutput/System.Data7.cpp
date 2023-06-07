@@ -24137,7 +24137,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SqlString_SetCompareInfo_m1BE59E2C319079
 		L_2 = CultureInfo_GetCultureInfo_m7B3C1F8F350401E2FE485E2D1693BA2A0B7BEB6D(L_1, NULL);
 		NullCheck(L_2);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_3;
-		L_3 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(12 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_2);
+		L_3 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(13 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_2);
 		__this->___m_cmpInfo_1 = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_cmpInfo_1), (void*)L_3);
 	}
@@ -25610,7 +25610,7 @@ CATCH_0046:
 		L_9 = CultureInfo_get_InvariantCulture_mD1E96DC845E34B10F78CB744B0CB5D7D63CEB1E6(NULL);
 		NullCheck(L_9);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_10;
-		L_10 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(12 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_9);
+		L_10 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(13 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_9);
 		V_1 = L_10;
 		V_2 = 0;
 		IL2CPP_POP_ACTIVE_EXCEPTION();

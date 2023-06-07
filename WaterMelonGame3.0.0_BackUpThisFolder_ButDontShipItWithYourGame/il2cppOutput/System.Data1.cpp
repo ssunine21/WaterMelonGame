@@ -10464,7 +10464,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4C
 		L_2 = DataTable_get_Locale_m7EE8F498C60742FFF844B132B3CC6054FBD5FB9F_inline(__this, NULL);
 		NullCheck(L_2);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_3;
-		L_3 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(12 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_2);
+		L_3 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(13 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_2);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_4 = L_3;
 		V_0 = L_4;
 		__this->____compareInfo_24 = L_4;
@@ -11006,7 +11006,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* DataTable_get_FormatProvider_m
 		CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* L_2 = V_0;
 		NullCheck(L_2);
 		bool L_3;
-		L_3 = VirtualFuncInvoker0< bool >::Invoke(13 /* System.Boolean System.Globalization.CultureInfo::get_IsNeutralCulture() */, L_2);
+		L_3 = VirtualFuncInvoker0< bool >::Invoke(14 /* System.Boolean System.Globalization.CultureInfo::get_IsNeutralCulture() */, L_2);
 		if (!L_3)
 		{
 			goto IL_001d;

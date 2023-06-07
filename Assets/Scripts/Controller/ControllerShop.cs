@@ -68,7 +68,7 @@ public class ControllerShop {
         _view.ProductWatchAds
             .SetTitle(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.FreeCoin))
             .SetDescription($"{LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.FreeCoinDesc)} <#E38B29>{DataManager.init.gameData.currDailyCoinCount}/5</color>")
-            .SetAmount("500")
+            .SetAmount("300")
             .SetButtonAction(() => {
                 if (DataManager.init.gameData.currDailyCoinCount > 0)
                 {

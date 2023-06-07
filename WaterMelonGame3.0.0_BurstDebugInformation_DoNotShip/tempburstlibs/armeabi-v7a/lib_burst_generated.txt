@@ -129,6 +129,10 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_ASYNC_ASSETBUNDLE_UWR
 --compilation-defines=UNITASK_TEXTMESHPRO_SUPPORT
 --compilation-defines=UNITASK_ADDRESSABLE_SUPPORT
+--compilation-defines=PACKAGE_UGUI
+--compilation-defines=MODULE_AUDIO
+--compilation-defines=PACKAGE_TMP
+--compilation-defines=ENABLE_PROPERTY_VARIANTS
 --generate-link-xml=Temp\burst.link.xml
 --output=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\tempburstlibs\armeabi-v7a\lib_burst_generated
 --root-assembly=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
@@ -179,6 +183,8 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.Codeless.dll
 --root-assembly=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.AppleStub.dll
 --root-assembly=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\UniTask.Addressables.dll
+--root-assembly=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\Unity.Localization.dll
+--root-assembly=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.013.dll
 --assembly-folder=C:\Users\ssuni\Documents\GitHub\WaterMelonGame\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10

@@ -2446,9 +2446,9 @@ struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572  : public RuntimeObject
 	// System.Int32 modreq(System.Runtime.CompilerServices.IsVolatile) System.Threading.Tasks.Task::m_stateFlags
 	int32_t ___m_stateFlags_6;
 	// System.Object modreq(System.Runtime.CompilerServices.IsVolatile) System.Threading.Tasks.Task::m_continuationObject
-	RuntimeObject* ___m_continuationObject_7;
+	RuntimeObject* ___m_continuationObject_23;
 	// System.Threading.Tasks.Task/ContingentProperties modreq(System.Runtime.CompilerServices.IsVolatile) System.Threading.Tasks.Task::m_contingentProperties
-	ContingentProperties_t3FA59480914505CEA917B1002EC675F29D0CB540* ___m_contingentProperties_10;
+	ContingentProperties_t3FA59480914505CEA917B1002EC675F29D0CB540* ___m_contingentProperties_26;
 };
 
 struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_StaticFields
@@ -2456,35 +2456,35 @@ struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_StaticFields
 	// System.Int32 System.Threading.Tasks.Task::s_taskIdCounter
 	int32_t ___s_taskIdCounter_0;
 	// System.Object System.Threading.Tasks.Task::s_taskCompletionSentinel
-	RuntimeObject* ___s_taskCompletionSentinel_8;
+	RuntimeObject* ___s_taskCompletionSentinel_24;
 	// System.Boolean System.Threading.Tasks.Task::s_asyncDebuggingEnabled
-	bool ___s_asyncDebuggingEnabled_9;
+	bool ___s_asyncDebuggingEnabled_25;
 	// System.Action`1<System.Object> System.Threading.Tasks.Task::s_taskCancelCallback
-	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* ___s_taskCancelCallback_11;
+	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* ___s_taskCancelCallback_27;
 	// System.Func`1<System.Threading.Tasks.Task/ContingentProperties> System.Threading.Tasks.Task::s_createContingentProperties
-	Func_1_tD59A12717D79BFB403BF973694B1BE5B85474BD1* ___s_createContingentProperties_14;
+	Func_1_tD59A12717D79BFB403BF973694B1BE5B85474BD1* ___s_createContingentProperties_30;
 	// System.Threading.Tasks.TaskFactory System.Threading.Tasks.Task::<Factory>k__BackingField
-	TaskFactory_tF781BD37BE23917412AD83424D1497C7C1509DF0* ___U3CFactoryU3Ek__BackingField_15;
+	TaskFactory_tF781BD37BE23917412AD83424D1497C7C1509DF0* ___U3CFactoryU3Ek__BackingField_31;
 	// System.Threading.Tasks.Task System.Threading.Tasks.Task::<CompletedTask>k__BackingField
-	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___U3CCompletedTaskU3Ek__BackingField_16;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___U3CCompletedTaskU3Ek__BackingField_32;
 	// System.Predicate`1<System.Threading.Tasks.Task> System.Threading.Tasks.Task::s_IsExceptionObservedByParentPredicate
-	Predicate_1_t7F48518B008C1472339EEEBABA3DE203FE1F26ED* ___s_IsExceptionObservedByParentPredicate_17;
+	Predicate_1_t7F48518B008C1472339EEEBABA3DE203FE1F26ED* ___s_IsExceptionObservedByParentPredicate_33;
 	// System.Threading.ContextCallback System.Threading.Tasks.Task::s_ecCallback
-	ContextCallback_tE8AFBDBFCC040FDA8DA8C1EEFE9BD66B16BDA007* ___s_ecCallback_18;
+	ContextCallback_tE8AFBDBFCC040FDA8DA8C1EEFE9BD66B16BDA007* ___s_ecCallback_34;
 	// System.Predicate`1<System.Object> System.Threading.Tasks.Task::s_IsTaskContinuationNullPredicate
-	Predicate_1_t8342C85FF4E41CD1F7024AC0CDC3E5312A32CB12* ___s_IsTaskContinuationNullPredicate_19;
+	Predicate_1_t8342C85FF4E41CD1F7024AC0CDC3E5312A32CB12* ___s_IsTaskContinuationNullPredicate_35;
 	// System.Collections.Generic.Dictionary`2<System.Int32,System.Threading.Tasks.Task> System.Threading.Tasks.Task::s_currentActiveTasks
-	Dictionary_2_t403063CE4960B4F46C688912237C6A27E550FF55* ___s_currentActiveTasks_20;
+	Dictionary_2_t403063CE4960B4F46C688912237C6A27E550FF55* ___s_currentActiveTasks_36;
 	// System.Object System.Threading.Tasks.Task::s_activeTasksLock
-	RuntimeObject* ___s_activeTasksLock_21;
+	RuntimeObject* ___s_activeTasksLock_37;
 };
 
 struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_ThreadStaticFields
 {
 	// System.Threading.Tasks.Task System.Threading.Tasks.Task::t_currentTask
-	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___t_currentTask_12;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___t_currentTask_28;
 	// System.Threading.Tasks.StackGuard System.Threading.Tasks.Task::t_stackGuard
-	StackGuard_tACE063A1B7374BDF4AD472DE4585D05AD8745352* ___t_stackGuard_13;
+	StackGuard_tACE063A1B7374BDF4AD472DE4585D05AD8745352* ___t_stackGuard_29;
 };
 
 // UnityEngine.ResourceManagement.Util.UnityWebRequestResult
@@ -2758,13 +2758,13 @@ struct NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF
 struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2  : public Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572
 {
 	// TResult System.Threading.Tasks.Task`1::m_result
-	RuntimeObject* ___m_result_22;
+	RuntimeObject* ___m_result_38;
 };
 
 struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2_StaticFields
 {
 	// System.Threading.Tasks.TaskFactory`1<TResult> System.Threading.Tasks.Task`1::s_defaultFactory
-	TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B* ___s_defaultFactory_23;
+	TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B* ___s_defaultFactory_39;
 };
 
 // UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
@@ -4039,11 +4039,11 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F  : public Runti
 	// System.Uri UnityEngine.Networking.UnityWebRequest::m_Uri
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeCertificateHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
+	bool ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeDownloadHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
+	bool ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeUploadHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	bool ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 // Native definition for P/Invoke marshalling of UnityEngine.Networking.UnityWebRequest
 struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_pinvoke
@@ -4053,9 +4053,9 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_pinvo
 	UploadHandler_t7E504B1A83346248A0C8C4AF73A893226CB83EF6_marshaled_pinvoke ___m_UploadHandler_2;
 	CertificateHandler_t148B524FA5DB39F3ABADB181CD420FC505C33804_marshaled_pinvoke ___m_CertificateHandler_3;
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
-	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
-	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
-	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
+	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
+	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 // Native definition for COM marshalling of UnityEngine.Networking.UnityWebRequest
 struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_com
@@ -4065,9 +4065,9 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_com
 	UploadHandler_t7E504B1A83346248A0C8C4AF73A893226CB83EF6_marshaled_com* ___m_UploadHandler_2;
 	CertificateHandler_t148B524FA5DB39F3ABADB181CD420FC505C33804_marshaled_com* ___m_CertificateHandler_3;
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
-	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
-	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
-	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
+	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
+	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 
 // UnityEngine.Networking.UnityWebRequestAsyncOperation
@@ -8885,7 +8885,7 @@ IL_0072:
 		(L_36)->SetAt(static_cast<il2cpp_array_size_t>(0), (Type_t*)L_37);
 		NullCheck(L_34);
 		Type_t* L_38;
-		L_38 = VirtualFuncInvoker1< Type_t*, TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* >::Invoke(123 /* System.Type System.Type::MakeGenericType(System.Type[]) */, L_34, L_36);
+		L_38 = VirtualFuncInvoker1< Type_t*, TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* >::Invoke(125 /* System.Type System.Type::MakeGenericType(System.Type[]) */, L_34, L_36);
 		Type_t* L_39 = L_38;
 		V_3 = L_39;
 		NullCheck(L_31);
@@ -14097,7 +14097,7 @@ IL_0010:
 		L_17 = InterfaceFuncInvoker0< Type_t* >::Invoke(8 /* System.Type UnityEngine.ResourceManagement.ResourceLocations.IResourceLocation::get_ResourceType() */, IResourceLocation_tB0706DA8EB5339ECB4B64C7D2DAFC1EB35D2915C_il2cpp_TypeInfo_var, L_16);
 		NullCheck(L_15);
 		bool L_18;
-		L_18 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(125 /* System.Boolean System.Type::Equals(System.Type) */, L_15, L_17);
+		L_18 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(127 /* System.Boolean System.Type::Equals(System.Type) */, L_15, L_17);
 		return L_18;
 	}
 
@@ -15742,7 +15742,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* ResourceManagerConfig_CreateLi
 		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_4 = V_0;
 		NullCheck(L_3);
 		Type_t* L_5;
-		L_5 = VirtualFuncInvoker1< Type_t*, TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* >::Invoke(123 /* System.Type System.Type::MakeGenericType(System.Type[]) */, L_3, L_4);
+		L_5 = VirtualFuncInvoker1< Type_t*, TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* >::Invoke(125 /* System.Type System.Type::MakeGenericType(System.Type[]) */, L_3, L_4);
 		// var list = Activator.CreateInstance(listType) as IList;
 		RuntimeObject* L_6;
 		L_6 = Activator_CreateInstance_mFF030428C64FDDFACC74DFAC97388A1C628BFBCF(L_5, NULL);
@@ -29162,7 +29162,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeC
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5 = L_0;
+		__this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11 = L_0;
 		return;
 	}
 }
@@ -29194,7 +29194,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeD
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6 = L_0;
+		__this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12 = L_0;
 		return;
 	}
 }

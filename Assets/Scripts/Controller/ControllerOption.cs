@@ -21,6 +21,7 @@ public class ControllerOption {
                 });
             });
         }
+        _view.SetLocalizeText();
 
         _view.Music.callback += () => {
 

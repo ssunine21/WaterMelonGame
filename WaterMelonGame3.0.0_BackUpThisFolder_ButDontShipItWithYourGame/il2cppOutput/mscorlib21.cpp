@@ -3353,6 +3353,10 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ReadOnlySpan_1__ctor_m0152E5
 // System.Boolean System.MemoryExtensions::SequenceEqual<System.Char>(System.ReadOnlySpan`1<T>,System.ReadOnlySpan`1<T>)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool MemoryExtensions_SequenceEqual_TisChar_t521A6F19B456D956AF452D926C32709DC03D6B17_m5C4C602E94DF85548E163F2D3FE9DDCA36C7E3E6_gshared_inline (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___span0, ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___other1, const RuntimeMethod* method) ;
 
+// System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Globalization.TimeSpanParse/TTT,System.Int32,System.Int32,System.ReadOnlySpan`1<System.Char>)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_mA2B06FDEDC769B89B3BA7283FA9B8BC0B82B0B4A (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, uint8_t ___type0, int32_t ___number1, int32_t ___leadingZeroes2, ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___separator3, const RuntimeMethod* method) ;
+// System.Int64 System.Globalization.TimeSpanParse::Pow10(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t TimeSpanParse_Pow10_mE853D7B374E580296D1B29105B58E71477C0A726 (int32_t ___pow0, const RuntimeMethod* method) ;
 // System.Void System.Globalization.TimeSpanParse/TimeSpanTokenizer::.ctor(System.ReadOnlySpan`1<System.Char>,System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanTokenizer__ctor_m1CDD5ADE033CD9FD89E7C44FA4CC6CFA0A58263B (TimeSpanTokenizer_tE63BC334928B0675B0F227151E0A112C933E20B3* __this, ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___input0, int32_t ___startPosition1, const RuntimeMethod* method) ;
 // System.Int32 System.ReadOnlySpan`1<System.Char>::get_Length()
@@ -3362,8 +3366,6 @@ inline int32_t ReadOnlySpan_1_get_Length_m36BD32453530B535FE60A8123643219FEAABC3
 }
 // System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Globalization.TimeSpanParse/TTT)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_m0A3CE8377C526F05615A24E44F85AD2360474E8D (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, uint8_t ___type0, const RuntimeMethod* method) ;
-// System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Globalization.TimeSpanParse/TTT,System.Int32,System.Int32,System.ReadOnlySpan`1<System.Char>)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_mA2B06FDEDC769B89B3BA7283FA9B8BC0B82B0B4A (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, uint8_t ___type0, int32_t ___number1, int32_t ___leadingZeroes2, ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___separator3, const RuntimeMethod* method) ;
 // System.ReadOnlySpan`1<T> System.ReadOnlySpan`1<System.Char>::Slice(System.Int32,System.Int32)
 inline ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ReadOnlySpan_1_Slice_mDEEA4C304B13C8F7A63BC3D60B62FF17BBEE282B_inline (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1* __this, int32_t ___start0, int32_t ___length1, const RuntimeMethod* method)
 {
@@ -3861,6 +3863,122 @@ inline bool MemoryExtensions_SequenceEqual_TisChar_t521A6F19B456D956AF452D926C32
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThrowHelper_ThrowArgumentOutOfRangeException_mD7D90276EDCDF9394A8EA635923E3B48BB71BD56 (const RuntimeMethod* method) ;
 // System.Boolean System.SpanHelpers::SequenceEqual(System.Byte&,System.Byte&,System.UInt64)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SpanHelpers_SequenceEqual_m69781B64721462BCA1ED200A1BB853E9B7026F2E (uint8_t* ___first0, uint8_t* ___second1, uint64_t ___length2, const RuntimeMethod* method) ;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Globalization.TimeSpanParse/TTT)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_m0A3CE8377C526F05615A24E44F85AD2360474E8D (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, uint8_t ___type0, const RuntimeMethod* method) 
+{
+	ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		uint8_t L_0 = ___type0;
+		il2cpp_codegen_initobj((&V_0), sizeof(ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1));
+		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_1 = V_0;
+		TimeSpanToken__ctor_mA2B06FDEDC769B89B3BA7283FA9B8BC0B82B0B4A(__this, L_0, 0, 0, L_1, NULL);
+		return;
+	}
+}
+// System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_mD0569B1E852997A448D83BDB8A2E7CAA0F6F68B6 (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, int32_t ___number0, const RuntimeMethod* method) 
+{
+	ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		int32_t L_0 = ___number0;
+		il2cpp_codegen_initobj((&V_0), sizeof(ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1));
+		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_1 = V_0;
+		TimeSpanToken__ctor_mA2B06FDEDC769B89B3BA7283FA9B8BC0B82B0B4A(__this, 2, L_0, 0, L_1, NULL);
+		return;
+	}
+}
+// System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Int32,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_m66DBD54CDFCE72BA81A4555B7FB78BBADA34371E (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, int32_t ___number0, int32_t ___leadingZeroes1, const RuntimeMethod* method) 
+{
+	ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		int32_t L_0 = ___number0;
+		int32_t L_1 = ___leadingZeroes1;
+		il2cpp_codegen_initobj((&V_0), sizeof(ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1));
+		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_2 = V_0;
+		TimeSpanToken__ctor_mA2B06FDEDC769B89B3BA7283FA9B8BC0B82B0B4A(__this, 2, L_0, L_1, L_2, NULL);
+		return;
+	}
+}
+// System.Void System.Globalization.TimeSpanParse/TimeSpanToken::.ctor(System.Globalization.TimeSpanParse/TTT,System.Int32,System.Int32,System.ReadOnlySpan`1<System.Char>)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TimeSpanToken__ctor_mA2B06FDEDC769B89B3BA7283FA9B8BC0B82B0B4A (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, uint8_t ___type0, int32_t ___number1, int32_t ___leadingZeroes2, ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___separator3, const RuntimeMethod* method) 
+{
+	{
+		uint8_t L_0 = ___type0;
+		__this->____ttt_0 = L_0;
+		int32_t L_1 = ___number1;
+		__this->____num_1 = L_1;
+		int32_t L_2 = ___leadingZeroes2;
+		__this->____zeroes_2 = L_2;
+		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_3 = ___separator3;
+		__this->____sep_3 = L_3;
+		return;
+	}
+}
+// System.Boolean System.Globalization.TimeSpanParse/TimeSpanToken::IsInvalidFraction()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TimeSpanToken_IsInvalidFraction_m59071E07A13FD7AE1353FE07394A460BEDDF6479 (TimeSpanToken_t5168CC29FD9B3BA68311DEBBD71541D1C133B892* __this, const RuntimeMethod* method) 
+{
+	{
+		int32_t L_0 = __this->____num_1;
+		if ((((int32_t)L_0) > ((int32_t)((int32_t)9999999))))
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		int32_t L_1 = __this->____zeroes_2;
+		if ((((int32_t)L_1) <= ((int32_t)7)))
+		{
+			goto IL_0018;
+		}
+	}
+
+IL_0016:
+	{
+		return (bool)1;
+	}
+
+IL_0018:
+	{
+		int32_t L_2 = __this->____num_1;
+		if (!L_2)
+		{
+			goto IL_0028;
+		}
+	}
+	{
+		int32_t L_3 = __this->____zeroes_2;
+		if (L_3)
+		{
+			goto IL_002a;
+		}
+	}
+
+IL_0028:
+	{
+		return (bool)0;
+	}
+
+IL_002a:
+	{
+		int32_t L_4 = __this->____num_1;
+		int32_t L_5 = __this->____zeroes_2;
+		int64_t L_6;
+		L_6 = TimeSpanParse_Pow10_mE853D7B374E580296D1B29105B58E71477C0A726(((int32_t)il2cpp_codegen_subtract(L_5, 1)), NULL);
+		return (bool)((((int32_t)((((int64_t)((int64_t)L_4)) < ((int64_t)((int64_t)(((int64_t)((int32_t)9999999))/L_6))))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
@@ -13644,7 +13762,7 @@ IL_0020:
 		CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* L_8 = V_1;
 		NullCheck(L_8);
 		NumberFormatInfo_t8E26808B202927FEBF9064FCFEEA4D6E076E6472* L_9;
-		L_9 = VirtualFuncInvoker0< NumberFormatInfo_t8E26808B202927FEBF9064FCFEEA4D6E076E6472* >::Invoke(14 /* System.Globalization.NumberFormatInfo System.Globalization.CultureInfo::get_NumberFormat() */, L_8);
+		L_9 = VirtualFuncInvoker0< NumberFormatInfo_t8E26808B202927FEBF9064FCFEEA4D6E076E6472* >::Invoke(15 /* System.Globalization.NumberFormatInfo System.Globalization.CultureInfo::get_NumberFormat() */, L_8);
 		return L_9;
 	}
 
@@ -13862,7 +13980,7 @@ IL_0021:
 		L_10 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_9, NULL);
 		NullCheck(L_8);
 		RuntimeObject* L_11;
-		L_11 = VirtualFuncInvoker1< RuntimeObject*, Type_t* >::Invoke(19 /* System.Object System.Globalization.CultureInfo::GetFormat(System.Type) */, L_8, L_10);
+		L_11 = VirtualFuncInvoker1< RuntimeObject*, Type_t* >::Invoke(20 /* System.Object System.Globalization.CultureInfo::GetFormat(System.Type) */, L_8, L_10);
 		return ((NumberFormatInfo_t8E26808B202927FEBF9064FCFEEA4D6E076E6472*)CastclassSealed((RuntimeObject*)L_11, NumberFormatInfo_t8E26808B202927FEBF9064FCFEEA4D6E076E6472_il2cpp_TypeInfo_var));
 	}
 }

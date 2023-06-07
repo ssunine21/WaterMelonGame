@@ -26790,7 +26790,7 @@ IL_0134:
 		L_62 = TypeUtils_GetNonNullableType_mEFA6EEA56679D5341A252A5D07B7356063A78F85(L_61, NULL);
 		NullCheck(L_60);
 		bool L_63;
-		L_63 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(125 /* System.Boolean System.Type::Equals(System.Type) */, L_60, L_62);
+		L_63 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(127 /* System.Boolean System.Type::Equals(System.Type) */, L_60, L_62);
 		if (!L_63)
 		{
 			goto IL_016f;
@@ -26953,7 +26953,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightCompiler_CompileConvertToType_mDE96
 		Type_t* L_1 = ___typeFrom0;
 		NullCheck(L_0);
 		bool L_2;
-		L_2 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(125 /* System.Boolean System.Type::Equals(System.Type) */, L_0, L_1);
+		L_2 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(127 /* System.Boolean System.Type::Equals(System.Type) */, L_0, L_1);
 		if (!L_2)
 		{
 			goto IL_000a;
@@ -26992,7 +26992,7 @@ IL_000a:
 		Type_t* L_9 = ___typeFrom0;
 		NullCheck(L_8);
 		bool L_10;
-		L_10 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(125 /* System.Boolean System.Type::Equals(System.Type) */, L_8, L_9);
+		L_10 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(127 /* System.Boolean System.Type::Equals(System.Type) */, L_8, L_9);
 		if (!L_10)
 		{
 			goto IL_0029;
@@ -27031,7 +27031,7 @@ IL_0029:
 		Type_t* L_17 = ___typeTo1;
 		NullCheck(L_16);
 		bool L_18;
-		L_18 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(125 /* System.Boolean System.Type::Equals(System.Type) */, L_16, L_17);
+		L_18 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(127 /* System.Boolean System.Type::Equals(System.Type) */, L_16, L_17);
 		if (!L_18)
 		{
 			goto IL_0058;

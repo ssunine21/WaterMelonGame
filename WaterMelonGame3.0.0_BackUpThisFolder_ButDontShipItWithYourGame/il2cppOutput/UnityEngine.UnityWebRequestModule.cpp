@@ -438,19 +438,19 @@ struct StringComparer_t6268F19CA34879176651429C0D8A3D0002BB8E06_StaticFields
 struct Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E  : public RuntimeObject
 {
 	// System.String System.Uri::m_String
-	String_t* ___m_String_13;
+	String_t* ___m_String_16;
 	// System.String System.Uri::m_originalUnicodeString
-	String_t* ___m_originalUnicodeString_14;
+	String_t* ___m_originalUnicodeString_17;
 	// System.UriParser System.Uri::m_Syntax
-	UriParser_t920B0868286118827C08B08A15A9456AF6C19D81* ___m_Syntax_15;
+	UriParser_t920B0868286118827C08B08A15A9456AF6C19D81* ___m_Syntax_18;
 	// System.String System.Uri::m_DnsSafeHost
-	String_t* ___m_DnsSafeHost_16;
+	String_t* ___m_DnsSafeHost_19;
 	// System.Uri/Flags System.Uri::m_Flags
-	uint64_t ___m_Flags_17;
+	uint64_t ___m_Flags_20;
 	// System.Uri/UriInfo System.Uri::m_Info
-	UriInfo_t5F91F77A93545DDDA6BB24A609BAF5E232CC1A09* ___m_Info_18;
+	UriInfo_t5F91F77A93545DDDA6BB24A609BAF5E232CC1A09* ___m_Info_21;
 	// System.Boolean System.Uri::m_iriParsing
-	bool ___m_iriParsing_19;
+	bool ___m_iriParsing_22;
 };
 
 struct Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E_StaticFields
@@ -482,23 +482,23 @@ struct Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E_StaticFields
 	// System.String System.Uri::SchemeDelimiter
 	String_t* ___SchemeDelimiter_12;
 	// System.Boolean modreq(System.Runtime.CompilerServices.IsVolatile) System.Uri::s_ConfigInitialized
-	bool ___s_ConfigInitialized_20;
+	bool ___s_ConfigInitialized_23;
 	// System.Boolean modreq(System.Runtime.CompilerServices.IsVolatile) System.Uri::s_ConfigInitializing
-	bool ___s_ConfigInitializing_21;
+	bool ___s_ConfigInitializing_24;
 	// System.UriIdnScope modreq(System.Runtime.CompilerServices.IsVolatile) System.Uri::s_IdnScope
-	int32_t ___s_IdnScope_22;
+	int32_t ___s_IdnScope_25;
 	// System.Boolean modreq(System.Runtime.CompilerServices.IsVolatile) System.Uri::s_IriParsing
-	bool ___s_IriParsing_23;
+	bool ___s_IriParsing_26;
 	// System.Boolean System.Uri::useDotNetRelativeOrAbsolute
-	bool ___useDotNetRelativeOrAbsolute_24;
+	bool ___useDotNetRelativeOrAbsolute_27;
 	// System.Boolean System.Uri::IsWindowsFileSystem
-	bool ___IsWindowsFileSystem_25;
+	bool ___IsWindowsFileSystem_29;
 	// System.Object System.Uri::s_initLock
-	RuntimeObject* ___s_initLock_26;
+	RuntimeObject* ___s_initLock_30;
 	// System.Char[] System.Uri::HexLowerChars
-	CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* ___HexLowerChars_27;
+	CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* ___HexLowerChars_34;
 	// System.Char[] System.Uri::_WSchars
-	CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* ____WSchars_28;
+	CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* ____WSchars_35;
 };
 
 // System.ValueType
@@ -1080,11 +1080,11 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F  : public Runti
 	// System.Uri UnityEngine.Networking.UnityWebRequest::m_Uri
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeCertificateHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
+	bool ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeDownloadHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
+	bool ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
 	// System.Boolean UnityEngine.Networking.UnityWebRequest::<disposeUploadHandlerOnDispose>k__BackingField
-	bool ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	bool ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 // Native definition for P/Invoke marshalling of UnityEngine.Networking.UnityWebRequest
 struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_pinvoke
@@ -1094,9 +1094,9 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_pinvo
 	UploadHandler_t7E504B1A83346248A0C8C4AF73A893226CB83EF6_marshaled_pinvoke ___m_UploadHandler_2;
 	CertificateHandler_t148B524FA5DB39F3ABADB181CD420FC505C33804_marshaled_pinvoke ___m_CertificateHandler_3;
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
-	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
-	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
-	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
+	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
+	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 // Native definition for COM marshalling of UnityEngine.Networking.UnityWebRequest
 struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_com
@@ -1106,9 +1106,9 @@ struct UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F_marshaled_com
 	UploadHandler_t7E504B1A83346248A0C8C4AF73A893226CB83EF6_marshaled_com* ___m_UploadHandler_2;
 	CertificateHandler_t148B524FA5DB39F3ABADB181CD420FC505C33804_marshaled_com* ___m_CertificateHandler_3;
 	Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* ___m_Uri_4;
-	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
-	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
-	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+	int32_t ___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
+	int32_t ___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
+	int32_t ___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 };
 
 // UnityEngine.Networking.UnityWebRequestAsyncOperation
@@ -3260,7 +3260,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* UnityWebRequest_GetHTTPStatusString
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UnityWebRequest_get_disposeCertificateHandlerOnDispose_m5BF6519F2982ABA7912948690570F7729EDF25E9 (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	{
-		bool L_0 = __this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
+		bool L_0 = __this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
 		return L_0;
 	}
 }
@@ -3269,7 +3269,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeCertificateHa
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5 = L_0;
+		__this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11 = L_0;
 		return;
 	}
 }
@@ -3277,7 +3277,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeCertificateHa
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UnityWebRequest_get_disposeDownloadHandlerOnDispose_mA5E23BB2B931F6EF089C732D0E56E1B7F9FC1C54 (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	{
-		bool L_0 = __this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
+		bool L_0 = __this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
 		return L_0;
 	}
 }
@@ -3286,7 +3286,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeDownloadHandl
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6 = L_0;
+		__this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12 = L_0;
 		return;
 	}
 }
@@ -3294,7 +3294,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeDownloadHandl
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UnityWebRequest_get_disposeUploadHandlerOnDispose_m909CC9BEACAC26C87F44AA957B8F5E5CD10F5761 (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	{
-		bool L_0 = __this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+		bool L_0 = __this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 		return L_0;
 	}
 }
@@ -3303,7 +3303,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeUploadHandler
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7 = L_0;
+		__this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13 = L_0;
 		return;
 	}
 }
@@ -6160,7 +6160,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeD
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6 = L_0;
+		__this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12 = L_0;
 		return;
 	}
 }
@@ -6168,7 +6168,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeU
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7 = L_0;
+		__this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13 = L_0;
 		return;
 	}
 }
@@ -6176,28 +6176,28 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityWebRequest_set_disposeC
 {
 	{
 		bool L_0 = ___value0;
-		__this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5 = L_0;
+		__this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11 = L_0;
 		return;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UnityWebRequest_get_disposeDownloadHandlerOnDispose_mA5E23BB2B931F6EF089C732D0E56E1B7F9FC1C54_inline (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	{
-		bool L_0 = __this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_6;
+		bool L_0 = __this->___U3CdisposeDownloadHandlerOnDisposeU3Ek__BackingField_12;
 		return L_0;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UnityWebRequest_get_disposeUploadHandlerOnDispose_m909CC9BEACAC26C87F44AA957B8F5E5CD10F5761_inline (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	{
-		bool L_0 = __this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_7;
+		bool L_0 = __this->___U3CdisposeUploadHandlerOnDisposeU3Ek__BackingField_13;
 		return L_0;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UnityWebRequest_get_disposeCertificateHandlerOnDispose_m5BF6519F2982ABA7912948690570F7729EDF25E9_inline (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	{
-		bool L_0 = __this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_5;
+		bool L_0 = __this->___U3CdisposeCertificateHandlerOnDisposeU3Ek__BackingField_11;
 		return L_0;
 	}
 }

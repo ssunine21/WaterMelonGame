@@ -2624,6 +2624,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Exception_t* GuidResult_GetGuidParseException
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Guid__ctor_mAE66BA1C43B4194F4F7991E2E30370E36CBBF830 (Guid_t* __this, String_t* ___g0, const RuntimeMethod* method) ;
 // System.Guid System.Guid::Parse(System.ReadOnlySpan`1<System.Char>)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Guid_t Guid_Parse_m47AC2E6437504837BAB8F5011FFEC0DEB3C6B8E7 (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___input0, const RuntimeMethod* method) ;
+// System.Boolean System.Guid::TryParse(System.ReadOnlySpan`1<System.Char>,System.Guid&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Guid_TryParse_m211611A7A9B654A73F12DAAC58AF3C7DBCC0E84C (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___input0, Guid_t* ___result1, const RuntimeMethod* method) ;
 // System.Boolean System.Guid::TryParseExact(System.ReadOnlySpan`1<System.Char>,System.ReadOnlySpan`1<System.Char>,System.Guid&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Guid_TryParseExact_mEEC6651F6CAA3AE40C3FF4A7690DAF26DA5C3786 (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___input0, ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___format1, Guid_t* ___result2, const RuntimeMethod* method) ;
 // System.ReadOnlySpan`1<System.Char> System.MemoryExtensions::Trim(System.ReadOnlySpan`1<System.Char>)
@@ -3059,6 +3061,8 @@ inline void Math_ThrowMinMaxException_TisInt32_t680FF22E76F6EFAD4375103CBBFFA042
 {
 	((  void (*) (int32_t, int32_t, const RuntimeMethod*))Math_ThrowMinMaxException_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mBC7732632C280D3AEE2B08C470A78B9C5C4CBD77_gshared)(___min0, ___max1, method);
 }
+// System.Decimal System.Decimal::Floor(System.Decimal)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F Decimal_Floor_m2BE09F241A5497A80E7F92A133B45AAC73ED061D (Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___d0, const RuntimeMethod* method) ;
 // System.Boolean System.Double::IsNaN(System.Double)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Double_IsNaN_mF2BC6D1FD4813179B2CAE58D29770E42830D0883_inline (double ___d0, const RuntimeMethod* method) ;
 // System.Boolean System.Double::IsPositiveInfinity(System.Double)
@@ -3698,7 +3702,7 @@ IL_0037:
 		L_6 = CultureInfo_get_CurrentCulture_m8A4580F49DDD7E9DB34C699965423DB8E3BBA9A5(NULL);
 		NullCheck(L_6);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_7;
-		L_7 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(12 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_6);
+		L_7 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(13 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_6);
 		__this->___m_info_3 = L_7;
 		__this->___m_checkDigitToken_4 = (bool)0;
 		return;
@@ -6272,6 +6276,64 @@ IL_0023:
 		Exception_t* L_4;
 		L_4 = GuidResult_GetGuidParseException_m64B716090AACED88AAA921D1B6EE7BC3AB7F606B((&V_0), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_4, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Guid_Parse_m47AC2E6437504837BAB8F5011FFEC0DEB3C6B8E7_RuntimeMethod_var)));
+	}
+}
+// System.Boolean System.Guid::TryParse(System.String,System.Guid&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Guid_TryParse_m0A3C27800A8CEB35EF6CABBABD87ED7F968A7B4D (String_t* ___input0, Guid_t* ___result1, const RuntimeMethod* method) 
+{
+	{
+		String_t* L_0 = ___input0;
+		if (L_0)
+		{
+			goto IL_000c;
+		}
+	}
+	{
+		Guid_t* L_1 = ___result1;
+		il2cpp_codegen_initobj(L_1, sizeof(Guid_t));
+		return (bool)0;
+	}
+
+IL_000c:
+	{
+		String_t* L_2 = ___input0;
+		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_3;
+		L_3 = String_op_Implicit_m7D7FE0449303AF92D8B2A85A06ADC6933B2ECC3A_inline(L_2, NULL);
+		Guid_t* L_4 = ___result1;
+		bool L_5;
+		L_5 = Guid_TryParse_m211611A7A9B654A73F12DAAC58AF3C7DBCC0E84C(L_3, L_4, NULL);
+		return L_5;
+	}
+}
+// System.Boolean System.Guid::TryParse(System.ReadOnlySpan`1<System.Char>,System.Guid&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Guid_TryParse_m211611A7A9B654A73F12DAAC58AF3C7DBCC0E84C (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 ___input0, Guid_t* ___result1, const RuntimeMethod* method) 
+{
+	GuidResult_t5B70D46D3C631BD00631FF6D700371C1E9C7AC79 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		il2cpp_codegen_initobj((&V_0), sizeof(GuidResult_t5B70D46D3C631BD00631FF6D700371C1E9C7AC79));
+		GuidResult_Init_mA6B695110665C265D17C97D0AB8AA25D25D874AB_inline((&V_0), 0, NULL);
+		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_0 = ___input0;
+		bool L_1;
+		L_1 = Guid_TryParseGuid_m6792F3C351DA8944391B880568730DDEA8A34E01(L_0, ((int32_t)15), (&V_0), NULL);
+		if (!L_1)
+		{
+			goto IL_002a;
+		}
+	}
+	{
+		Guid_t* L_2 = ___result1;
+		GuidResult_t5B70D46D3C631BD00631FF6D700371C1E9C7AC79 L_3 = V_0;
+		Guid_t L_4 = L_3.____parsedGuid_0;
+		*(Guid_t*)L_2 = L_4;
+		return (bool)1;
+	}
+
+IL_002a:
+	{
+		Guid_t* L_5 = ___result1;
+		il2cpp_codegen_initobj(L_5, sizeof(Guid_t));
+		return (bool)0;
 	}
 }
 // System.Boolean System.Guid::TryParseExact(System.String,System.String,System.Guid&)
@@ -14302,6 +14364,23 @@ IL_0017:
 		return L_10;
 	}
 }
+// System.Decimal System.Math::Floor(System.Decimal)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F Math_Floor_m287F9D9F333DA30FF14FD5E22B23A4770C148AA7 (Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___d0, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_0 = ___d0;
+		il2cpp_codegen_runtime_class_init_inline(Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var);
+		Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_1;
+		L_1 = Decimal_Floor_m2BE09F241A5497A80E7F92A133B45AAC73ED061D(L_0, NULL);
+		return L_1;
+	}
+}
 // System.Double System.Math::Log(System.Double,System.Double)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR double Math_Log_m5A3BBBF06AB82F25C885812E07D27B473CF43054 (double ___a0, double ___newBase1, const RuntimeMethod* method) 
 {
@@ -15644,7 +15723,7 @@ IL_0031:
 		L_5 = CultureInfo_get_CurrentCulture_m8A4580F49DDD7E9DB34C699965423DB8E3BBA9A5(NULL);
 		NullCheck(L_5);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_6;
-		L_6 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(12 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_5);
+		L_6 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(13 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_5);
 		bool L_7;
 		L_7 = SpanHelpers_EndsWithCultureHelper_mE5FD23F444E1C5491DC271719076245E1BB536DA(L_3, L_4, L_6, NULL);
 		return L_7;
@@ -15659,7 +15738,7 @@ IL_0043:
 		L_10 = CultureInfo_get_CurrentCulture_m8A4580F49DDD7E9DB34C699965423DB8E3BBA9A5(NULL);
 		NullCheck(L_10);
 		CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* L_11;
-		L_11 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(12 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_10);
+		L_11 = VirtualFuncInvoker0< CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57* >::Invoke(13 /* System.Globalization.CompareInfo System.Globalization.CultureInfo::get_CompareInfo() */, L_10);
 		bool L_12;
 		L_12 = SpanHelpers_EndsWithCultureIgnoreCaseHelper_m960F36EE021D2D244625188B9B5279FF496C968E(L_8, L_9, L_11, NULL);
 		return L_12;
