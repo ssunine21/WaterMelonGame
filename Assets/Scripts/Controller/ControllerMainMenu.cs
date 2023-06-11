@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms;
+
+#if UNITY_ANDROID
 using GooglePlayGames;
+#endif
 
 public class ControllerMainMenu {
     public static UnityAction<int> OnBindMenu;
@@ -19,21 +22,29 @@ public class ControllerMainMenu {
         _view.NewGmae.onClick.AddListener(NewGame);
         _view.StartGame.onClick.AddListener(() => GameManager.OnBindStartGame?.Invoke());
         _view.Option.onClick.AddListener(() => OnBindMenu?.Invoke(0));
-        _view.Leaderboard.onClick.AddListener(() => {
-            if (GooglePlayGamesManager.IsLogin)
-                Social.ShowLeaderboardUI();
-            else {
-                GooglePlayGamesManager.Login(success => {
-                    if (success)
-                        Social.ShowLeaderboardUI();
-                });
-            }
-        });
+        _view.Leaderboard.onClick.AddListener(LeaderBoard);
 
         ControllerMainNav.OnSelectMenu += SetVisible;
         GameManager.OnBindNewGame += () => _view.SetActive(false);
         GameManager.OnBindStartGame += () => _view.SetActive(false);
         GameManager.OnBindGoHome += () => _view.SetActive(true);
+    }
+
+    private void LeaderBoard()
+    {
+#if UNITY_ANDROID
+        if (GooglePlayGamesManager.IsLogin)
+            Social.ShowLeaderboardUI();
+        else
+        {
+            GooglePlayGamesManager.Login(success => {
+                if (success)
+                    Social.ShowLeaderboardUI();
+            });
+        }
+#elif UNITY_IOS
+
+#endif
     }
 
     private void NewGame()

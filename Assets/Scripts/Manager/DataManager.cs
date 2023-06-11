@@ -46,8 +46,6 @@ public class DataManager : MonoBehaviour {
 		} catch(System.Exception e) {
 			Debug.LogException(e);
 		}
-
-		//SetFirebaseData();
 	}
 
 	public void Load() {

@@ -8,38 +8,27 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:379667630543:android:ddc0b0ccb20dfacc712aba",
+        "mobilesdk_app_id": "1:379667630543:ios:ee643a0121cf79e2712aba",
         "android_client_info": {
           "package_name": "com.bognstudio.mergegame"
         }
       },
       "oauth_client": [
         {
-          "client_id": "379667630543-eeol6cajjc7etffb82ll4g2c87lkpqbf.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "379667630543-s3eu0u5ac7cq9cvjp08sliin0i6k0bu6.apps.googleusercontent.com"
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCNRcSdQXDQp9ZSCW7jmKcTl7iDSMDgtZg"
+          "current_key": "AIzaSyCg4jVC32BBLh4ml-JjB-amM2ni6-HWBNo"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 0
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "379667630543-eeol6cajjc7etffb82ll4g2c87lkpqbf.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "379667630543-s3eu0u5ac7cq9cvjp08sliin0i6k0bu6.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.bognstudio.mergegame",
-                "app_store_id": "1556222154"
-              }
-            }
-          ]
+          "status": 1
         }
       }
     }

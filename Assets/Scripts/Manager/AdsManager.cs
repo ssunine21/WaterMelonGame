@@ -38,22 +38,22 @@ public class AdsManager : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    private BannerView bannerView;
-    private InterstitialAd interstitialAd;
+    private BannerView _bannerView;
+    private InterstitialAd _interstitialAd;
 
-    private RewardedAd coinRewardedAd;
-    private RewardedAd rankUpItemRewardedAd;
-    private RewardedAd destroyItemRewardedAd;
-    private RewardedAd rerollItemRewardedAd;
-    private RewardedAd restartGameRewardedAd;
+    private RewardedAd _coinRewardedAd;
+    private RewardedAd _rankUpItemRewardedAd;
+    private RewardedAd _destroyItemRewardedAd;
+    private RewardedAd _rerollItemRewardedAd;
+    private RewardedAd _restartGameRewardedAd;
 
     public void Start() {
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => {
         });
 
-        RequestRewardedAd();
-        RquestInterstitialAd();
+        LoadRewardedAd();
+        LoadInterstitialAd();
 
         GameManager.OnBindNewGame += RequestBannerAd;
         GameManager.OnBindStartGame += RequestBannerAd;
@@ -68,29 +68,24 @@ public class AdsManager : MonoBehaviour {
 #if UNITY_ANDROID
         string adUnitId = AND_BANNER_ID;
 #elif UNITY_IPHONE
-            string adUnitId = iOS_BANNER_ID;
+        string adUnitId = iOS_BANNER_ID;
 #else
             string adUnitId = "unexpected_platform";
 #endif
 
-        if (bannerView != null)
+        if (_bannerView != null)
         {
-            bannerView.Destroy();
+            _bannerView.Destroy();
         }
 
-        this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
-
-        this.bannerView.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
-
-        this.bannerView.LoadAd(CreateAdRequest());
+        _bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
+        var adRequest = new AdRequest();
+        
+        _bannerView.LoadAd(adRequest);
         AboveAds();
     }
 
-    private AdRequest CreateAdRequest() {
-        return new AdRequest.Builder().Build();
-    }
-
-    private void RquestInterstitialAd() {
+    private void LoadInterstitialAd() {
 #if UNITY_ANDROID
         string adUnitId = AND_INTERSTITIAL_ID;
 #elif UNITY_IPHONE
@@ -98,60 +93,50 @@ public class AdsManager : MonoBehaviour {
 #else
         string adUnitId = "unexpected_platform";
 #endif
-        if (interstitialAd != null) {
-            interstitialAd.Destroy();
-        }
 
-        this.interstitialAd = new InterstitialAd(adUnitId);
+        InterstitialAd.Load(adUnitId, new AdRequest(),
+            (InterstitialAd ad, LoadAdError loadAdError) =>
+            {
+                if (loadAdError != null)
+                {
+                    Debug.Log("Interstitial ad failed to load with error: " +
+                               loadAdError.GetMessage());
+                    return;
+                }
+                else if (ad == null)
+                {
+                    Debug.Log("Interstitial ad failed to load.");
+                    return;
+                }
 
-        this.interstitialAd.OnAdClosed += this.HandleOnAdClosed;
-        this.interstitialAd.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
-
-        this.interstitialAd.LoadAd(CreateAdRequest());
+                Debug.Log("Interstitial ad loaded.");
+                _interstitialAd = ad;
+            });
     }
 
     public void ShowInterstitialAd() {
         if (DataManager.init.gameData.isPremium)
             return;
 
-        if (interstitialAd.IsLoaded()) {
-            interstitialAd.Show();
+        if(_interstitialAd != null & _interstitialAd.CanShowAd())
+        {
+            _interstitialAd.Show();
         }
-    }
-
-    public void HandleOnAdClosed(object sender, EventArgs args) {
-        RquestInterstitialAd();
-    }
-
-    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args) {
-        Debug.Log($"{sender} loaded is fail : {args.Message}");
+        else
+        {
+            Debug.Log("Interstitial ad cannot be shown.");
+        }
     }
 
     private void AboveAds() {
 
-        Vector3 adsAbovePos = new Vector3(0, this.bannerView.GetHeightInPixels() / 300, 0);
+        Vector3 adsAbovePos = new Vector3(0, this._bannerView.GetHeightInPixels() / 300, 0);
 
         Camera.main.transform.position -= adsAbovePos;
     }
 
-    private void RequestRewardedAd() {
-        this.coinRewardedAd = CreateAndLoadRewardedAd();
-        this.coinRewardedAd.OnUserEarnedReward += HandleUserCoinReward;
+    private void LoadRewardedAd() {
 
-        this.rankUpItemRewardedAd = CreateAndLoadRewardedAd();
-        this.rankUpItemRewardedAd.OnUserEarnedReward += HandleUserRankUpItemReward;
-
-        this.destroyItemRewardedAd = CreateAndLoadRewardedAd();
-        this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
-
-        this.rerollItemRewardedAd = CreateAndLoadRewardedAd();
-        this.rerollItemRewardedAd.OnUserEarnedReward += HandleUserRerollItemReward;
-
-        this.restartGameRewardedAd = CreateAndLoadRewardedAd();
-        this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
-    }
-
-    public RewardedAd CreateAndLoadRewardedAd() {
 #if UNITY_ANDROID
         string adUnitId = AND_REWARD_ID;
 #elif UNITY_IPHONE
@@ -159,77 +144,123 @@ public class AdsManager : MonoBehaviour {
 #else
         string adUnitId = "unexpected_platform";
 #endif
-        RewardedAd rewardedAd = new RewardedAd(adUnitId);
 
-        rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoaded;
+        RewardedAd.Load(adUnitId, new AdRequest(),
+            (RewardedAd ad, LoadAdError loadAdError) =>
+            {
+                if (loadAdError != null) return;
+                else if (ad == null) return;
+                _coinRewardedAd = ad;
+            });
+        RewardedAd.Load(adUnitId, new AdRequest(),
+            (RewardedAd ad, LoadAdError loadAdError) =>
+            {
+                if (loadAdError != null) return;
+                else if (ad == null) return;
+                _rankUpItemRewardedAd = ad;
+            });
+        RewardedAd.Load(adUnitId, new AdRequest(),
+            (RewardedAd ad, LoadAdError loadAdError) =>
+            {
+                if (loadAdError != null) return;
+                else if (ad == null) return;
+                _destroyItemRewardedAd = ad;
+            });
+        RewardedAd.Load(adUnitId, new AdRequest(),
+            (RewardedAd ad, LoadAdError loadAdError) =>
+            {
+                if (loadAdError != null) return;
+                else if (ad == null) return;
+                _rerollItemRewardedAd = ad;
+            });
+        RewardedAd.Load(adUnitId, new AdRequest(),
+            (RewardedAd ad, LoadAdError loadAdError) =>
+            {
+                if (loadAdError != null) return;
+                else if (ad == null) return;
+                _restartGameRewardedAd = ad;
+            });
+    }
 
-        rewardedAd.LoadAd(CreateAdRequest());
-        return rewardedAd;
+    private void LoadRewardedCallback(RewardedAd ad, LoadAdError loadAdError) {
+
     }
 
     public void ShowAdCoinRewarded() {
-        if (this.coinRewardedAd.IsLoaded()) {
-            this.coinRewardedAd.Show();
+        if (_coinRewardedAd != null && _coinRewardedAd.CanShowAd()) {
+            _coinRewardedAd.Show(HandleUserCoinReward);
         }
     }
 
     public void ShowAdRankUpItem(Action callback) {
-        if (this.rankUpItemRewardedAd.IsLoaded()) {
-                this.rankUpItemRewardedAd.Show();
-            callback?.Invoke();
+        if (_rankUpItemRewardedAd != null && _rankUpItemRewardedAd.CanShowAd())
+        {
+            _rankUpItemRewardedAd.Show((Reward reward) =>
+            {
+                HandleUserRankUpItemReward();
+                callback.Invoke();
+            });
         }
     }
 
     public void ShowAdDestroyItem(Action callback)
     {
-        if (this.destroyItemRewardedAd.IsLoaded())
+        if (_destroyItemRewardedAd != null && _destroyItemRewardedAd.CanShowAd())
         {
-            this.destroyItemRewardedAd.Show();
-            callback?.Invoke();
+            _destroyItemRewardedAd.Show((Reward reward) =>
+            {
+                HandleUserDestroyItemReward();
+                callback.Invoke();
+            });
         }
     }
 
     public void ShowAdRerollItem(Action callback)
     {
-        if (this.rerollItemRewardedAd.IsLoaded())
+        if (_rerollItemRewardedAd != null && _rerollItemRewardedAd.CanShowAd())
         {
-            this.rerollItemRewardedAd.Show();
-            callback?.Invoke();
+            _rerollItemRewardedAd.Show((Reward reward) =>
+            {
+                HandleUserRerollItemReward();
+                callback.Invoke();
+            });
         }
     }
 
     public void ShowAdRestartGame()
     {
-       if(this.restartGameRewardedAd.IsLoaded()) {
-            this.restartGameRewardedAd.Show();
+        if (_restartGameRewardedAd != null && _restartGameRewardedAd.CanShowAd())
+        {
+            _restartGameRewardedAd.Show((Reward reward) =>
+            {
+                HandleUserRestartGameReward();
+            });
         }
     }
 
-    public void HandleUserCoinReward(object sender, Reward args) {
+    public void HandleUserCoinReward(Reward reward) {
         PlayerCoin.Earn(300);
         DataManager.init.gameData.currDailyCoinCount--;
         DataManager.init.Save();
         PlayerItem.OnChangeCurrDailyCoinCount?.Invoke();
     }
 
-    public void HandleUserRankUpItemReward(object sender, Reward args)
+    public void HandleUserRankUpItemReward()
     {
         ObjectManager.init.RankUpItem();
     }
 
-    public void HandleUserRerollItemReward(object sender, Reward args)
+    public void HandleUserRerollItemReward()
     {
         ObjectManager.init.RerollItem();
     }
 
-    public void HandleUserDestroyItemReward(object sender, Reward args)
+    public void HandleUserDestroyItemReward()
     {
         ObjectManager.init.DestroyItem(4);
     }
 
-    public void HandleUserRestartGameReward(object sender, Reward args)
+    public void HandleUserRestartGameReward()
     {
         ViewCanvas.Get<ViewCanvasGameOver>().SetActive(false);
         ObjectManager.init.DestroyHalf();
@@ -237,43 +268,9 @@ public class AdsManager : MonoBehaviour {
         DataManager.init.gameData.viewAdsCount = 1;
     }
 
-    public void HandleRewardedAdOpening(object sender, EventArgs args) {
-        AudioManager.Init.Mute(true);
-    }
-
-    public void HandleRewardedAdClosed(object sender, EventArgs args) {
-        if (sender == coinRewardedAd) {
-            coinRewardedAd = CreateAndLoadRewardedAd();
-            this.coinRewardedAd.OnUserEarnedReward += HandleUserCoinReward;
-        } else if (sender == rankUpItemRewardedAd) {
-            rankUpItemRewardedAd = CreateAndLoadRewardedAd();
-            this.rankUpItemRewardedAd.OnUserEarnedReward += HandleUserRankUpItemReward;
-        }
-        else if (sender == destroyItemRewardedAd)
-        {
-            destroyItemRewardedAd = CreateAndLoadRewardedAd();
-            this.destroyItemRewardedAd.OnUserEarnedReward += HandleUserDestroyItemReward;
-        }
-        else if (sender == rerollItemRewardedAd)
-        {
-            rerollItemRewardedAd = CreateAndLoadRewardedAd();
-            this.rerollItemRewardedAd.OnUserEarnedReward += HandleUserRerollItemReward;
-        }
-        else if (sender == restartGameRewardedAd){
-            restartGameRewardedAd = CreateAndLoadRewardedAd();
-            this.restartGameRewardedAd.OnUserEarnedReward += HandleUserRestartGameReward;
-        }
-
-        AudioManager.Init.Mute(false);
-    }
-
-    public void HandleRewardedAdFailedToLoaded(object sender, AdErrorEventArgs args) {
-        Debug.Log($"{sender} loaded is fail : {args.Message}");
-    }
-
     public void DestroyBannerAd() {
-        if (this.bannerView != null)
-            this.bannerView.Destroy();
+        if (this._bannerView != null)
+            this._bannerView.Destroy();
     }
 }
 

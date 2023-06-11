@@ -1267,6 +1267,7 @@ MonoBehaviour:
   - {fileID: 2361811451539671151}
   _textCoin: {fileID: 4801865698118441527}
   _buttonCoinPlus: {fileID: 7910851409522074021}
+  _panelCoinProductParent: {fileID: 1173343255788615317}
   _productItem0: {fileID: 2235978416231214323}
   _productItem1: {fileID: 3957283829705898894}
   _productItem2: {fileID: 6193530262641660126}
@@ -6899,6 +6900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815795474878501629, guid: 807b022dd6b398044a6e650d15ab2dd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6288992912542181674, guid: 807b022dd6b398044a6e650d15ab2dd2,
         type: 3}

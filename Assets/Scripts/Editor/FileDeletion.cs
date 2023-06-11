@@ -5,7 +5,6 @@ using UnityEditor;
 using System.IO;
 using Firebase;
 using Firebase.Database;
-using Firebase.Editor;
 
 public class FileDeletion : Editor
 {

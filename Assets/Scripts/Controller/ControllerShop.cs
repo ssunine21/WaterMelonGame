@@ -74,7 +74,7 @@ public class ControllerShop {
                 {
                     if (DataManager.init.gameData.isPremium)
                     {
-                        AdsManager.init.HandleUserCoinReward(null, null);
+                        AdsManager.init.HandleUserCoinReward(null);
                     }
                     else
                         AdsManager.init.ShowAdCoinRewarded();
@@ -99,6 +99,10 @@ public class ControllerShop {
         UpdateOnLockWallpaper();
         UpdateItemCount();
         UpdateCoin();
+
+#if UNITY_IOS
+        SetInappWithiOS();
+#endif
 
         DailyRewardTimeUpdate().Forget();
     }
@@ -283,5 +287,12 @@ public class ControllerShop {
     private void SetVisible(int index) {
         _view.SetActive(_navIndex == index);
         UpdateCoin();
+    }
+
+    private void SetInappWithiOS()
+    {
+        _view.PanelCoinProductParent.SetActive(false);
+        _view.ProductDoubleCoin.SetVisible(false);
+        _view.ProductPremium.SetVisible(false);
     }
 }

@@ -35,4 +35,9 @@ public class ViewProducts : MonoBehaviour {
         _buttonPurchase.onClick.AddListener(action);
         return this;
     }
+
+    public void SetVisible(bool flag)
+    {
+        gameObject.SetActive(flag);
+    }
 }

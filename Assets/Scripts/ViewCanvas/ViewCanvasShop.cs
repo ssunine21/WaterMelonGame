@@ -13,6 +13,8 @@ public class ViewCanvasShop : ViewCanvas {
     public GameObject[] ShopMenus => _shopMenus;
     public TMP_Text CoinText => _textCoin;
 
+
+    public GameObject PanelCoinProductParent => _panelCoinProductParent;
     public ViewProducts ProductItem0 => _productItem0;
     public ViewProducts ProductItem1 => _productItem1;
     public ViewProducts ProductItem2 => _productItem2;
@@ -38,6 +40,7 @@ public class ViewCanvasShop : ViewCanvas {
     [SerializeField] private ButtonExpansion _buttonCoinPlus;
 
     [Header("Products")]
+    [SerializeField] private GameObject _panelCoinProductParent;
     [SerializeField] private ViewProducts _productItem0;
     [SerializeField] private ViewProducts _productItem1;
     [SerializeField] private ViewProducts _productItem2;
