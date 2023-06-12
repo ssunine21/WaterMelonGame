@@ -15,7 +15,11 @@ public class ViewShopItem : ViewBase {
     public void SetObjectImage(int index) {
         Sprite[] sprites = Resources.LoadAll<Sprite>("obj/objects" + index);
 
-        for(int i = 0; i < _objectImages.Length; ++i) {
+#if UNITY_IOS
+        if (index == 0) index = 1;
+        else if (index == 1) index = 0;
+#endif
+        for (int i = 0; i < _objectImages.Length; ++i) {
             int num = int.Parse(Regex.Replace(_objectImages[i].name, @"\D", ""));
             _objectImages[i].sprite = Resources.Load<Sprite>($"obj/Obj{index}_{num}");
         }

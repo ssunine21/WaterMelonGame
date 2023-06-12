@@ -145,14 +145,20 @@ public class ObjectManager : MonoBehaviour {
 	public void SetObjectSprite(int objNum) {
 		currStyleNum = objNum;
 
+#if UNITY_IOS
+		if (currStyleNum == 0) currStyleNum = 1;
+		else if (currStyleNum == 1) currStyleNum = 0;
+#endif
+
 		if (objectSprites == null)
 			objectSprites = new List<Sprite>();
 
 		for(int i = 0; i < (int)ObjectKey.Max + 1; ++i ) {
+
 			if (objectSprites.Count <= i)
-				objectSprites.Add(Resources.Load<Sprite>($"obj/obj{objNum}_{i}"));
+				objectSprites.Add(Resources.Load<Sprite>($"obj/obj{currStyleNum}_{i}"));
 			else
-				objectSprites[i] = Resources.Load<Sprite>($"obj/obj{objNum}_{i}");
+				objectSprites[i] = Resources.Load<Sprite>($"obj/obj{currStyleNum}_{i}");
 		}
 	}
 

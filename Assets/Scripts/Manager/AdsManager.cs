@@ -52,7 +52,12 @@ public class AdsManager : MonoBehaviour {
         MobileAds.Initialize(initStatus => {
         });
 
-        LoadRewardedAd();
+        LoadCoinRewardedAd();
+        LoadDestroyRewardedAd();
+        LoadRankUpRewardedAd();
+        LoadRerollRewardedAd();
+        LoadRestartGameRewardedAd();
+
         LoadInterstitialAd();
 
         GameManager.OnBindNewGame += RequestBannerAd;
@@ -135,15 +140,25 @@ public class AdsManager : MonoBehaviour {
         Camera.main.transform.position -= adsAbovePos;
     }
 
-    private void LoadRewardedAd() {
-
+    private string GetRewardId()
+    {
 #if UNITY_ANDROID
-        string adUnitId = AND_REWARD_ID;
+        return AND_REWARD_ID;
 #elif UNITY_IPHONE
-        string adUnitId = iOS_REWARD_ID;
+        return iOS_REWARD_ID;
 #else
-        string adUnitId = "unexpected_platform";
+        return "unexpected_platform";
 #endif
+    }
+
+    private void LoadCoinRewardedAd()
+    {
+        string adUnitId = GetRewardId();
+
+        if(_coinRewardedAd != null)
+        {
+            DestroyAd(_coinRewardedAd);
+        }
 
         RewardedAd.Load(adUnitId, new AdRequest(),
             (RewardedAd ad, LoadAdError loadAdError) =>
@@ -151,44 +166,101 @@ public class AdsManager : MonoBehaviour {
                 if (loadAdError != null) return;
                 else if (ad == null) return;
                 _coinRewardedAd = ad;
+                OnAdFullScreenContentClosed(_coinRewardedAd, LoadCoinRewardedAd);
             });
+    }
+
+    private void LoadRankUpRewardedAd()
+    {
+        string adUnitId = GetRewardId();
+        if (_rankUpItemRewardedAd != null)
+        {
+            DestroyAd(_rankUpItemRewardedAd);
+        }
         RewardedAd.Load(adUnitId, new AdRequest(),
             (RewardedAd ad, LoadAdError loadAdError) =>
             {
                 if (loadAdError != null) return;
                 else if (ad == null) return;
                 _rankUpItemRewardedAd = ad;
+                OnAdFullScreenContentClosed(_rankUpItemRewardedAd, LoadRankUpRewardedAd);
             });
+    }
+
+    private void LoadDestroyRewardedAd()
+    {
+        string adUnitId = GetRewardId();
+        if (_destroyItemRewardedAd != null)
+        {
+            DestroyAd(_destroyItemRewardedAd);
+        }
         RewardedAd.Load(adUnitId, new AdRequest(),
             (RewardedAd ad, LoadAdError loadAdError) =>
             {
                 if (loadAdError != null) return;
                 else if (ad == null) return;
                 _destroyItemRewardedAd = ad;
+                OnAdFullScreenContentClosed(_destroyItemRewardedAd, LoadDestroyRewardedAd);
             });
+    }
+
+    private void LoadRerollRewardedAd()
+    {
+        string adUnitId = GetRewardId();
+        if (_rerollItemRewardedAd != null)
+        {
+            DestroyAd(_rerollItemRewardedAd);
+        }
         RewardedAd.Load(adUnitId, new AdRequest(),
             (RewardedAd ad, LoadAdError loadAdError) =>
             {
                 if (loadAdError != null) return;
                 else if (ad == null) return;
                 _rerollItemRewardedAd = ad;
+                OnAdFullScreenContentClosed(_rerollItemRewardedAd, LoadRerollRewardedAd);
             });
+    }
+
+    private void LoadRestartGameRewardedAd()
+    {
+        string adUnitId = GetRewardId();
+        if (_restartGameRewardedAd != null)
+        {
+            DestroyAd(_restartGameRewardedAd);
+        }
         RewardedAd.Load(adUnitId, new AdRequest(),
             (RewardedAd ad, LoadAdError loadAdError) =>
             {
                 if (loadAdError != null) return;
                 else if (ad == null) return;
                 _restartGameRewardedAd = ad;
+                OnAdFullScreenContentClosed(_restartGameRewardedAd, LoadRestartGameRewardedAd);
             });
     }
 
-    private void LoadRewardedCallback(RewardedAd ad, LoadAdError loadAdError) {
+    /// <summary>
+    /// Destroys the ad.
+    /// </summary>
+    private void DestroyAd(RewardedAd ad)
+    {
+        if(ad != null)
+        {
+            ad.Destroy();
+            ad = null;
+        }
+    }
 
+    private void OnAdFullScreenContentClosed(RewardedAd ad, Action action)
+    {
+        ad.OnAdFullScreenContentClosed += action;
     }
 
     public void ShowAdCoinRewarded() {
         if (_coinRewardedAd != null && _coinRewardedAd.CanShowAd()) {
-            _coinRewardedAd.Show(HandleUserCoinReward);
+            _coinRewardedAd.Show((Reward reward) =>
+            {
+                HandleUserCoinReward();
+            });
         }
     }
 
@@ -238,11 +310,12 @@ public class AdsManager : MonoBehaviour {
         }
     }
 
-    public void HandleUserCoinReward(Reward reward) {
+    public void HandleUserCoinReward() {
         PlayerCoin.Earn(300);
         DataManager.init.gameData.currDailyCoinCount--;
-        DataManager.init.Save();
         PlayerItem.OnChangeCurrDailyCoinCount?.Invoke();
+
+        DataManager.init.Save();
     }
 
     public void HandleUserRankUpItemReward()

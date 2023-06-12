@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.SocialPlatforms.GameCenter;
 
 #if UNITY_ANDROID
 using GooglePlayGames;
@@ -32,18 +33,33 @@ public class ControllerMainMenu {
 
     private void LeaderBoard()
     {
-#if UNITY_ANDROID
-        if (GooglePlayGamesManager.IsLogin)
-            Social.ShowLeaderboardUI();
-        else
+        if (Social.localUser.authenticated == false)
         {
-            GooglePlayGamesManager.Login(success => {
+            Social.localUser.Authenticate((bool success) =>
+            {
                 if (success)
+                {
                     Social.ShowLeaderboardUI();
+                    return;
+                }
+                else
+                {
+                    return;
+                }
             });
         }
+#if UNITY_ANDROID
+//        if (GooglePlayGamesManager.IsLogin)
+//            Social.ShowLeaderboardUI();
+//        else
+//        {
+//            GooglePlayGamesManager.Login(success => {
+//                if (success)
+//                    Social.ShowLeaderboardUI();
+//            });
+//        }
 #elif UNITY_IOS
-
+        GameCenterPlatform.ShowLeaderboardUI("watermelongame.leaderboard.score", TimeScope.AllTime);
 #endif
     }
 

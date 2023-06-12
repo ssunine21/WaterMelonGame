@@ -74,7 +74,7 @@ public class ControllerShop {
                 {
                     if (DataManager.init.gameData.isPremium)
                     {
-                        AdsManager.init.HandleUserCoinReward(null);
+                        AdsManager.init.HandleUserCoinReward();
                     }
                     else
                         AdsManager.init.ShowAdCoinRewarded();

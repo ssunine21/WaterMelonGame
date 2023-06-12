@@ -43,6 +43,11 @@ public class GooglePlayGamesManager : MonoBehaviour {
         }
         
 #elif UNITY_IOS
+        if (IsLogin)
+        {
+            int score = DataManager.init.gameData.bestScore;
+            Social.ReportScore(score, "watermelongame.leaderboard.score", callback);
+        }
 #endif
     }
 }
