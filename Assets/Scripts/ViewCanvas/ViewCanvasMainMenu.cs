@@ -22,7 +22,11 @@ public class ViewCanvasMainMenu : ViewCanvas {
     [SerializeField] private TMP_Text _textNewGame;
 
     public ViewCanvasMainMenu SetLocalizeText() {
+#if UNITY_ANDROID
         _textTitle.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Title);
+#elif UNITY_IOS
+        _textTitle.text = "Candy Pang";
+#endif
         _textStartGame.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.StartGame);
         _textNewGame.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.NewGame);
         return this;

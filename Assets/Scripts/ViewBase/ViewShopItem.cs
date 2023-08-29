@@ -16,8 +16,9 @@ public class ViewShopItem : ViewBase {
         Sprite[] sprites = Resources.LoadAll<Sprite>("obj/objects" + index);
 
 #if UNITY_IOS
-        if (index == 0) index = 1;
-        else if (index == 1) index = 0;
+        index++;
+        //if (index == 0) index = 1;
+        //else if (index == 1) index = 0;
 #endif
         for (int i = 0; i < _objectImages.Length; ++i) {
             int num = int.Parse(Regex.Replace(_objectImages[i].name, @"\D", ""));

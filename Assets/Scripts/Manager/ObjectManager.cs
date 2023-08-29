@@ -146,8 +146,9 @@ public class ObjectManager : MonoBehaviour {
 		currStyleNum = objNum;
 
 #if UNITY_IOS
-		if (currStyleNum == 0) currStyleNum = 1;
-		else if (currStyleNum == 1) currStyleNum = 0;
+		currStyleNum++;
+		//if (currStyleNum == 0) currStyleNum = 1;
+		//else if (currStyleNum == 1) currStyleNum = 0;
 #endif
 
 		if (objectSprites == null)
