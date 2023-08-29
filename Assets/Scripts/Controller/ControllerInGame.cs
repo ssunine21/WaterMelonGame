@@ -76,7 +76,6 @@ public class ControllerInGame {
         GameManager.OnBindNewGame += InitNewStart;
         GameManager.OnBindStartGame += InitStartStart;
         GameManager.OnBindGoHome += GameEnd;
-        DataScore.OnBindChangeCurrScore += () => SetScore();
 
         CoCurrSocreFlow().Forget();
 
@@ -239,11 +238,5 @@ public class ControllerInGame {
             UpdateScore();
             await UniTask.Delay(10);
         }
-    }
-
-    private void SetScore()
-    {
-        if (DataScore.CurrScore > DataScore.BestScore)
-            DataScore.SetBestScore(DataScore.CurrScore);
     }
 }

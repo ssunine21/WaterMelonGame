@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
 	public static float ObjectHeight => Height * 0.25f * 3.7f;
 
 	public bool isEnterGame = false;
-	public bool isDoubleCoin;
 
 	private void Awake() {
 		if (init == null) {

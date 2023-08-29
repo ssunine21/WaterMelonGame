@@ -87,7 +87,7 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 		}
 		
 		if (HadPurchased(DOUBLE_COIN)) {
-			GameManager.init.isDoubleCoin = true;
+			DataManager.init.gameData.isDoubleCoin = true;
 		}
 
 		OnBindInitialized?.Invoke();
@@ -113,7 +113,8 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 				break;
 
 			case DOUBLE_COIN:
-				GameManager.init.isDoubleCoin = true;
+				DataManager.init.gameData.isDoubleCoin = true;
+				DataManager.init.Save();
 				break;
 
 			case COIN_DUMMY:

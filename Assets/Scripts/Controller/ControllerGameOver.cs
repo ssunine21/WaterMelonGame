@@ -98,6 +98,8 @@ public class ControllerGameOver {
         DataScore.SetBestScore(finalScore);
 
         int coin = Mathf.Clamp(Mathf.FloorToInt(finalScore * 0.013f), 0, 3500);
+        coin *= DataManager.init.gameData.isDoubleCoin ? 2 : 1;
+
         _view.SetCoin(coin);
         PlayerCoin.Earn(coin);
 
