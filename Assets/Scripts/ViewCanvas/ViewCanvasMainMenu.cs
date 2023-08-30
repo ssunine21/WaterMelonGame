@@ -9,12 +9,14 @@ public class ViewCanvasMainMenu : ViewCanvas {
     public ButtonExpansion NewGmae => _buttonNewGame;
     public ButtonExpansion StartGame => _buttonStartGame;
     public ButtonExpansion Leaderboard => _buttonLeaderboard;
+    public TMP_Text TextBestScore => _textBestScore;
 
 
     [SerializeField] private ButtonExpansion _buttonNewGame;
     [SerializeField] private ButtonExpansion _buttonStartGame;
     [SerializeField] private ButtonExpansion _buttonOption;
     [SerializeField] private ButtonExpansion _buttonLeaderboard;
+    [SerializeField] private TMP_Text _textBestScore;
 
     [Header("Localize")]
     [SerializeField] private TMP_Text _textTitle;

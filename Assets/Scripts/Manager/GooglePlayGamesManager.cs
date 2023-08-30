@@ -4,9 +4,10 @@ using UnityEngine;
 #if UNITY_ANDROID
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-#endif
+#elif UNITY_IOS
 using UnityEngine.iOS;
 using UnityEngine.SocialPlatforms.GameCenter;
+#endif
 
 public class GooglePlayGamesManager : MonoBehaviour {
 
@@ -39,7 +40,7 @@ public class GooglePlayGamesManager : MonoBehaviour {
 #if UNITY_ANDROID
         if (IsLogin) {
             int score = DataManager.init.gameData.bestScore;
-            Social.ReportScore(score, "CgkIz5PRr4YLEAIQAQ", callback);
+            PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_leaderboard, callback);
         }
         
 #elif UNITY_IOS
