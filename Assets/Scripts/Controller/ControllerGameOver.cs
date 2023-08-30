@@ -15,9 +15,15 @@ public class ControllerGameOver {
 
         _view.ButtonCancel.onClick.AddListener( () => {
             if (isCancel) {
+                DataManager.init.gameData.playTime += 1;
                 ObjectManager.init.MainObjects.Clear();
                 GameManager.OnBindGoHome?.Invoke();
-                AdsManager.init.ShowInterstitialAd();
+
+                if (DataManager.init.gameData.playTime == 2)
+                    GoogleReview.init.Show().Forget();
+                else
+                    AdsManager.init.ShowInterstitialAd();
+
                 isCancel = false;
             } else
                 isCancel = true;

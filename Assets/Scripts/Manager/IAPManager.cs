@@ -97,6 +97,10 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 		Debug.LogError($"IAP failed : {error}");
 	}
 
+	public void OnInitializeFailed(InitializationFailureReason error, string? message) {
+		Debug.LogError($"IAP failed : {error}");
+	}
+
 	public string GetLocalizedPriceString(string ProductId) {
 		Product product = storeController.products.WithID(ProductId);
 		return product.metadata.localizedPriceString;
@@ -147,17 +151,6 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 			storeController.InitiatePurchase(product);
 		} else {
 			Debug.Log($"not productId {productId}");
-		}
-	}
-
-	public void RestorePurchase() {
-		if (!isInit) return;
-		if(Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) {
-			Debug.Log("restorePurchase");
-
-			var appleExt = extensionProvider.GetExtension<IAppleExtensions>();
-			appleExt.RestoreTransactions(
-				result => Debug.Log($"restorePurchase result - {result}"));
 		}
 	}
 

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms;
-using UnityEngine.SocialPlatforms.GameCenter;
-
 #if UNITY_ANDROID
 using GooglePlayGames;
+#elif UNITY_IOS
+using UnityEngine.SocialPlatforms.GameCenter;
 #endif
 
 public class ControllerMainMenu {
@@ -29,49 +29,39 @@ public class ControllerMainMenu {
         GameManager.OnBindNewGame += () => _view.SetActive(false);
         GameManager.OnBindStartGame += () => _view.SetActive(false);
         GameManager.OnBindGoHome += () => _view.SetActive(true);
+        DataScore.OnBindChangeBestScore += UpdateBestScore;
+
+        UpdateBestScore();
     }
 
-    private void LeaderBoard()
-    {
-        if (Social.localUser.authenticated == false)
-        {
-            Social.localUser.Authenticate((bool success) =>
-            {
-                if (success)
-                {
+    private void UpdateBestScore() {
+        _view.TextBestScore.text = DataScore.BestScore.ToString();
+    }
+
+    private void LeaderBoard() {
+        if (Social.localUser.authenticated == false) {
+            Social.localUser.Authenticate((bool success) => {
+                if (success) {
                     Social.ShowLeaderboardUI();
                     return;
-                }
-                else
-                {
+                } else {
                     return;
                 }
             });
         }
 #if UNITY_ANDROID
-//        if (GooglePlayGamesManager.IsLogin)
-//            Social.ShowLeaderboardUI();
-//        else
-//        {
-//            GooglePlayGamesManager.Login(success => {
-//                if (success)
-//                    Social.ShowLeaderboardUI();
-//            });
-//        }
+        PlayGamesPlatform.Instance.ShowLeaderboardUI();
 #elif UNITY_IOS
         GameCenterPlatform.ShowLeaderboardUI("watermelongame.leaderboard.score", TimeScope.AllTime);
 #endif
     }
 
-    private void NewGame()
-    {
+    private void NewGame() {
         if (DataManager.init.gameData.objectData != null
-            || DataManager.init.gameData.objectData.Count >= 0)
-        {
+            || DataManager.init.gameData.objectData.Count >= 0) {
             ViewCanvas.Get<ViewCanvasToast>().Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.WaringNewStart),
                 GameManager.OnBindNewGame.Invoke);
-        }
-        else
+        } else
             GameManager.OnBindNewGame?.Invoke();
     }
 
