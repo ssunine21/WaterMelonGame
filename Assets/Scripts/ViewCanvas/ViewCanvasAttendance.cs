@@ -1,8 +1,5 @@
-﻿
-    using Microsoft.Unity.VisualStudio.Editor;
-    using TMPro;
+﻿    using TMPro;
     using UnityEngine;
-    using UnityEngine.Serialization;
 
     public class ViewCanvasAttendance : ViewCanvas
     {

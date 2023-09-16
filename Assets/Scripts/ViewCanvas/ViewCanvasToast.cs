@@ -35,6 +35,7 @@ public class ViewCanvasToast : ViewCanvas {
     }
 
     public void Show(string message, Action OnCheckCallback = null, Action OnCancelCallback = null, bool isCancel = true) {
+        SetActive(true);
         _toast.SetActive(true);
         _wrapped.ShowToast();
 
@@ -94,6 +95,7 @@ public class ViewCanvasToast : ViewCanvas {
         button.enabled = false;
         _wrapped.CloseToast(() => {
             _toast.SetActive(false);
+            SetActive(false);
             button.enabled = true;
         });
     }

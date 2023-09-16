@@ -74,6 +74,11 @@ public class ControllerMainMenu {
     }
 
     private void NewGame() {
+        if (DataManager.init.gameData.objectData == null)
+        {
+            GameManager.OnBindNewGame?.Invoke();
+            return;
+        }
         if (DataManager.init.gameData.objectData != null
             || DataManager.init.gameData.objectData.Count >= 0) {
             ViewCanvas.Get<ViewCanvasToast>().Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.WaringNewStart),

@@ -42,6 +42,8 @@ namespace DataInfo {
 		public bool isPremium = false;
 		public bool isDoubleCoin = false;
 
+		public bool isAttendanceFirstOpen = false;
+
 		public List<GameObjectData> objectData;
 		public ObjectManager.ObjectKey currObjectKey;
 	}

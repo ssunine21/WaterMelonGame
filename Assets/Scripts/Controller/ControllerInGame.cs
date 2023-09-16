@@ -124,6 +124,13 @@ public class ControllerInGame {
     private void GameEnd() {
         _isGameStart = false;
         _view.SetActive(false);
+
+        if (!DataManager.init.gameData.isAttendanceFirstOpen)
+        {
+            ControllerMainMenu.OnBindMenu?.Invoke(1);
+            DataManager.init.gameData.isAttendanceFirstOpen = true;
+            DataManager.init.Save();
+        }
     }
 
     private void UpdateItemCount()

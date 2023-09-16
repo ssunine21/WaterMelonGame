@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using TMPro;
-using UnityEditor.UI;
 
 public class ViewCanvasMainMenu : ViewCanvas {
     public ButtonExpansion Option => _buttonOption;

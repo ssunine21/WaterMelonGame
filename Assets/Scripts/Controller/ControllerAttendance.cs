@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using System.Transactions;
 using Cysharp.Threading.Tasks;
 using DGExcepsion;
-using Firebase.Database;
-using UnityEditor.Localization.Platform.Android;
-using UnityEditor.U2D;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
-using Image = Microsoft.Unity.VisualStudio.Editor.Image;
 
 public class ControllerAttendance
 {
@@ -63,6 +55,8 @@ public class ControllerAttendance
         _view.SetActive(index == _navIndex);
         if (index == _navIndex) {
             _view.Wrapped.ShowToast();
+            DataManager.init.gameData.isAttendanceFirstOpen = true;
+            DataManager.init.Save();
         }
     }
 
