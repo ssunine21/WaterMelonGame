@@ -8,10 +8,9 @@ public class ControllerToast {
 
     public ControllerToast(Transform parent) {
         _view = ViewCanvas.Create<ViewCanvasToast>(parent);
-
         _view.GetComponent<Canvas>().sortingLayerName = "UI";
 
-        _view.SetActive(false);
+        _view.SetActive(true);
         _view.SetLocalizeKey();
 
     }

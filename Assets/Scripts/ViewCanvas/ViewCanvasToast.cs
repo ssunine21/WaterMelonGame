@@ -35,7 +35,6 @@ public class ViewCanvasToast : ViewCanvas {
     }
 
     public void Show(string message, Action OnCheckCallback = null, Action OnCancelCallback = null, bool isCancel = true) {
-        SetActive(true);
         _toast.SetActive(true);
         _wrapped.ShowToast();
 
@@ -66,7 +65,6 @@ public class ViewCanvasToast : ViewCanvas {
     private IEnumerator CoOneTimeMessage() {
         float time = 0.5f;
 
-        SetActive(true);
         _oneTimeToast.SetActive(true);
 
         if (_oneTimeMessagePosition == Vector3.zero) {
@@ -89,7 +87,6 @@ public class ViewCanvasToast : ViewCanvas {
         rect.DOMoveY(rect.position.y + 0.5f, 0.5f).SetEase(Ease.OutCubic);
         _textOneTimeMessage.DOColor(Color.clear, 0.5f).OnComplete(() => {
             _oneTimeToast.SetActive(false);
-            SetActive(false);
         });
     }
 
@@ -97,7 +94,6 @@ public class ViewCanvasToast : ViewCanvas {
         button.enabled = false;
         _wrapped.CloseToast(() => {
             _toast.SetActive(false);
-            SetActive(false);
             button.enabled = true;
         });
     }

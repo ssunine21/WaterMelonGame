@@ -493,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f13dbd936d50a04da16a6c27d600a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  systemLanguage: 22
 --- !u!4 &786270579
 Transform:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8f56dce113c164c8e3ad8777141c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://www.naver.com
+  url: https://www.google.com
 --- !u!4 &1138713137
 Transform:
   m_ObjectHideFlags: 0

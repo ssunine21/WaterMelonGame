@@ -751,7 +751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WaterMelon
+  m_text: "\u30B9\u30A4\u30AB\u30B2\u30FC\u30E0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1eeb48dd4ca55c140be13b299f37fe05, type: 2}
   m_sharedMaterial: {fileID: 6345811165126135016, guid: 1eeb48dd4ca55c140be13b299f37fe05,
