@@ -25,7 +25,7 @@ public class ControllerInGame {
                     PlayerItem.Comsume(key);
                     ObjectManager.init.DestroyItem(4);
                 }
-                else if (_view.ImageDestoryItem.isActiveAndEnabled)
+                else if (_view.DestoryItemAdsPanel.activeSelf)
                 {
                     AdsManager.init.ShowAdDestroyItem(() =>
                     {
@@ -43,7 +43,7 @@ public class ControllerInGame {
                     PlayerItem.Comsume(key);
                     ObjectManager.init.RankUpItem();
                 }
-                else if (_view.ImageRankUpItem.isActiveAndEnabled)
+                else if (_view.RankUpItemAdsPanel.activeSelf)
                 {
                     AdsManager.init.ShowAdRankUpItem(() =>
                     {
@@ -62,7 +62,7 @@ public class ControllerInGame {
                     PlayerItem.Comsume(key);
                     ObjectManager.init.RerollItem();
                 }
-                else if (_view.ImageRerollItem.isActiveAndEnabled)
+                else if (_view.RerollItemAdsPanel.activeSelf)
                 {
                     AdsManager.init.ShowAdRerollItem(() =>
                     {
@@ -132,13 +132,13 @@ public class ControllerInGame {
         int rankupCount = DataManager.init.gameData.rankupItemCount;
         int rerollCount = DataManager.init.gameData.rerollItemCount;
 
-        _view.TextDestoryItemCount.text = destroyCount.ToString();
-        _view.TextRankUpItemCount.text = rankupCount.ToString();
-        _view.TextRerollItemCount.text = rerollCount.ToString();
+        _view.TextDestoryItemCount.text = destroyCount == 0 && !DataManager.init.gameData.watchAdsDestroyItem ? "" : destroyCount.ToString();
+        _view.TextRankUpItemCount.text = rankupCount == 0 && !DataManager.init.gameData.watchAdsRankupItem ? "" : rankupCount.ToString();
+        _view.TextRerollItemCount.text = rerollCount == 0 && !DataManager.init.gameData.watchAdsRerollItem ? "" : rerollCount.ToString();
 
-        _view.ImageDestoryItem.enabled = !DataManager.init.gameData.watchAdsDestroyItem && destroyCount == 0;
-        _view.ImageRankUpItem.enabled = !DataManager.init.gameData.watchAdsRankupItem && rankupCount == 0;
-        _view.ImageRerollItem.enabled = !DataManager.init.gameData.watchAdsRerollItem && rerollCount == 0;
+        _view.DestoryItemAdsPanel.SetActive(!DataManager.init.gameData.watchAdsDestroyItem && destroyCount == 0);
+        _view.RankUpItemAdsPanel.SetActive(!DataManager.init.gameData.watchAdsRankupItem && rankupCount == 0);
+        _view.RerollItemAdsPanel.SetActive(!DataManager.init.gameData.watchAdsRerollItem && rerollCount == 0);
 
         DataManager.init.Save();
     }

@@ -23,21 +23,23 @@ public class ButtonExpansion : Button {
         _cts = new CancellationTokenSource();
     }
 
-    public override void OnPointerClick(PointerEventData eventData) {
+    public override void OnPointerClick(PointerEventData eventData)
+    {
         if (!isDoubleClick)
             base.OnPointerClick(eventData);
-
-        isDoubleClick = true;
-
         AudioManager.Init.Play(Definition.AudioType.UIButton);
-
         Scale();
     }
 
-    private async void Scale() {
+    private async void Scale()
+    {
+        if (isDoubleClick)
+            return;
+        
         _cts.Cancel();
         _cts = new CancellationTokenSource();
         try {
+            isDoubleClick = true;
             await RoutineDownScale(_cts);
             await RoutineUpScale(_cts);
             await RoutineOriginScale(_cts);

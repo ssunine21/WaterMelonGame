@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using Firebase.Database;
 using System.IO;
@@ -13,7 +14,7 @@ public class DataManager : MonoBehaviour {
 	static readonly public string FileName = "/gameData.dat";
 
 	public DatabaseReference databaseReference;
-
+	public bool IsReady = false;
 	public static DataManager init = null;
 	private void Awake() {
 		if (init == null) {
@@ -36,6 +37,7 @@ public class DataManager : MonoBehaviour {
 
     private string dataPath;
 	public DataInfo.GameData gameData;
+	public CloudData cloudData;
 
 	public void Save() {
 		try {
@@ -62,6 +64,8 @@ public class DataManager : MonoBehaviour {
 					gameData = (DataInfo.GameData)binaryFormatter.Deserialize(file);
 					LoadFirebaseDate();
 				}
+
+				LoadCloudData();
 			}
 
 		} catch (System.Exception e) {
@@ -122,5 +126,20 @@ public class DataManager : MonoBehaviour {
 		gameData.lastJoin = timespan.Days;
 
 		databaseReference.Child(gameData.key).Child(LASTJOIN).SetValueAsync(gameData.lastJoin);
+	}
+
+	public void LoadCloudData()
+	{
+		FirebaseDatabase.DefaultInstance.GetReference("CloudData")
+			.GetValueAsync().ContinueWith(task =>
+			{
+				if (task.IsCompleted)
+				{
+					DataSnapshot dataSnapShot = task.Result;
+					string json = dataSnapShot.GetRawJsonValue();
+					cloudData = JsonUtility.FromJson<CloudData>(json);
+					IsReady = true;
+				}
+			});
 	}
 }

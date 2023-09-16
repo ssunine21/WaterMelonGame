@@ -17,9 +17,9 @@ public class ViewCanvasInGame : ViewCanvas {
     public TMP_Text TextRankUpItemCount => _textRankUpItemCount;
     public TMP_Text TextRerollItemCount => _textRerollItemCount;
 
-    public Image ImageDestoryItem => _imageDestoryItem;
-    public Image ImageRankUpItem => _imageRankUpItem;
-    public Image ImageRerollItem => _imageRerollItem;
+    public GameObject DestoryItemAdsPanel => _destoryItemAdsPanel;
+    public GameObject RankUpItemAdsPanel => _rankUpItemAdsPanel;
+    public GameObject RerollItemAdsPanel => _rerollItemAdsPanel;
 
     public Transform Underground => _underground;
 
@@ -37,9 +37,9 @@ public class ViewCanvasInGame : ViewCanvas {
     [SerializeField] private TMP_Text _textRankUpItemCount;
     [SerializeField] private TMP_Text _textRerollItemCount;
 
-    [SerializeField] private Image _imageDestoryItem;
-    [SerializeField] private Image _imageRankUpItem;
-    [SerializeField] private Image _imageRerollItem;
+    [SerializeField] private GameObject _destoryItemAdsPanel;
+    [SerializeField] private GameObject _rankUpItemAdsPanel;
+    [SerializeField] private GameObject _rerollItemAdsPanel;
 
     [SerializeField] private Transform _underground;
 

@@ -11,6 +11,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
 
 public class ControllerMainMenu {
     public static UnityAction<int> OnBindMenu;
+    public static UnityAction<int, bool> OnBindSetActiveMenu;
     private static int _navIndex = 0;
 
     private readonly ViewCanvasMainMenu _view;
@@ -24,7 +25,10 @@ public class ControllerMainMenu {
         _view.StartGame.onClick.AddListener(() => GameManager.OnBindStartGame?.Invoke());
         _view.Option.onClick.AddListener(() => OnBindMenu?.Invoke(0));
         _view.Leaderboard.onClick.AddListener(LeaderBoard);
+        _view.Attendance.onClick.AddListener(() => OnBindMenu?.Invoke(1));
 
+        OnBindSetActiveMenu += SetActiveMenus;
+        
         ControllerMainNav.OnSelectMenu += SetVisible;
         GameManager.OnBindNewGame += () => _view.SetActive(false);
         GameManager.OnBindStartGame += () => _view.SetActive(false);
@@ -32,6 +36,19 @@ public class ControllerMainMenu {
         DataScore.OnBindChangeBestScore += UpdateBestScore;
 
         UpdateBestScore();
+    }
+
+    private void SetActiveMenus(int index, bool flag)
+    {
+        switch (index)
+        {
+            case 0:
+                _view.Option.gameObject.SetActive(flag);
+                break;
+            case 1:
+                _view.Attendance.gameObject.SetActive(flag);
+                break;
+        }
     }
 
     private void UpdateBestScore() {

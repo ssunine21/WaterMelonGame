@@ -131,6 +131,22 @@
       {
         "key": "Vibration",
         "value": "진동"
+      },
+      {
+        "key": "Attendance",
+        "value": "출석"
+      },
+      {
+        "key": "AttendanceDesc",
+        "value": "매일 출석하고 보상을 받아가세요!"
+      },
+      {
+        "key": "BaseTime",
+        "value": "※ 매일 {0}시에 초기화 됩니다."
+      },
+      {
+        "key": "Day",
+        "value": "{0}일"
       }
     ]
 }

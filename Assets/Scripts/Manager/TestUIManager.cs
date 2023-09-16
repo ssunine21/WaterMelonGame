@@ -12,5 +12,6 @@ public class TestUIManager : MonoBehaviour
         new ControllerShop(this.transform);
         new ControllerOption(this.transform);
         new ControllerGameOver(this.transform);
+        new ControllerAttendance(this.transform);
     }
 }

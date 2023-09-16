@@ -163,6 +163,22 @@
       "key": "Vibration",
       "value": "震动"
 
+    },
+    {
+      "key": "Attendance",
+      "value": "签到"
+    },
+    {
+      "key": "AttendanceDesc",
+      "value": "每天签到领取奖励！"
+    },
+    {
+      "key": "BaseTime",
+      "value": "※ 每天午夜{0}點重置。"
+    },
+    {
+      "key": "Day",
+      "value": "{0}日"
     }
   ]
 }

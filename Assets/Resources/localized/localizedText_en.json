@@ -155,7 +155,22 @@
     {
       "key": "Vibration",
       "value": "Vibration"
-
+    },
+    {
+      "key": "Attendance",
+      "value": "Check-in"
+    },
+    {
+      "key": "AttendanceDesc",
+      "value": "Attend daily and claim your rewards!"
+    },
+    {
+      "key": "BaseTime",
+      "value": "※ Resets daily at {0}."
+    },
+    {
+      "key": "Day",
+      "value": "{0} day"
     }
   ]
 }

@@ -164,6 +164,22 @@
       "key": "Vibration",
       "value": "振動"
 
+    },
+    {
+      "key": "Attendance",
+      "value": "出席チェック"
+    },
+    {
+      "key": "AttendanceDesc",
+      "value": "毎日出席して報酬を受け取ろう！"
+    },
+    {
+      "key": "BaseTime",
+      "value": "※ 毎日午前{0}時にリセットされます。"
+    },
+    {
+      "key": "Day",
+      "value": "{0}日"
     }
   ]
 }

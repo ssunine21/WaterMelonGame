@@ -25,6 +25,9 @@ namespace DataInfo {
 		public bool watchAdsRankupItem;
 		public bool watchAdsRerollItem;
 
+		public int attendanceCount;
+		public string lastTimeEarnAttendanceReward;
+
 		public string key;
 
 		public bool[] styleProducts;

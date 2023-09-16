@@ -40,6 +40,10 @@ public static class Definition {
 		BGM,
 		Effect,
 		Vibration,
+		Attendance,
+		AttendanceDesc,
+		BaseTime,
+		Day
 	}
 
 	public enum Item {

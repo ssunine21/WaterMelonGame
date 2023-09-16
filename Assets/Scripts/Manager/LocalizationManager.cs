@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class LocalizationManager : MonoBehaviour {
+public class LocalizationManager : MonoBehaviour
+{
 
+    public SystemLanguage systemLanguage;
+    
     public static LocalizationManager init;
     private TextAsset textData;
     private Dictionary<string, string> localizedText;
@@ -30,9 +33,7 @@ public class LocalizationManager : MonoBehaviour {
         for (int i = 0; i < loadedData.items.Length; ++i) {
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
-
         Debug.Log("Data loaded. Dictionary containts :" + localizedText.Count + " entries");
-
     }
 
     public string GetLocalizedValue(Definition.LocalizeKey key) {
@@ -47,8 +48,14 @@ public class LocalizationManager : MonoBehaviour {
 
     private void InitLanguage() {
         string languageName;
-
-		switch (Application.systemLanguage) {
+        SystemLanguage language;
+        #if UNITY_EDITOR
+        language = systemLanguage;
+        #else
+        language = Application.systemLanguage;
+        #endif
+        
+		switch (language) {
             case SystemLanguage.Korean:
                 languageName = "ko";
                 break;

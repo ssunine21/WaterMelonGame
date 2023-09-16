@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEditor.UI;
 
 public class ViewCanvasMainMenu : ViewCanvas {
     public ButtonExpansion Option => _buttonOption;
     public ButtonExpansion NewGmae => _buttonNewGame;
     public ButtonExpansion StartGame => _buttonStartGame;
     public ButtonExpansion Leaderboard => _buttonLeaderboard;
+    public ButtonExpansion Attendance => _buttonAttendance;
     public TMP_Text TextBestScore => _textBestScore;
 
 
@@ -16,6 +18,7 @@ public class ViewCanvasMainMenu : ViewCanvas {
     [SerializeField] private ButtonExpansion _buttonStartGame;
     [SerializeField] private ButtonExpansion _buttonOption;
     [SerializeField] private ButtonExpansion _buttonLeaderboard;
+    [SerializeField] private ButtonExpansion _buttonAttendance;
     [SerializeField] private TMP_Text _textBestScore;
 
     [Header("Localize")]

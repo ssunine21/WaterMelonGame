@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,34 @@ public class FileDeletion : Editor
         else
         {
             Debug.Log("File is not exist.");
+        }
+    }
+
+    [MenuItem("Custom/Create Firebase File")]
+    static void CreateFirebaseFile()
+    {
+        try
+         {
+        //     CloudData cloudData = new CloudData();
+        //     cloudData.cloudAttendanceDatas = new List<CloudAttendanceData>();
+        //     for (int i = 0; i < 7; ++i)
+        //     {
+        //         cloudData.cloudAttendanceDatas.Add(new CloudAttendanceData());
+        //         cloudData.cloudAttendanceDatas[i].day = i;
+        //         cloudData.cloudAttendanceDatas[i].amount = 500;
+        //     }
+        //     var json = JsonUtility.ToJson(cloudData);
+        //     FirebaseDatabase.DefaultInstance
+        //         .RootReference
+        //         .Child("CloudData")
+        //         .SetRawJsonValueAsync(json);
+        //
+        //     Debug.Log(json);
+        //     Debug.Log("Create Firebase Attendance Data");
+        }
+        catch (Exception e)
+        {
+         Debug.Log(e.Message);   
         }
     }
 
