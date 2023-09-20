@@ -40,7 +40,10 @@ public class GooglePlayGamesManager : MonoBehaviour {
 #if UNITY_ANDROID
         if (IsLogin) {
             int score = DataManager.init.gameData.bestScore;
-            PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_leaderboard, callback);
+            int level = DataScore.GetLevel();
+            
+            PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_best_score, callback);
+            PlayGamesPlatform.Instance.ReportScore(level, GPGSIds.leaderboard_level, callback);
         }
         
 #elif UNITY_IOS

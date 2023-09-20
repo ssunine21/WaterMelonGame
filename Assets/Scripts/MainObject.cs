@@ -77,13 +77,18 @@ public class MainObject : MonoBehaviour {
 					overLineTime = 0;
 			}
 
-			if(overLineTime > 2.3f) {
-				ObjectFlickerAnimation();
+			if(overLineTime > 2.3f)
+			{
+				if (!GameManager.IsGamePause)
+					ObjectFlickerAnimation();
 				overLineTime = 0;
 			}
 
-			if (isDropped)
+			if (isDropped && !GameManager.IsGamePause)
 				waringLineTime += Time.deltaTime;
+
+			if (GameManager.IsGamePause)
+				overLineTime = 0;
 			yield return null;
 		}
 	}
@@ -165,17 +170,16 @@ public class MainObject : MonoBehaviour {
 	private WaitForSeconds _wfs = new WaitForSeconds(3f);
 
 	private IEnumerator CoFlicker() {
-		yield return null;
-
 		if (GameManager.IsGamePause)
 			yield break;
 
 		GameManager.IsGamePause = true;
+		
 		_spriteRenderer.DOFade(0.0f, duraitionSeconds).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
-
+		
 		yield return _wfs;
-
 		GameManager.OnBindGameOver?.Invoke();
+		ObjectManager.init.DestroyObject(this);
     }
 
 	private WaitForSeconds wfs = new WaitForSeconds(0.3f);

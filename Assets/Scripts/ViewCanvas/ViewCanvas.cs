@@ -28,7 +28,8 @@ public class ViewCanvas : MonoBehaviour
         return _views[name] as T;
     }
 
-    public void SetActive(bool flag) {
+    public void SetActive(bool flag)
+    {
         GetComponent<Canvas>().enabled = flag;
     }
 

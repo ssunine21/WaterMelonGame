@@ -7,11 +7,13 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class DataManager : MonoBehaviour {
-	static readonly private string TITLE = "RANK";
-	static readonly private string COIN = "coin";
-	static readonly private string LASTJOIN = "lastjoin";
+	private const string Title = "RANK";
+	private const string Coin = "coin";
+	private const string LastJoin = "lastjoin";
+	private const string BestScore = "bestscore";
+	private const string Exp = "exp";
 
-	static readonly public string FileName = "/gameData.dat";
+	public static readonly string FileName = "/gameData.dat";
 
 	public DatabaseReference databaseReference;
 	public bool IsReady = false;
@@ -25,13 +27,15 @@ public class DataManager : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		databaseReference = FirebaseDatabase.DefaultInstance.GetReference(TITLE);
+		databaseReference = FirebaseDatabase.DefaultInstance.GetReference(Title);
 		dataPath = Application.persistentDataPath + FileName;
 		Load();
 	}
 
     private void Start() {
 		PlayerCoin.OnChangeValue += CoinFirebaseSync;
+		DataScore.OnBindChangeBestScore += ScoreFirebaseSync;
+		DataScore.OnBindChangeLevel += LevelFirebaseSync;
 		GameManager.OnBindGoHome += Save;
     }
 
@@ -80,7 +84,8 @@ public class DataManager : MonoBehaviour {
 			.GetValueAsync().ContinueWith(task => {
 				if(task.IsCompleted) {
 					DataSnapshot snap = task.Result;
-					gameData.coin = int.Parse(snap.Child(COIN).Value.ToString());
+					gameData.coin = int.Parse(snap.Child(Coin).Value.ToString());
+					gameData.exp = int.Parse(snap.Child(Exp).Value.ToString());
 					LastTImeSync();
 				}
 			});
@@ -111,13 +116,19 @@ public class DataManager : MonoBehaviour {
 
 		Debug.Log($"Init FirebaseKey : {gameData.key}");
 
-		User user = new User(gameData.coin, gameData.lastJoin);
+		User user = new User(gameData.coin, gameData.lastJoin, gameData.exp);
 		string json = JsonUtility.ToJson(user);
 		databaseReference.Child(gameData.key).SetRawJsonValueAsync(json);
 	}
 
 	public void CoinFirebaseSync() {
-		databaseReference.Child(gameData.key).Child(COIN).SetValueAsync(gameData.coin);
+		databaseReference.Child(gameData.key).Child(Coin).SetValueAsync(gameData.coin);
+	}
+	public void ScoreFirebaseSync() {
+		databaseReference.Child(gameData.key).Child(BestScore).SetValueAsync(gameData.bestScore);
+	}
+	public void LevelFirebaseSync() {
+		databaseReference.Child(gameData.key).Child(Exp).SetValueAsync(gameData.exp);
 	}
 
 	public void LastTImeSync() {
@@ -125,7 +136,7 @@ public class DataManager : MonoBehaviour {
 		gameData.key = databaseReference.Push().Key;
 		gameData.lastJoin = timespan.Days;
 
-		databaseReference.Child(gameData.key).Child(LASTJOIN).SetValueAsync(gameData.lastJoin);
+		databaseReference.Child(gameData.key).Child(LastJoin).SetValueAsync(gameData.lastJoin);
 	}
 
 	public void LoadCloudData()

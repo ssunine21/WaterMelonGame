@@ -34,8 +34,10 @@ public class ControllerMainMenu {
         GameManager.OnBindStartGame += () => _view.SetActive(false);
         GameManager.OnBindGoHome += () => _view.SetActive(true);
         DataScore.OnBindChangeBestScore += UpdateBestScore;
+        DataScore.OnBindChangeLevel += UpdateLevel;
 
         UpdateBestScore();
+        UpdateLevel();
     }
 
     private void SetActiveMenus(int index, bool flag)
@@ -53,6 +55,11 @@ public class ControllerMainMenu {
 
     private void UpdateBestScore() {
         _view.TextBestScore.text = DataScore.BestScore.ToString();
+    }
+
+    private void UpdateLevel()
+    {
+        _view.Level.text = DataScore.GetLevel().ToString();
     }
 
     private void LeaderBoard() {

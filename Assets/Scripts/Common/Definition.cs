@@ -43,7 +43,8 @@ public static class Definition {
 		Attendance,
 		AttendanceDesc,
 		BaseTime,
-		Day
+		Day,
+		WatchAdsToContinuePlay
 	}
 
 	public enum Item {

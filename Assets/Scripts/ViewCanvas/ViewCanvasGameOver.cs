@@ -6,58 +6,64 @@ using TMPro;
 using DG.Tweening;
 
 public class ViewCanvasGameOver : ViewCanvas {
-    public GameObject PanelTimer => _panelTimer;
-    public Image Timer => _imageTimer;
-    public TMP_Text TextTimer => _textTimer;
     public ButtonExpansion ButtonCancel => _buttonCancel;
     public ButtonExpansion ButtonStartAds => _buttonAds;
     public Image Panel => _panel;
     public TMP_Text TextTotalScore => _textScore;
-    public TMP_Text TextTempTotalScore => _textTempScore;
-    public RectTransform RectTotalScore => _textScore.GetComponent<RectTransform>();
-
+    public TMP_Text BestScoreText => _bestScoreText;
+    public RectTransform ScoreRectTr => scoreRectTr;
+    public RectTransform ContentRectTr => contentRectTr;
+    public RectTransform HomeRectTr => homeRectTr;
+    public RectTransform WatchAdsRectTr => watchAdsRectTr;
+    public RectTransform CoinTr => _panelCoin;
+    public RectTransform LevelTr => levelPanel;
+    public RectTransform TagRectTr => tagRectTr;
+    
+    
     public TMP_Text TextCoin => _textCoin;
-    public GameObject PanelCoin => _panelCoin;
+    public RectTransform PanelCoin => _panelCoin;
 
-    [Header("Timer")]
-    [SerializeField] private GameObject _panelTimer;
-    [SerializeField] private Image _imageTimer;
-    [SerializeField] private TMP_Text _textTimer;
-
-    [SerializeField] private GameObject _panelCoin;
+    [SerializeField] private RectTransform tagRectTr;
+    [SerializeField] private RectTransform contentRectTr;
+    [SerializeField] private RectTransform scoreRectTr;
+    [SerializeField] private RectTransform homeRectTr;
+    [SerializeField] private RectTransform watchAdsRectTr;
+    [SerializeField] private RectTransform _panelCoin;
+    [SerializeField] private RectTransform levelPanel;
     [SerializeField] private TMP_Text _textCoin;
+    [SerializeField] private TMP_Text _lvText;
+    [SerializeField] private Image _expAmount;
 
     [Space]
     [SerializeField] private TMP_Text _textScore;
-    [SerializeField] private TMP_Text _textTempScore;
+    [SerializeField] private TMP_Text _bestScoreText;
     [SerializeField] private ButtonExpansion _buttonCancel;
     [SerializeField] private ButtonExpansion _buttonAds;
     [SerializeField] private Image _panel;
 
-    private Coroutine _timer;
-    private WaitForSeconds _wfs = new WaitForSeconds(1);
-
-    public void StartTimer() {
-        _textTimer.text = "5";
-
-        if (_timer != null) {
-            StopCoroutine(_timer);
-        }
-
-        _timer = StartCoroutine(CoTimer());
-    }
+    [Space]
+    [SerializeField] private TMP_Text _textWatchAds;
 
     public void SetCoin(int value)
     {
         _textCoin.text = value.ToString();
     }
 
-    private IEnumerator CoTimer() {
-        for(int i = 0; i <= 5; ++i) {
-            _imageTimer.fillAmount = 1;
-            _textTimer.text = (5 - i).ToString();
-            _imageTimer.DOFillAmount(0, 0.7f).SetEase(Ease.InOutExpo);
-            yield return _wfs;
-        }
+    public ViewCanvasGameOver SetLevel(int value)
+    {
+        _lvText.text = value.ToString();
+        return this;
+    }
+
+    public ViewCanvasGameOver SetFillAmount(float curr, float max)
+    {
+        _expAmount.fillAmount = curr / max;
+        return this;
+    }
+
+    public ViewCanvasGameOver SetLocalize()
+    {
+        _textWatchAds.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.WatchAdsToContinuePlay);
+        return this;
     }
 }

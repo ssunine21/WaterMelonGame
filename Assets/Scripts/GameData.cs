@@ -5,7 +5,9 @@ using UnityEngine;
 
 namespace DataInfo {
 	[System.Serializable]
-	public class GameData {
+	public class GameData
+	{
+		public int exp;
 		public int bestScore = 0;
 		public int currScore = 0;
 		public int coin = 0;

@@ -180,6 +180,10 @@
     {
       "key": "Day",
       "value": "{0}日"
+    },
+    {
+      "key": "WatchAdsToContinuePlay",
+      "value": "広告を見て続ける"
     }
   ]
 }

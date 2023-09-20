@@ -8,6 +8,7 @@ public class ViewCanvasMainMenu : ViewCanvas {
     public ButtonExpansion Leaderboard => _buttonLeaderboard;
     public ButtonExpansion Attendance => _buttonAttendance;
     public TMP_Text TextBestScore => _textBestScore;
+    public TMP_Text Level => _level;
 
 
     [SerializeField] private ButtonExpansion _buttonNewGame;
@@ -16,6 +17,7 @@ public class ViewCanvasMainMenu : ViewCanvas {
     [SerializeField] private ButtonExpansion _buttonLeaderboard;
     [SerializeField] private ButtonExpansion _buttonAttendance;
     [SerializeField] private TMP_Text _textBestScore;
+    [SerializeField] private TMP_Text _level;
 
     [Header("Localize")]
     [SerializeField] private TMP_Text _textTitle;

@@ -139,6 +139,7 @@ public class ObjectManager : MonoBehaviour {
 				DataManager.init.gameData.objectData.Add(new DataInfo.GameObjectData(obj.transform.position, obj.mergeLevel));
 		}
 		Destroy(_objParent);
+		_mainObjecs.Clear();
 		_objParent = new GameObject("objParent");
 	}
 

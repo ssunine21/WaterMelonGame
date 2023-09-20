@@ -179,6 +179,10 @@
     {
       "key": "Day",
       "value": "{0}日"
+    },
+    {
+      "key": "WatchAdsToContinuePlay",
+      "value": "观看广告后继续"
     }
   ]
 }

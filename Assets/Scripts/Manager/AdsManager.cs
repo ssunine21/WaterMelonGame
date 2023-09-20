@@ -134,10 +134,10 @@ public class AdsManager : MonoBehaviour {
     }
 
     private void AboveAds() {
-
+        
         Vector3 adsAbovePos = new Vector3(0, this._bannerView.GetHeightInPixels() / 300, 0);
 
-        Camera.main.transform.position -= adsAbovePos;
+      //  Camera.main.transform.position -= adsAbovePos;
     }
 
     private string GetRewardId()
