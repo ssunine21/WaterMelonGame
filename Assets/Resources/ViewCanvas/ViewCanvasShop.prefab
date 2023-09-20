@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ab633c8e50a5344c78eef8ecf92800b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11b685d46ff40400daabbcdc2bd4f5d2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4af8db46adf5a44c68518c6c8923cbdb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1a07c80c4c5d406a8db30b6bfd39225, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8848,6 +8848,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6851725535494054097, guid: e3d2819d6457a464198c48cbcc1ac754,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414663220369004651, guid: e3d2819d6457a464198c48cbcc1ac754,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7579610733537300080, guid: e3d2819d6457a464198c48cbcc1ac754,
         type: 3}
       propertyPath: UpScale
@@ -8857,6 +8867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: DownScale
       value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724990818777115385, guid: e3d2819d6457a464198c48cbcc1ac754,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3d2819d6457a464198c48cbcc1ac754, type: 3}
