@@ -40,12 +40,20 @@ public class ControllerOption {
             DataManager.init.gameData.isVibration = _view.Vibration.IsToggled();
             DataManager.init.Save();
         };
+        
+        _view.GoogleLoginButton.onClick.AddListener(OnClickGooglePlayLogin);
+        _view.CopyButton.onClick.AddListener(() =>
+        {
+            GUIUtility.systemCopyBuffer = DataManager.init.gameData.key;
+            ViewCanvas.Get<ViewCanvasToast>().ShowOneTimeMessage(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.CopyDesc));
+        });
 
         _view.Music.Toggle(DataManager.init.gameData.isBGMVolum);
         _view.Effect.Toggle(DataManager.init.gameData.isEffectVolum);
         _view.Vibration.Toggle(DataManager.init.gameData.isVibration);
 
         ControllerMainMenu.OnBindMenu += UpdateVisible;
+        UpdateLoginPanel();
     }
 
     public void UpdateVisible(int index) {
@@ -55,4 +63,18 @@ public class ControllerOption {
         }
     }
 
+    private void OnClickGooglePlayLogin()
+    {
+        DataManager.init.FirebaseLogin(UpdateLoginPanel);
+    }
+
+    private void UpdateLoginPanel()
+    {
+        bool isLogin = DataManager.init.gameData.isGameServiceLogin;
+        _view.GoogleLoginButton.enabled = !isLogin;
+        _view.CheckImage.enabled = isLogin;
+        
+        DataScore.OnBindChangeLevel?.Invoke();
+        DataScore.OnBindChangeBestScore?.Invoke();
+    }
 }

@@ -184,6 +184,30 @@
     {
       "key": "WatchAdsToContinuePlay",
       "value": "広告を見て続ける"
+    },
+    {
+      "key": "GoogleLogin",
+      "value": "Google Play ログイン"
+    },
+    {
+      "key": "LoginDesc",
+      "value": "ログインしない場合、データが削除される可能性があります。"
+    },
+    {
+      "key": "Copy",
+      "value": "コピー"
+    },
+    {
+      "key": "CopyDesc",
+      "value": "コピーしました"
+    },
+    {
+      "key": "LoginWarringMsg",
+      "value": "データが存在します。読み込みますか？"
+    },
+    {
+      "key": "SuccessLogin",
+      "value": "ログインに成功しました。"
     }
   ]
 }

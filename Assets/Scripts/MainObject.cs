@@ -26,6 +26,8 @@ public class MainObject : MonoBehaviour {
 	private CircleCollider2D _circleCollider;
 	private CircleCollider2D _circleTrigger;
 
+	private LayerMask _layerMask;
+
 	public bool isDropped {
 		get {
 			try {
@@ -48,7 +50,8 @@ public class MainObject : MonoBehaviour {
 		float waringLineTime = 0;
 		float overLineTime = 0;
 		Vector2 tempPosition;
-
+		_layerMask = LayerMask.GetMask("Unit");
+		
 		while (true) {
 			_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 1f);
 			tempPosition = transform.position;
@@ -89,12 +92,31 @@ public class MainObject : MonoBehaviour {
 
 			if (GameManager.IsGamePause)
 				overLineTime = 0;
+			
+			//collider
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius + 0.0001f);
+			foreach (Collider2D collider in colliders)
+			{
+				if (collider.TryGetComponent<MainObject>(out var component))
+				{
+					if (component.gameObject == this.gameObject) continue;
+					
+					if (IsEquals(component.mergeLevel) 
+					    && !isMerging && isReady
+					    && component.isReady) {
+						isMerging = true;
+						component.isMerging = true;
+						TargetPosCheckAndMerge(component);
+						break;
+					}
+				}
+			}
 			yield return null;
 		}
 	}
 
 	public void Setting() {
-		isReady = false;
+		//isReady = false;
 
 		try {
 			radius = GetRadius();
@@ -119,7 +141,7 @@ public class MainObject : MonoBehaviour {
 		return sprite.rect.width / (sprite.pixelsPerUnit * 0.01f) * 0.005f;
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    /*private void OnTriggerEnter2D(Collider2D collision) {
 		if (IsEquals(collision.gameObject) && !isMerging) {
 			isMerging = true;
 			TargetPosCheckAndMerge(collision.gameObject);
@@ -131,28 +153,27 @@ public class MainObject : MonoBehaviour {
 			isMerging = true;
 			TargetPosCheckAndMerge(collision.gameObject);
 		}
+	}*/
+
+	private bool IsEquals(ObjectManager.ObjectKey key)
+	{
+		return this.mergeLevel == key;
+		// if (collision.CompareTag("object") && CompareTag("object")) {
+		// 	if (this.mergeLevel == collision.GetComponent<MainObject>().mergeLevel)
+		// 		return true;
+		// }
+		// return false;
 	}
 
-	private bool IsEquals(GameObject collision) {
-		if (collision.CompareTag("object") && CompareTag("object")) {
-			if (this.mergeLevel == collision.GetComponent<MainObject>().mergeLevel)
-				return true;
+	private void TargetPosCheckAndMerge(MainObject collisionTr) {
+		if(this.transform.position.y >= transform.position.y) {
+			Merge(collisionTr);
 		}
-		return false;
 	}
 
-	private void TargetPosCheckAndMerge(GameObject collision) {
-		if(this.transform.position.y >= collision.transform.position.y) {
-			Merge(collision);
-		}
-	}
-
-	private void Merge(GameObject collision) {
-		var mainObject = collision.GetComponent<MainObject>();
-
+	private void Merge(MainObject mainObject) {
 		if (mainObject == null) 
 			return;
-
 		ObjectManager.init.MergeObject(mainObject, this);
 	}
 
@@ -182,7 +203,7 @@ public class MainObject : MonoBehaviour {
 		ObjectManager.init.DestroyObject(this);
     }
 
-	private WaitForSeconds wfs = new WaitForSeconds(0.3f);
+	private WaitForSeconds wfs = new WaitForSeconds(0.2f);
 	private WaitForSeconds wfs2 = new WaitForSeconds(0.2f);
 	private IEnumerator CoReady() {
 		yield return wfs2;

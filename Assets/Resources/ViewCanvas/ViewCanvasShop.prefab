@@ -8049,17 +8049,17 @@ PrefabInstance:
     - target: {fileID: 5779462525743870561, guid: 9d2f855825433b3468dae6b6923c0f9e,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.39607844
+      value: 0.16078432
       objectReference: {fileID: 0}
     - target: {fileID: 5779462525743870561, guid: 9d2f855825433b3468dae6b6923c0f9e,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.3019608
+      value: 0.54509807
       objectReference: {fileID: 0}
     - target: {fileID: 5779462525743870561, guid: 9d2f855825433b3468dae6b6923c0f9e,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.23921569
+      value: 0.8901961
       objectReference: {fileID: 0}
     - target: {fileID: 5779462525743870561, guid: 9d2f855825433b3468dae6b6923c0f9e,
         type: 3}

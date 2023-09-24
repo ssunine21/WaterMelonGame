@@ -16,6 +16,7 @@ public class GooglePlayGamesManager : MonoBehaviour {
     public void Start() {
 #if UNITY_ANDROID
         PlayGamesPlatform.Activate();
+
 #elif UNITY_IOS
 #endif
 
@@ -23,7 +24,6 @@ public class GooglePlayGamesManager : MonoBehaviour {
     }
 
     public static void Login(Action<bool> callback = null) {
-
         if (Social.localUser.authenticated == true)
         {
             Debug.Log("Success Login");

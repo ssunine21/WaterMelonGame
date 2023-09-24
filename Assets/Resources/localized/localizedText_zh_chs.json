@@ -183,6 +183,30 @@
     {
       "key": "WatchAdsToContinuePlay",
       "value": "观看广告后继续"
+    },
+    {
+      "key": "GoogleLogin",
+      "value": " Google Play 登录"
+    },
+    {
+      "key": "LoginDesc",
+      "value": "如果不登录，您的数据可能会被删除。"
+    },
+    {
+      "key": "Copy",
+      "value": "复制"
+    },
+    {
+      "key": "CopyDesc",
+      "value": "已复制"
+    },
+    {
+      "key": "LoginWarringMsg",
+      "value": "存在数据。您要加载吗？"
+    },
+    {
+      "key": "SuccessLogin",
+      "value": "登录成功。"
     }
   ]
 }

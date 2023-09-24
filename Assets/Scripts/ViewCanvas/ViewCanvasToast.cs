@@ -6,15 +6,16 @@ using DG.Tweening;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Events;
 
 public class ViewCanvasToast : ViewCanvas {
     [SerializeField] private GameObject _toast;
-    [SerializeField] private GameObject _oneTimeToast;
+    [SerializeField] private FadeMessage _oneTimeToast;
+    [SerializeField] private GameObject _loadingPanel;
 
     [SerializeField] private TMP_Text _textDesc;
     [SerializeField] private TMP_Text _textCheck;
     [SerializeField] private TMP_Text _textCancel;
-    [SerializeField] private TMP_Text _textOneTimeMessage;
 
     [SerializeField] private ButtonExpansion _check;
     [SerializeField] private ButtonExpansion _cancel;
@@ -23,6 +24,8 @@ public class ViewCanvasToast : ViewCanvas {
     private Vector3 _oneTimeMessagePosition = Vector3.zero;
     private Color _oneTimeMessageColor = Color.white;
     private Coroutine _coOneTimeMessage;
+
+    private List<FadeMessage> _fadeMessages = new ();
 
     public ViewCanvasToast SetDesc(string text) {
         _textDesc.text = text;
@@ -34,7 +37,25 @@ public class ViewCanvasToast : ViewCanvas {
         _textCancel.text = LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.Cancel);
     }
 
-    public void Show(string message, Action OnCheckCallback = null, Action OnCancelCallback = null, bool isCancel = true) {
+    public void Loading(bool isOn)
+    {
+        _loadingPanel.SetActive(isOn);
+    }
+
+    public void ShowNoButton(string message, Action action)
+    {
+        _check.gameObject.SetActive(false);
+        _cancel.gameObject.SetActive(false);
+        _panel.enabled = false;
+        
+        SetDesc(message);
+        action?.Invoke();
+    }
+
+    private bool _isPopupMessage;
+    public void Show(string message, Action OnCheckCallback = null, Action OnCancelCallback = null, bool isCancel = true)
+    {
+        _isPopupMessage = true;
         SetActive(true);
         _toast.SetActive(true);
         _wrapped.ShowToast();
@@ -55,48 +76,36 @@ public class ViewCanvasToast : ViewCanvas {
         _cancel.gameObject.SetActive(isCancel);
     }
 
-    public void ShowOneTimeMessage(string message) {
-        if (_coOneTimeMessage != null)
-            StopCoroutine(_coOneTimeMessage);
-
-        _textOneTimeMessage.text = message;
-        _coOneTimeMessage = StartCoroutine(CoOneTimeMessage());
-    }
-
-    private IEnumerator CoOneTimeMessage() {
-        float time = 0.5f;
-
-        _oneTimeToast.SetActive(true);
-
-        if (_oneTimeMessagePosition == Vector3.zero) {
-            _oneTimeMessagePosition = _textOneTimeMessage.transform.position;
-            _oneTimeMessageColor = _textOneTimeMessage.color;
+    private bool _isShowingMessage;
+    public void ShowOneTimeMessage(string message)
+    {
+        SetActive(true);
+        _isShowingMessage = true;
+        var fadeMessage = _fadeMessages.Find(x => !x.gameObject.activeSelf);
+        if (fadeMessage == null)
+        {
+            fadeMessage = Instantiate(_oneTimeToast, this.transform);
+            _fadeMessages.Add(fadeMessage);
         }
 
-        _textOneTimeMessage.transform.position = _oneTimeMessagePosition;
-        _textOneTimeMessage.color = Color.clear;
-        var rect = _textOneTimeMessage.GetComponent<RectTransform>();
-
-        rect.DOKill();
-        _textOneTimeMessage.DOKill();
-
-        rect.DOMoveY(rect.position.y + 1, time).SetEase(Ease.OutCubic);
-        _textOneTimeMessage.DOColor(_oneTimeMessageColor, time);
-
-        yield return new WaitForSeconds(1f);
-
-        rect.DOMoveY(rect.position.y + 0.5f, 0.5f).SetEase(Ease.OutCubic);
-        _textOneTimeMessage.DOColor(Color.clear, 0.5f).OnComplete(() => {
-            _oneTimeToast.SetActive(false);
-        });
+        fadeMessage
+            .SetMessage(message)
+            .Show(() =>
+            {
+                _isShowingMessage = false;
+                if (!_isPopupMessage)
+                    SetActive(false);
+            });
     }
-
+    
     private void Close(ButtonExpansion button) {
         button.enabled = false;
         _wrapped.CloseToast(() => {
             _toast.SetActive(false);
-            SetActive(false);
+            if (!_isShowingMessage)
+                SetActive(false);
             button.enabled = true;
+            _isPopupMessage = false;
         });
     }
 }

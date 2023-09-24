@@ -175,6 +175,30 @@
     {
       "key": "WatchAdsToContinuePlay",
       "value": "Continue after watching an ad"
+    },
+    {
+      "key": "GoogleLogin",
+      "value": "Google Play Login"
+    },
+    {
+      "key": "LoginDesc",
+      "value": "If you don't log in, your data may be deleted."
+    },
+    {
+      "key": "Copy",
+      "value": "Copy"
+    },
+    {
+      "key": "CopyDesc",
+      "value": "Copied"
+    },
+    {
+      "key": "LoginWarringMsg",
+      "value": "Data exists. Would you like to load it?"
+    },
+    {
+      "key": "SuccessLogin",
+      "value": "Login successful."
     }
   ]
 }

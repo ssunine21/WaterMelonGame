@@ -44,7 +44,13 @@ public static class Definition {
 		AttendanceDesc,
 		BaseTime,
 		Day,
-		WatchAdsToContinuePlay
+		WatchAdsToContinuePlay,
+		GoogleLogin,
+		LoginDesc,
+		Copy,
+		CopyDesc,
+		LoginWarringMsg,
+		SuccessLogin
 	}
 
 	public enum Item {

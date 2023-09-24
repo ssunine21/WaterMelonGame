@@ -620,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsReady: 0
   gameData:
+    exp: 0
     bestScore: 0
     currScore: 0
     coin: 0
@@ -647,6 +648,8 @@ MonoBehaviour:
     isVibration: 0
     isPremium: 0
     isDoubleCoin: 0
+    isAttendanceFirstOpen: 0
+    isGameServiceLogin: 0
     objectData: []
     currObjectKey: 0
 --- !u!4 &879273264
