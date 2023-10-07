@@ -100,10 +100,6 @@ public class ControllerShop {
         UpdateItemCount();
         UpdateCoin();
 
-#if UNITY_IOS
-        SetInappWithiOS();
-#endif
-
         DailyRewardTimeUpdate().Forget();
     }
 

@@ -98,7 +98,8 @@ public class ControllerInGame {
         });
         _view.ButtonShowObjBook.onClick.AddListener(() =>
         {
-            _view.ViewObjBook.Open();
+            var viewBook = ViewCanvas.Get<ViewCanvasObjectBook>();
+            viewBook.Open();
         });
         
         GameManager.OnBindNewGame += InitNewStart;
@@ -227,6 +228,9 @@ public class ControllerInGame {
                 }
 
                 if (ViewCanvas.Get<ViewCanvasToast>().IsActiveSelf)
+                    isButtonClick = true;
+
+                if (ViewCanvas.Get<ViewCanvasObjectBook>().IsActiveSelf)
                     isButtonClick = true;
 
                 while (!isButtonClick) {

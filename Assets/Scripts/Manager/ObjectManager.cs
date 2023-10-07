@@ -1,12 +1,12 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ObjectManager : MonoBehaviour {
+public class ObjectManager : MonoBehaviour
+{
+	public List<Sprite> ObjectSprites => objectSprites;
+	
 	private static readonly int MAX_CREATE_OBJECT_NUMBER = 5;
 	private List<Sprite> objectSprites = new List<Sprite>();
 
@@ -150,13 +150,6 @@ public class ObjectManager : MonoBehaviour {
 
 	public void SetObjectSprite(int objNum) {
 		currStyleNum = objNum;
-
-#if UNITY_IOS
-		currStyleNum++;
-		//if (currStyleNum == 0) currStyleNum = 1;
-		//else if (currStyleNum == 1) currStyleNum = 0;
-#endif
-
 		if (objectSprites == null)
 			objectSprites = new List<Sprite>();
 
