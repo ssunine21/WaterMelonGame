@@ -14,8 +14,10 @@ public class ControllerInGame {
         _view = ViewCanvas.Create<ViewCanvasInGame>(parent);
         _view.GetComponent<Canvas>().sortingLayerName = "Background";
 
-        _view.ButtonBack.onClick.AddListener(() => {
-            GameManager.OnBindGoHome?.Invoke();
+        _view.ButtonBack.onClick.AddListener(() =>
+        {
+            if (GameManager.IsGamePause == false)
+                GameManager.OnBindGoHome?.Invoke();
         });
         _view.ButtonDestroyItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
@@ -27,11 +29,19 @@ public class ControllerInGame {
                 }
                 else if (_view.DestoryItemAdsPanel.activeSelf)
                 {
-                    AdsManager.init.ShowAdDestroyItem(() =>
+
+                    if (DataManager.init.gameData.isPremium)
                     {
+                        AdsManager.init.HandleUserDestroyItemReward();
                         DataManager.init.gameData.watchAdsDestroyItem = true;
                         UpdateItemCount();
-                    });
+                    }
+                    else
+                        AdsManager.init.ShowAdDestroyItem(() =>
+                        {
+                            DataManager.init.gameData.watchAdsDestroyItem = true;
+                            UpdateItemCount();
+                        });
                 }
             });
         });
@@ -45,11 +55,18 @@ public class ControllerInGame {
                 }
                 else if (_view.RankUpItemAdsPanel.activeSelf)
                 {
-                    AdsManager.init.ShowAdRankUpItem(() =>
+                    if (DataManager.init.gameData.isPremium)
                     {
+                        AdsManager.init.HandleUserRankUpItemReward();
                         DataManager.init.gameData.watchAdsRankupItem = true;
                         UpdateItemCount();
-                    });
+                    }
+                    else
+                        AdsManager.init.ShowAdRankUpItem(() =>
+                        {
+                            DataManager.init.gameData.watchAdsRankupItem = true;
+                            UpdateItemCount();
+                        });
                 }
             });
         });
@@ -64,15 +81,26 @@ public class ControllerInGame {
                 }
                 else if (_view.RerollItemAdsPanel.activeSelf)
                 {
-                    AdsManager.init.ShowAdRerollItem(() =>
+                    if (DataManager.init.gameData.isPremium)
                     {
+                        AdsManager.init.HandleUserRerollItemReward();
                         DataManager.init.gameData.watchAdsRerollItem = true;
                         UpdateItemCount();
-                    });
+                    }
+                    else
+                        AdsManager.init.ShowAdRerollItem(() =>
+                        {
+                            DataManager.init.gameData.watchAdsRerollItem = true;
+                            UpdateItemCount();
+                        });
                 }
             });
         });
-
+        _view.ButtonShowObjBook.onClick.AddListener(() =>
+        {
+            _view.ViewObjBook.Open();
+        });
+        
         GameManager.OnBindNewGame += InitNewStart;
         GameManager.OnBindStartGame += InitStartStart;
         GameManager.OnBindGoHome += GameEnd;

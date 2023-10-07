@@ -11,17 +11,19 @@ public class ViewCanvasInGame : ViewCanvas {
     public ButtonExpansion ButtonDestroyItem => _buttonDestroyItem;
     public ButtonExpansion ButtonRankUpItem => _buttonRankUpItem;
     public ButtonExpansion ButtonRerollItem => _buttonRerollItem;
+    public ButtonExpansion ButtonShowObjBook => _buttonShowObjBook;
 
     public TMP_Text TextCurrScore => _textCurrScore;
-    public TMP_Text TextDestoryItemCount => _textDestoryItemCount;
-    public TMP_Text TextRankUpItemCount => _textRankUpItemCount;
-    public TMP_Text TextRerollItemCount => _textRerollItemCount;
+    public Text TextDestoryItemCount => _textDestoryItemCount;
+    public Text TextRankUpItemCount => _textRankUpItemCount;
+    public Text TextRerollItemCount => _textRerollItemCount;
 
     public GameObject DestoryItemAdsPanel => _destoryItemAdsPanel;
     public GameObject RankUpItemAdsPanel => _rankUpItemAdsPanel;
     public GameObject RerollItemAdsPanel => _rerollItemAdsPanel;
 
     public Transform Underground => _underground;
+    public ViewObjBook ViewObjBook => _viewObjBook;
 
     [SerializeField] private GameObject[] _background;
     [SerializeField] private ButtonExpansion _buttonBack;
@@ -32,16 +34,18 @@ public class ViewCanvasInGame : ViewCanvas {
     [SerializeField] private ButtonExpansion _buttonDestroyItem;
     [SerializeField] private ButtonExpansion _buttonRankUpItem;
     [SerializeField] private ButtonExpansion _buttonRerollItem;
+    [SerializeField] private ButtonExpansion _buttonShowObjBook;
 
-    [SerializeField] private TMP_Text _textDestoryItemCount;
-    [SerializeField] private TMP_Text _textRankUpItemCount;
-    [SerializeField] private TMP_Text _textRerollItemCount;
+    [SerializeField] private Text _textDestoryItemCount;
+    [SerializeField] private Text _textRankUpItemCount;
+    [SerializeField] private Text _textRerollItemCount;
 
     [SerializeField] private GameObject _destoryItemAdsPanel;
     [SerializeField] private GameObject _rankUpItemAdsPanel;
     [SerializeField] private GameObject _rerollItemAdsPanel;
 
     [SerializeField] private Transform _underground;
+    [SerializeField] private ViewObjBook _viewObjBook;
 
     private WaitForSeconds _wfs = new WaitForSeconds(0.01f);
 

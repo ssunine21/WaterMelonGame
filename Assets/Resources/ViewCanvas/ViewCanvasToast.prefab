@@ -382,7 +382,6 @@ MonoBehaviour:
   _check: {fileID: 1826779027281111153}
   _cancel: {fileID: 5215251074995216593}
   _panel: {fileID: 1291919741558709496}
-  isShowingMessage: 0
 --- !u!1 &5882580278650162274
 GameObject:
   m_ObjectHideFlags: 0

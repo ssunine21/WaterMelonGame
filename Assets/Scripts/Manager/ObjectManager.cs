@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -98,23 +99,27 @@ public class ObjectManager : MonoBehaviour {
 	public void MergeObject(MainObject target, MainObject curr) {
 		if (target.mergeLevel == ObjectKey.Max) 
 			return;
+		
+		curr.CircleCollider.enabled = false;
 
-		target.CircleTrigger.isTrigger = false;
-		curr.CircleTrigger.isTrigger = false;
-
-		var data = GetObject(target.mergeLevel + 1, target.transform.position).GetComponent<MainObject>();
-		data.Setting();
+		var position = target.transform.position;
 
 		DataScore.EarnCurrScore((int)(target.mergeLevel + 1) * 4);
 
-		DestroyObject(target);
-		DestroyObject(curr);
+		/*curr.transform.DOMove(position, 0.08f).SetEase(Ease.OutBack).OnComplete(() =>
+		{*/
+			var data = GetObject(target.mergeLevel + 1, position).GetComponent<MainObject>();
+			data.Setting();
+			
+			DestroyObject(target);
+			DestroyObject(curr);
 
-		AudioManager.Init.Play(Definition.AudioType.Destroy);
+			AudioManager.Init.Play(Definition.AudioType.Destroy);
 
-		PlayerParticle(target.transform.position).Forget();
-		if (DataManager.init.gameData.isVibration)
-			Vibratior.Vibrate();
+			PlayerParticle(position).Forget();
+			if (DataManager.init.gameData.isVibration)
+				Vibratior.Vibrate();
+		//});
 	}
 
 	private async UniTaskVoid PlayerParticle(Vector3 pos)
