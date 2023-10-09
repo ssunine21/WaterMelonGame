@@ -43,7 +43,7 @@ public class GooglePlayGamesManager : MonoBehaviour {
             int level = DataScore.GetLevel();
             
             PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_best_score, callback);
-            PlayGamesPlatform.Instance.ReportScore(level, GPGSIds.leaderboard_level, callback);
+            PlayGamesPlatform.Instance.ReportScore(level, GPGSIds.leaderboard_best_level, callback);
         }
         
 #elif UNITY_IOS
