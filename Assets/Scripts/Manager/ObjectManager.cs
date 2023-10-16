@@ -73,8 +73,14 @@ public class ObjectManager : MonoBehaviour
 		_initY = Camera.main.ScreenToWorldPoint(Vector2.one * hight).y;
 	}
 
-	public MainObject GetRandomObject() {
-		ObjectKey key = (ObjectKey)Random.Range(0, MAX_CREATE_OBJECT_NUMBER);
+	public ObjectKey GetRandomKey()
+	{
+		 return (ObjectKey)Random.Range(0, MAX_CREATE_OBJECT_NUMBER);
+	}
+
+	public MainObject GetRandomObject()
+	{
+		ObjectKey key = GetRandomKey();
 		return GetObject(key);
     }
 

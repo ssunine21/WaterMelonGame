@@ -7,6 +7,7 @@ public class TestUIManager : MonoBehaviour
     private void Start() {
         new ControllerMainNav(this.transform);
         new ControllerMainMenu(this.transform);
+        new ControllerInGameBackground(this.transform);
         new ControllerInGame(this.transform);
         new ControllerToast(this.transform);
         new ControllerShop(this.transform);

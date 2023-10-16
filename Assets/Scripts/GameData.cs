@@ -49,6 +49,7 @@ namespace DataInfo {
 
 		public List<GameObjectData> objectData;
 		public ObjectManager.ObjectKey currObjectKey;
+		public ObjectManager.ObjectKey nextObjectKey;
 	}
 
 

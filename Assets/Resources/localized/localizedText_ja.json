@@ -208,6 +208,10 @@
     {
       "key": "SuccessLogin",
       "value": "ログインに成功しました。"
+    },
+    {
+      "key": "NextObject",
+      "value": "ネクスト"
     }
   ]
 }

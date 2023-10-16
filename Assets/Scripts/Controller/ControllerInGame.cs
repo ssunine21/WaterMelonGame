@@ -12,13 +12,14 @@ public class ControllerInGame {
 
     public ControllerInGame(Transform parent) {
         _view = ViewCanvas.Create<ViewCanvasInGame>(parent);
-        _view.GetComponent<Canvas>().sortingLayerName = "Background";
+        _view.GetComponent<Canvas>().sortingLayerName = "UI";
 
         _view.ButtonBack.onClick.AddListener(() =>
         {
             if (GameManager.IsGamePause == false)
                 GameManager.OnBindGoHome?.Invoke();
         });
+        
         _view.ButtonDestroyItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
             viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.DestructionDesc), () => {
@@ -45,6 +46,7 @@ public class ControllerInGame {
                 }
             });
         });
+        
         _view.ButtonRankUpItem.onClick.AddListener(() => {
             var viewToastMessage = ViewCanvas.Get<ViewCanvasToast>();
             viewToastMessage.Show(LocalizationManager.init.GetLocalizedValue(Definition.LocalizeKey.RankUpDesc), () => {
@@ -139,13 +141,13 @@ public class ControllerInGame {
         _view.SetCurrScore(0);
         DataManager.init.gameData.viewAdsCount = 0;
         DataManager.init.gameData.currObjectKey = ObjectManager.ObjectKey.Zero;
+        DataManager.init.gameData.nextObjectKey = ObjectManager.init.GetRandomKey();
         DataManager.init.gameData.objectData = new List<DataInfo.GameObjectData>();
     }
 
     private void UpdateView() {
         _view.SetActive(true);
 
-        UpdateWallpaper();
         UpdateScore();
         UpdateItemCount();
     }
@@ -178,12 +180,7 @@ public class ControllerInGame {
 
         DataManager.init.Save();
     }
-
-    private void UpdateWallpaper() {
-        int index = DataManager.init.gameData.wallpaperNum;
-        _view.SetBackground(index);
-    }
-
+    
     private void UpdateScore() {
         _view
             .SetCurrScore(DataScore.CurrScore)
@@ -200,10 +197,14 @@ public class ControllerInGame {
         }
 
         var currBall = ObjectManager.init.GetObject(DataManager.init.gameData.currObjectKey);
-
+        var nextBallKey = DataManager.init.gameData.nextObjectKey;
+        _view.ViewNextObject.SetSprite(ObjectManager.init.ObjectSprites[(int)nextBallKey]);
+        
         bool isButtonClick;
         Vector3 mousePosition;
         RaycastHit2D[] hits;
+
+        _view.ViewNextObject.Show();
 
         while (_isGameStart) {
 #if UNITY_EDITOR
@@ -244,8 +245,12 @@ public class ControllerInGame {
                             DataScore.EarnCurrScore((int)(currBall.mergeLevel + 1) * 2);
 
                             currBall.Setting();
-                            currBall = ObjectManager.init.GetRandomObject();
+                            currBall = ObjectManager.init.GetObject(nextBallKey);
+                            nextBallKey = ObjectManager.init.GetRandomKey();
+                            _view.ViewNextObject.SetSprite(ObjectManager.init.ObjectSprites[(int)nextBallKey]);
+                            
                             DataManager.init.gameData.currObjectKey = currBall.mergeLevel;
+                            DataManager.init.gameData.nextObjectKey = nextBallKey;
                             await UniTask.Delay(300);
 
                             DataManager.init.Save();

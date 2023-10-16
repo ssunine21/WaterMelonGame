@@ -207,6 +207,10 @@
     {
       "key": "SuccessLogin",
       "value": "登录成功。"
+    },
+    {
+      "key": "NextObject",
+      "value": "下一个"
     }
   ]
 }

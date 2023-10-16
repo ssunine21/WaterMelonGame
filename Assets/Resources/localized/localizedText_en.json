@@ -199,6 +199,10 @@
     {
       "key": "SuccessLogin",
       "value": "Login successful."
+    },
+    {
+      "key": "NextObject",
+      "value": "NEXT"
     }
   ]
 }

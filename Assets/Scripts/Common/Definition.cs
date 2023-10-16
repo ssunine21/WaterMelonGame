@@ -50,7 +50,8 @@ public static class Definition {
 		Copy,
 		CopyDesc,
 		LoginWarringMsg,
-		SuccessLogin
+		SuccessLogin,
+		NextObject
 	}
 
 	public enum Item {

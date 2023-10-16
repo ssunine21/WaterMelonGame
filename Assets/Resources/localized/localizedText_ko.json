@@ -175,6 +175,10 @@
       {
         "key": "SuccessLogin",
         "value": "로그인에 성공했습니다."
+      },
+      {
+        "key": "NextObject",
+        "value": "NEXT"
       }
     ]
 }

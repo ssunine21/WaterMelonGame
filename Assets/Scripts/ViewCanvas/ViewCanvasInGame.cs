@@ -23,9 +23,10 @@ public class ViewCanvasInGame : ViewCanvas {
     public GameObject RankUpItemAdsPanel => _rankUpItemAdsPanel;
     public GameObject RerollItemAdsPanel => _rerollItemAdsPanel;
 
+    public ViewNextObjectUnit ViewNextObject => _viewNextObject;
+    
     public Transform Underground => _underground;
 
-    [SerializeField] private GameObject[] _background;
     [SerializeField] private ButtonExpansion _buttonBack;
     [SerializeField] private Transform _ballParent;
     [SerializeField] private TMP_Text _textCurrScore;
@@ -45,7 +46,8 @@ public class ViewCanvasInGame : ViewCanvas {
     [SerializeField] private GameObject _rerollItemAdsPanel;
 
     [SerializeField] private Transform _underground;
-
+    [SerializeField] private ViewNextObjectUnit _viewNextObject;
+    
     private WaitForSeconds _wfs = new WaitForSeconds(0.01f);
 
     public ViewCanvasInGame SetBestScore(int score) {
@@ -55,13 +57,6 @@ public class ViewCanvasInGame : ViewCanvas {
 
     public ViewCanvasInGame SetCurrScore(int score) {
         _textCurrScore.text = score.ToString();
-        return this;
-    }
-
-    public ViewCanvasInGame SetBackground(int index) {
-        for(int i = 0; i < _background.Length; i++) {
-            _background[i].SetActive(i == index);
-        }
         return this;
     }
 }
