@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class CloudData
 {
     public List<CloudDataAttendance> cloudAttendanceDatas;
+    public bool isNotice;
 }
 
 [Serializable]

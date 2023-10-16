@@ -114,6 +114,7 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 			case PREMIUM:
 				DataManager.init.gameData.isPremium = true;
 				DataManager.init.Save();
+				DataManager.init.RemoveAdsFirebaseSync();
 				break;
 
 			case DOUBLE_COIN:
