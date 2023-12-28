@@ -20,7 +20,7 @@ public class ControllerGameOver {
                 GameManager.OnBindGoHome?.Invoke();
 
                 if (DataManager.init.gameData.playTime == 2)
-                    GoogleReview.init.Show().Forget();
+                    GoogleReview.init.ShowStoreReview();
                 else
                     AdsManager.init.ShowInterstitialAd();
 
