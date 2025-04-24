@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class MaxLine : MonoBehaviour {
     public float LineHeight => transform.position.y;
@@ -49,10 +45,18 @@ public class MaxLine : MonoBehaviour {
         animator.SetTrigger(isWaringToHash);
     }
 
+    public void SetUndergroundPositionY(float y)
+    {
+        _underGround.position = new Vector2(0, y);
+    }
+
+    public void SetMaxLinePositionY(float y)
+    {
+        transform.position = new Vector2(0, y);
+    }
+
     private void ObjectHeightAsync() {
-        transform.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.MaxLineHeight).y);
-        _underGround.position = new Vector2(0, Camera.main.ScreenToWorldPoint(Vector2.one * GameManager.GroundHeight).y);
-        _rightBlock.transform.position = new Vector2(ObjectManager.init.MaxRightX + _rightBlock.size.x * 0.5f, 0);
-        _leftBlock.transform.position = new Vector2(ObjectManager.init.MinLeftX - _leftBlock.size.x * 0.5f, 0);
+        _rightBlock.transform.position = new Vector2((ObjectManager.init.MaxRightX + _rightBlock.size.x * 0.5f) - 0.05f, 0);
+        _leftBlock.transform.position = new Vector2((ObjectManager.init.MinLeftX - _leftBlock.size.x * 0.5f) + 0.05f, 0);
     }
 }

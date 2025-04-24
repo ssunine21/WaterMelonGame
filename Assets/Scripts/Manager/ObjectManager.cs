@@ -39,7 +39,6 @@ public class ObjectManager : MonoBehaviour
 	public ParticleSystem Particle;
 	public GameObject[] objects;
 	public GameObject[] backgroundPrefabs;
-	public BlockManager[] block;
 
 	public List<MainObject> MainObjects => _mainObjecs;
 	public float MinLeftX => GetPos(true);
@@ -63,8 +62,10 @@ public class ObjectManager : MonoBehaviour
 		ObjectsSizeAsync();
 	}
 
-	private void ObjectsSizeAsync() {
-		float objRate = 1;// GameManager.Width / 720f;
+	private void ObjectsSizeAsync()
+	{
+		float objRate = 1;//GameManager.Width / 1080f;
+		//float objRate = GameManager.Height / GameManager.Width * 0.6f;
 		// screenRate / 0.5625f;
 
 		_objParent.transform.localScale = Vector3.one * objRate;
@@ -90,8 +91,18 @@ public class ObjectManager : MonoBehaviour
 
 		int index = (int)key;
 		var currObject = Instantiate(objects[index], _objParent.transform).GetComponent<MainObject>();
+
+		var sprite = currObject.SpriteRenderer.sprite;
+		sprite = objectSprites[(int)key];
+		
+		var oldPixelPerUnit = sprite.pixelsPerUnit;
+		var newPixelPerUnit = sprite.pixelsPerUnit * (GameManager.Height / GameManager.Width * 0.48f);
+		//var newPixelPerUnit = sprite.pixelsPerUnit * (1080f / GameManager.Width);
+		
+		currObject.transform.localScale *= oldPixelPerUnit / newPixelPerUnit;
 		currObject.transform.position = pos.Value;
-		currObject.SpriteRenderer.sprite = objectSprites[(int)key];
+		
+		currObject.SpriteRenderer.sprite = sprite;
 		currObject.SpriteRenderer.transform.localPosition = Vector3.zero;
 
 		if (_mainObjecs == null)
@@ -99,11 +110,17 @@ public class ObjectManager : MonoBehaviour
 
 		_mainObjecs.Add(currObject);
 
+		if(!DataManager.init.gameData.discoveredObjects[currStyleNum][(int)key])
+		{
+			DataManager.init.gameData.discoveredObjects[currStyleNum][(int)key] = true;
+			PlayerBook.OnFindBookObject?.Invoke(currStyleNum);
+		}
+		
 		return currObject;
 	}
 
 	public void MergeObject(MainObject target, MainObject curr) {
-		if (target.mergeLevel == ObjectKey.Max) 
+		if (target.mergeLevel == ObjectKey.Ten) 
 			return;
 		
 		curr.CircleCollider.enabled = false;
@@ -171,6 +188,7 @@ public class ObjectManager : MonoBehaviour
 	public void RankUpItem() {
 		var randomObjects = GetRandomItems(2);
 		foreach (var random in randomObjects) {
+			
 			MainObject mainObject = GetObject(random.mergeLevel + 1, random.transform.position);
 			mainObject.Setting();
 
@@ -211,10 +229,10 @@ public class ObjectManager : MonoBehaviour
 
 	private List<MainObject> GetRandomItems(int count) {
 		if (_mainObjecs.Count <= count)
-			return _mainObjecs.Where(x => x.isDropped && x.isActiveAndEnabled).ToList();
+			return _mainObjecs.Where(x => x.isDropped && x.isActiveAndEnabled && x.mergeLevel < ObjectKey.Ten).ToList();
 		else {
 			System.Random random = new System.Random();
-			return _mainObjecs.Where(x => x.isDropped && x.isActiveAndEnabled).OrderBy(x => random.Next()).Take(count).ToList();
+			return _mainObjecs.Where(x => x.isDropped && x.isActiveAndEnabled && x.mergeLevel < ObjectKey.Ten).OrderBy(x => random.Next()).Take(count).ToList();
 		}
     }
 

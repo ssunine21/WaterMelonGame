@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -16,6 +14,11 @@ public class ServerTime : MonoBehaviour
 
     private void Start() {
         StartCoroutine(IeWebCheck());
+    }
+
+    public static string ToStringYesterday()
+    {
+        return NowTime.AddDays(-1).ToString("yyyy/MM/dd 00:00:00");
     }
 
     public static string ToStringNextDay()

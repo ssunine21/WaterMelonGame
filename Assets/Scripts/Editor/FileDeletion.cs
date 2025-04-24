@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
-using Firebase;
 using Firebase.Database;
 
 public class FileDeletion : Editor

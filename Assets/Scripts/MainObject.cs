@@ -62,7 +62,7 @@ public class MainObject : MonoBehaviour
 
 		while (true)
 		{
-			//_rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0, 1f);
+			//rigidbody.angularVelocity = Mathf.Lerp(_rigidbody.angularVelocity, 0f, 1000f);
 			tempPosition = transform.position;
 			if (transform.position.x - radius <= ObjectManager.init.MinLeftX)
 			{
@@ -105,7 +105,7 @@ public class MainObject : MonoBehaviour
 				overLineTime = 0;
 
 			//collider
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius + 0.0003f);
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius + 0.3f);
 			foreach (Collider2D collider in colliders)
 			{
 				if (collider.TryGetComponent<MainObject>(out var component))

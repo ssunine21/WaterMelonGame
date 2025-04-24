@@ -79,6 +79,22 @@ public class DataManager : MonoBehaviour {
 		} catch (System.Exception e) {
 			Debug.LogException(e);
 		}
+		
+		gameData.discoveredObjects ??= new List<List<bool>>();
+		gameData.isReceivedBookRewards ??= new List<bool>();
+		for (var i = gameData.discoveredObjects.Count; i < Definition.ObjectThemeCount; ++i)
+		{
+			gameData.discoveredObjects.Add(new List<bool>());
+			for (var j = 0; j < 11; ++j)
+			{
+				gameData.discoveredObjects[i].Add(false);
+			}
+		}
+
+		for (var i = gameData.isReceivedBookRewards.Count; i < Definition.ObjectThemeCount; ++i)
+		{
+			gameData.isReceivedBookRewards.Add(false);
+		}
 	}
 
 	private async UniTask<bool> LoadFirebaseDate()

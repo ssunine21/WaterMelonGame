@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DataInfo {
 	[System.Serializable]
@@ -22,6 +21,10 @@ namespace DataInfo {
 
 		public int currDailyCoinCount;
 		public long initTimeDailyRewardTicks;
+
+		public int watchAdsDestroyItemCount = 2;
+		public int watchAdsRankupItemCount = 2;
+		public int watchAdsRerollItemCount = 2;
 
 		public bool watchAdsDestroyItem;
 		public bool watchAdsRankupItem;
@@ -50,6 +53,11 @@ namespace DataInfo {
 		public List<GameObjectData> objectData;
 		public ObjectManager.ObjectKey currObjectKey;
 		public ObjectManager.ObjectKey nextObjectKey;
+
+		public List<List<bool>> discoveredObjects;
+		[FormerlySerializedAs("isGetBookRewards")] public List<bool> isReceivedBookRewards;
+
+		public List<string> getBookAdRewardDateToStrings;
 	}
 
 

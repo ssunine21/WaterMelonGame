@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Korean (South Korea) (ko-KR)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Korean (South Korea) (ko-KR)
-  m_Data:
-    m_SerializedData: []
   m_GUID: ce88407cd2871ae49b5e443730387d8e
   m_SerializeEntries:
   - m_GUID: 8d477f0c1eb03254085df4610650ed0e
@@ -22,7 +20,7 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ko-KR
-    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 684f9aaac677e624983931a84626a97f, type: 2}
   m_SchemaSet:

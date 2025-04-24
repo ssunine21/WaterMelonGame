@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -43,7 +41,7 @@ public static class DataScore {
 		int currLevel = 0;
 		while (true)
 		{
-			needExp = Mathf.FloorToInt(currLevel * 5) + 50;
+			needExp = Mathf.FloorToInt(currLevel * currLevel * 2) + 50;
 			if (needExp > exp)
 				break;
 			else

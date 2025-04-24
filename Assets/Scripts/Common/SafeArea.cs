@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SafeArea : MonoBehaviour
@@ -17,9 +15,12 @@ public class SafeArea : MonoBehaviour
         _maxAnchor = _minAnchor + _safeArea.size;
 
         _minAnchor.x /= Screen.width;
-        _minAnchor.y /= Screen.height;
+        //_minAnchor.y /= Screen.height;
         _maxAnchor.x /= Screen.width;
         _maxAnchor.y /= Screen.height;
+
+        _minAnchor.y = _rectTransform.anchorMin.y;
+        //_maxAnchor.y = _rectTransform.anchorMax.y;
 
         _rectTransform.anchorMin = _minAnchor;
         _rectTransform.anchorMax = _maxAnchor;

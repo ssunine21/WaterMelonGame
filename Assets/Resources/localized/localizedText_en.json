@@ -203,6 +203,14 @@
     {
       "key": "NextObject",
       "value": "NEXT"
+    },
+    {
+      "key": "Book",
+      "value": "Collection"
+    },
+    {
+      "key": "BookDesc",
+      "value": "※ Find fruits and collect rewards every day!"
     }
   ]
 }

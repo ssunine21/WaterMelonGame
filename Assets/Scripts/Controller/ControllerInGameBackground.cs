@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
-using UnityEngine.EventSystems;
 
 public class ControllerInGameBackground {
     private readonly ViewCanvasInGameBackground _view;

@@ -179,6 +179,14 @@
       {
         "key": "NextObject",
         "value": "NEXT"
+      },
+      {
+        "key": "Book",
+        "value": "도감"
+      },
+      {
+        "key": "BookDesc",
+        "value": "※ 과일을 찾고 매일 보상을 수령하세요!"
       }
     ]
 }

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cysharp.Threading.Tasks;
+using DataInfo.Controller;
 using UnityEngine;
-using Firebase.Database;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour {
@@ -16,15 +14,17 @@ public class GameManager : MonoBehaviour {
 	public static bool IsGamePause;
 	public static GameManager init;
 
-	public static float Height;
-	public static float Width;
-
-	public static float GroundHeight => Height * 0.03f;
+	public static float Height => Screen.height;
+	public static float Width => Screen.width;
 	public static float MaxLineHeight => Height * 0.25f * 3.35f;
-	public static float MaxLineWaringHeight => Height * 0.25f * 2.4f;
 	public static float ObjectHeight => Height * 0.25f * 3.7f;
 
 	public bool isEnterGame = false;
+
+	[Header("Resources")] 
+	public Sprite ExpIcon;
+
+	public Sprite GoldIcon;
 
 	private void Awake() {
 		if (init == null) {
@@ -36,22 +36,19 @@ public class GameManager : MonoBehaviour {
 
 		Application.targetFrameRate = 60;
 
-		float width = Screen.width;
-		float defaultValue = width / 9 * 16;
-		if (Screen.height < defaultValue) {
-			Height = Screen.height;
-			Width = Height / 16 * 9;
-		} else {
-			Height = defaultValue;
-			Width = width;
-		}
-
 		OnBindNewGame += GameStart;
 		OnBindStartGame += GameStart;
 		OnBindGoHome += GameEnd;
 	}
 
-	private void Start() {
+	private void Start()
+	{
+		PlayMusic().Forget();
+	}
+
+	private async UniTaskVoid PlayMusic()
+	{
+		await UniTask.WaitUntil(() => ControllerLoading.IsInit);
 		AudioManager.Init.Play(Definition.AudioType.Background);
 	}
 

@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 public class ViewCanvasInGame : ViewCanvas {
     public Transform BallParent => _ballParent;
@@ -25,7 +21,8 @@ public class ViewCanvasInGame : ViewCanvas {
 
     public ViewNextObjectUnit ViewNextObject => _viewNextObject;
     
-    public Transform Underground => _underground;
+    public RectTransform Underground => _underground;
+    public RectTransform Up => _up;
 
     [SerializeField] private ButtonExpansion _buttonBack;
     [SerializeField] private Transform _ballParent;
@@ -45,7 +42,8 @@ public class ViewCanvasInGame : ViewCanvas {
     [SerializeField] private GameObject _rankUpItemAdsPanel;
     [SerializeField] private GameObject _rerollItemAdsPanel;
 
-    [SerializeField] private Transform _underground;
+    [SerializeField] private RectTransform _underground;
+    [SerializeField] private RectTransform _up;
     [SerializeField] private ViewNextObjectUnit _viewNextObject;
     
     private WaitForSeconds _wfs = new WaitForSeconds(0.01f);

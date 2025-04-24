@@ -8,6 +8,7 @@ public class AdsManager : MonoBehaviour {
     // 배너 광고   ca-app-pub-3940256099942544/6300978111
     // 전면 광고   ca-app-pub-3940256099942544/1033173712
     // 보상형 광고  ca-app-pub-3940256099942544/5224354917
+    // 보상형 전면 광고  ca-app-pub-3940256099942544/5224354917
 
     // iOS
     // 배너 광고   ca-app-pub-3940256099942544/2934735716
@@ -17,6 +18,7 @@ public class AdsManager : MonoBehaviour {
     private static readonly string AND_BANNER_ID = "ca-app-pub-7832687788012663/9321714808";
     private static readonly string AND_INTERSTITIAL_ID = "ca-app-pub-7832687788012663/1332806899";
     private static readonly string AND_REWARD_ID = "ca-app-pub-7832687788012663/3605180232";
+    private static readonly string AND_REWARD_INTERSTITIAL_ID = "ca-app-pub-7832687788012663/5217539172";
 
     private static readonly string iOS_BANNER_ID = "ca-app-pub-7832687788012663/6504877560";
     private static readonly string iOS_INTERSTITIAL_ID = "ca-app-pub-7832687788012663/1679720432";
@@ -47,6 +49,8 @@ public class AdsManager : MonoBehaviour {
     private RewardedAd _rerollItemRewardedAd;
     private RewardedAd _restartGameRewardedAd;
 
+    private RewardedInterstitialAd _rewardedInterstitialAd;
+
     public void Start() {
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => {
@@ -57,6 +61,7 @@ public class AdsManager : MonoBehaviour {
         LoadRankUpRewardedAd();
         LoadRerollRewardedAd();
         LoadRestartGameRewardedAd();
+        LoadRewardedInterstitialAd();
 
         LoadInterstitialAd();
 
@@ -238,6 +243,44 @@ public class AdsManager : MonoBehaviour {
             });
     }
 
+    private void LoadRewardedInterstitialAd()
+    {
+        
+#if UNITY_ANDROID
+        string adUnitId = AND_REWARD_INTERSTITIAL_ID;
+// #elif UNITY_IPHONE
+//         string adUnitId = iOS_INTERSTITIAL_ID;
+#else
+        string adUnitId = "unexpected_platform";
+#endif
+        
+        if (_rewardedInterstitialAd != null)
+        {
+            _rewardedInterstitialAd.Destroy();
+            _rewardedInterstitialAd = null;
+        }
+
+        var adRequest = new AdRequest();
+        // adRequest.Keywords.Add("unity-admob-sample");
+        
+        RewardedInterstitialAd.Load(adUnitId, adRequest,
+            (RewardedInterstitialAd ad, LoadAdError error) =>
+            {
+                if(error != null || ad == null)
+                {
+                    Debug.LogError("Rewarded Interstitial Ad faild with error : " + error);
+                    return;
+                }
+
+                ad.OnAdFullScreenContentClosed += LoadRewardedInterstitialAd;
+                ad.OnAdFullScreenContentFailed += adError =>
+                {
+                    LoadRewardedInterstitialAd();
+                };
+                _rewardedInterstitialAd = ad;
+            });
+    }
+
     /// <summary>
     /// Destroys the ad.
     /// </summary>
@@ -310,6 +353,17 @@ public class AdsManager : MonoBehaviour {
         }
     }
 
+    public void ShowRewardedInterstitialAd()
+    {
+        if (_rewardedInterstitialAd != null && _rewardedInterstitialAd.CanShowAd())
+        {
+            _rewardedInterstitialAd.Show(reward =>
+            {
+                PlayerBook.OnBindGetBookReward?.Invoke(true);
+            });
+        }
+    }
+
     public void HandleUserCoinReward() {
         PlayerCoin.Earn(300);
         DataManager.init.gameData.currDailyCoinCount--;
@@ -339,6 +393,11 @@ public class AdsManager : MonoBehaviour {
         ObjectManager.init.DestroyHalf();
         GameManager.IsGamePause = false;
         DataManager.init.gameData.viewAdsCount = 1;
+    }
+
+    public void HandleUserBookReward()
+    {
+        
     }
 
     public void DestroyBannerAd() {

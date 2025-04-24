@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 139642314752
-    m_Localized: Candy Pang
+    m_Localized: 'Fruits Merge : 2048'
     m_Metadata:
       m_Items: []
   references:

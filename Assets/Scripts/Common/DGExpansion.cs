@@ -1,7 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
-using System.Collections;
 
 namespace DGExcepsion {
     public static class DGExpansion {

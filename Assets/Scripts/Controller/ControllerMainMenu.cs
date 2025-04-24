@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms;
@@ -23,9 +21,11 @@ public class ControllerMainMenu {
         _view.SetLocalizeText();
         _view.NewGmae.onClick.AddListener(NewGame);
         _view.StartGame.onClick.AddListener(() => GameManager.OnBindStartGame?.Invoke());
-        _view.Option.onClick.AddListener(() => OnBindMenu?.Invoke(0));
         _view.Leaderboard.onClick.AddListener(LeaderBoard);
+        
+        _view.Option.onClick.AddListener(() => OnBindMenu?.Invoke(0));
         _view.Attendance.onClick.AddListener(() => OnBindMenu?.Invoke(1));
+        _view.Book.onClick.AddListener(() => OnBindMenu?.Invoke(2));
 
         OnBindSetActiveMenu += SetActiveMenus;
         
@@ -49,6 +49,9 @@ public class ControllerMainMenu {
                 break;
             case 1:
                 _view.Attendance.gameObject.SetActive(flag);
+                break;
+            case 2:
+                _view.Book.gameObject.SetActive(flag);
                 break;
         }
     }

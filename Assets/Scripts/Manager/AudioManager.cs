@@ -1,20 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-	public static AudioManager Init => _init;
+	public static AudioManager Init
+	{
+		get
+		{
+			if (_init != null) return _init;
+			_init = FindObjectOfType<AudioManager>();
+
+			if (_init == null)
+				_init = new GameObject("AudioManager").AddComponent<AudioManager>();
+			return _init;
+		}
+	}
 
 	[SerializeField] private List<AudioList> audioLists;
 
 	private static AudioManager _init;
 	private void Awake() {
-		if (_init == null) {
-			_init = this;
-		} else if (_init != this) {
-			Destroy(this.gameObject);
+		if (_init != null && _init != this)
+		{
+			Destroy(gameObject);
+			return;
 		}
-		DontDestroyOnLoad(this.gameObject);
+		DontDestroyOnLoad(gameObject);
 
 		NewAudioSources();
 	}

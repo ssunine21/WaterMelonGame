@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using DGExcepsion;
 
 public class ControllerOption {
@@ -54,6 +51,10 @@ public class ControllerOption {
 
         ControllerMainMenu.OnBindMenu += UpdateVisible;
         UpdateLoginPanel();
+        
+        #if UNITY_IOS
+        _view.GoogleLoginButton.gameObject.SetActive(false);
+        #endif
     }
 
     public void UpdateVisible(int index) {

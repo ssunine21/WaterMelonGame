@@ -13,11 +13,6 @@
           "package_name": "com.bognstudio.mergegame"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "379667630543-s3eu0u5ac7cq9cvjp08sliin0i6k0bu6.apps.googleusercontent.com"
-        }
-      ],
       "api_key": [
         {
           "current_key": "AIzaSyCg4jVC32BBLh4ml-JjB-amM2ni6-HWBNo"
@@ -30,7 +25,12 @@
         "appinvite_service": {
           "status": 1
         }
-      }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379667630543-s3eu0u5ac7cq9cvjp08sliin0i6k0bu6.apps.googleusercontent.com"
+        }
+      ]
     }
   ],
   "configuration_version": "1"

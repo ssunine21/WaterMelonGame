@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using UnityEngine.EventSystems;
 
 public class ControllerInGame {
     private readonly ViewCanvasInGame _view;
@@ -35,12 +33,14 @@ public class ControllerInGame {
                     {
                         AdsManager.init.HandleUserDestroyItemReward();
                         DataManager.init.gameData.watchAdsDestroyItem = true;
+                        DataManager.init.gameData.watchAdsDestroyItemCount--;
                         UpdateItemCount();
                     }
                     else
                         AdsManager.init.ShowAdDestroyItem(() =>
                         {
                             DataManager.init.gameData.watchAdsDestroyItem = true;
+                            DataManager.init.gameData.watchAdsDestroyItemCount--;
                             UpdateItemCount();
                         });
                 }
@@ -61,12 +61,14 @@ public class ControllerInGame {
                     {
                         AdsManager.init.HandleUserRankUpItemReward();
                         DataManager.init.gameData.watchAdsRankupItem = true;
+                        DataManager.init.gameData.watchAdsRankupItemCount--;
                         UpdateItemCount();
                     }
                     else
                         AdsManager.init.ShowAdRankUpItem(() =>
                         {
                             DataManager.init.gameData.watchAdsRankupItem = true;
+                            DataManager.init.gameData.watchAdsRankupItemCount--;
                             UpdateItemCount();
                         });
                 }
@@ -87,12 +89,14 @@ public class ControllerInGame {
                     {
                         AdsManager.init.HandleUserRerollItemReward();
                         DataManager.init.gameData.watchAdsRerollItem = true;
+                        DataManager.init.gameData.watchAdsRerollItemCount--;
                         UpdateItemCount();
                     }
                     else
                         AdsManager.init.ShowAdRerollItem(() =>
                         {
                             DataManager.init.gameData.watchAdsRerollItem = true;
+                            DataManager.init.gameData.watchAdsRerollItemCount--;
                             UpdateItemCount();
                         });
                 }
@@ -121,7 +125,11 @@ public class ControllerInGame {
         DataManager.init.gameData.watchAdsDestroyItem = false;
         DataManager.init.gameData.watchAdsRankupItem = false;
         DataManager.init.gameData.watchAdsRerollItem = false;
-
+        
+        DataManager.init.gameData.watchAdsDestroyItemCount = 2;
+        DataManager.init.gameData.watchAdsRankupItemCount = 2;
+        DataManager.init.gameData.watchAdsRerollItemCount = 2;
+        
         UpdateView();
         InitObject();
         Main().Forget();
@@ -147,6 +155,22 @@ public class ControllerInGame {
 
     private void UpdateView() {
         _view.SetActive(true);
+        
+        var topY = _view.Underground.anchoredPosition.y + (_view.Underground.rect.height / 2);
+        var screenPos = new Vector2(_view.Underground.position.x, topY);
+        if (Camera.main != null)
+        {
+            var worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+            MaxLine.init.SetUndergroundPositionY(worldPos.y - 1);
+        }
+
+        var bottomY = _view.Up.anchoredPosition.y - (_view.Up.rect.height / 2);
+        var screenPos1 = new Vector2(_view.Up.position.x, bottomY);
+        if (Camera.main != null)
+        {
+            var worldPos1 = Camera.main.ScreenToWorldPoint(screenPos1);
+            MaxLine.init.SetMaxLinePositionY(_view.Up.position.y);
+        }
 
         UpdateScore();
         UpdateItemCount();
@@ -170,13 +194,13 @@ public class ControllerInGame {
         int rankupCount = DataManager.init.gameData.rankupItemCount;
         int rerollCount = DataManager.init.gameData.rerollItemCount;
 
-        _view.TextDestoryItemCount.text = destroyCount == 0 && !DataManager.init.gameData.watchAdsDestroyItem ? "" : destroyCount.ToString();
-        _view.TextRankUpItemCount.text = rankupCount == 0 && !DataManager.init.gameData.watchAdsRankupItem ? "" : rankupCount.ToString();
-        _view.TextRerollItemCount.text = rerollCount == 0 && !DataManager.init.gameData.watchAdsRerollItem ? "" : rerollCount.ToString();
+        _view.TextDestoryItemCount.text = destroyCount == 0 && DataManager.init.gameData.watchAdsDestroyItemCount > 0 ? "" : destroyCount.ToString();
+        _view.TextRankUpItemCount.text = rankupCount == 0 && DataManager.init.gameData.watchAdsRankupItemCount > 0 ? "" : rankupCount.ToString();
+        _view.TextRerollItemCount.text = rerollCount == 0 && DataManager.init.gameData.watchAdsRerollItemCount > 0 ? "" : rerollCount.ToString();
 
-        _view.DestoryItemAdsPanel.SetActive(!DataManager.init.gameData.watchAdsDestroyItem && destroyCount == 0);
-        _view.RankUpItemAdsPanel.SetActive(!DataManager.init.gameData.watchAdsRankupItem && rankupCount == 0);
-        _view.RerollItemAdsPanel.SetActive(!DataManager.init.gameData.watchAdsRerollItem && rerollCount == 0);
+        _view.DestoryItemAdsPanel.SetActive(DataManager.init.gameData.watchAdsDestroyItemCount > 0 && destroyCount == 0);
+        _view.RankUpItemAdsPanel.SetActive(DataManager.init.gameData.watchAdsRankupItemCount > 0 && rankupCount == 0);
+        _view.RerollItemAdsPanel.SetActive(DataManager.init.gameData.watchAdsRerollItemCount > 0 && rerollCount == 0);
 
         DataManager.init.Save();
     }

@@ -211,6 +211,14 @@
     {
       "key": "NextObject",
       "value": "下一个"
+    },
+    {
+      "key": "Book",
+      "value": "收藏"
+    },
+    {
+      "key": "BookDesc",
+      "value": "※ 寻找水果，每天领取奖励！"
     }
   ]
 }

@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
-using UnityEngine.Localization.Tables;
 
 public class ControllerGameOver {
     private readonly ViewCanvasGameOver _view;
@@ -20,7 +17,7 @@ public class ControllerGameOver {
                 GameManager.OnBindGoHome?.Invoke();
 
                 if (DataManager.init.gameData.playTime == 2)
-                    GoogleReview.init.Show().Forget();
+                    GoogleReview.init.ShowStoreReview();
                 else
                     AdsManager.init.ShowInterstitialAd();
 
@@ -108,7 +105,7 @@ public class ControllerGameOver {
         int coinCurr = 0;
         int coinScore = Mathf.Clamp(Mathf.FloorToInt(score * 0.013f), 0, 3500);
         
-        SetExp(Mathf.Clamp(Mathf.FloorToInt(score * 0.013f), 0, 999)).Forget();
+        SetExp(Mathf.Clamp(Mathf.FloorToInt(score * 0.073f), 0, 9999)).Forget();
         
         // after timer -> score setting
         float elapsedTime = 0f;

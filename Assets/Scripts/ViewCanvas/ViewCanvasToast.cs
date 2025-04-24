@@ -2,11 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using DGExcepsion;
-using DG.Tweening;
-using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.Collections;
-using UnityEngine.Events;
 
 public class ViewCanvasToast : ViewCanvas {
     [SerializeField] private GameObject _toast;

@@ -212,6 +212,14 @@
     {
       "key": "NextObject",
       "value": "ネクスト"
+    },
+    {
+      "key": "Book",
+      "value": "コレクション"
+    },
+    {
+      "key": "BookDesc",
+      "value": "※ 果物を見つけて毎日報酬を受け取ろう！"
     }
   ]
 }
