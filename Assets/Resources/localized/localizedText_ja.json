@@ -1,0 +1,225 @@
+{
+  "items": [
+    {
+      "key": "AppName",
+      "value": "スイカゲーム"
+
+    },
+    {
+      "key": "Title",
+      "value": "スイカゲーム"
+
+    },
+    {
+      "key": "StartGame",
+      "value": "ゲーム開始"
+
+    },
+    {
+      "key": "NewGame",
+      "value": "新しいゲーム"
+
+    },
+    {
+      "key": "Main",
+      "value": "メイン"
+
+    },
+    {
+      "key": "Store",
+      "value": "ストア"
+
+    },
+    {
+      "key": "IsPurchase",
+      "value": "ご購入いただきますか？"
+
+    },
+    {
+      "key": "IsNotCoin",
+      "value": "コインが足りません。"
+
+    },
+    {
+      "key": "Check",
+      "value": "確認"
+
+    },
+    {
+      "key": "Cancel",
+      "value": "キャンセル"
+
+    },
+    {
+      "key": "CoinPack",
+      "value": "コインパッケージ"
+
+    },
+    {
+      "key": "CoinBundle",
+      "value": "コインバンドル"
+
+    },
+    {
+      "key": "CoinChest",
+      "value": "コインボックス"
+
+    },
+    {
+      "key": "Bonus",
+      "value": "ボーナス"
+
+    },
+    {
+      "key": "Object",
+      "value": "オブジェクト"
+
+    },
+    {
+      "key": "Background",
+      "value": "背景"
+
+    },
+    {
+      "key": "Special",
+      "value": "スペシャル"
+
+    },
+    {
+      "key": "Destruction",
+      "value": "破壊"
+
+    },
+    {
+      "key": "RankUp",
+      "value": "昇進"
+
+    },
+    {
+      "key": "Reroll",
+      "value": "再振り"
+
+    },
+    {
+      "key": "FreeCoin",
+      "value": "無料コイン"
+
+    },
+    {
+      "key": "DoubleCoin",
+      "value": "ダブルコイン"
+
+    },
+    {
+      "key": "RemoveAds",
+      "value": "広告スキップ"
+
+    },
+    {
+      "key": "DestructionDesc",
+      "value": "ボール4つを破壊します。 (ランダム)"
+
+    },
+    {
+      "key": "RankUpDesc",
+      "value": "ボールのグレードを2つ上げます。(ランダム)"
+
+    },
+    {
+      "key": "RerollDesc",
+      "value": "すべてのボールがリロールされます。"
+
+    },
+    {
+      "key": "FreeCoinDesc",
+      "value": "デイリーリワード"
+
+    },
+    {
+      "key": "DoubleCoinDesc",
+      "value": "コインの獲得量が2倍に増加します。"
+
+    },
+    {
+      "key": "RemoveAdsDesc",
+      "value": "全ての広告がスキップされます！"
+
+    },
+    {
+      "key": "WaringNewStart",
+      "value": "進行中のゲームがあります。新しいゲームを開始しますか？"
+
+    },
+    {
+      "key": "BGM",
+      "value": "BGM"
+
+    },
+    {
+      "key": "Effect",
+      "value": "SE"
+
+    },
+    {
+      "key": "Vibration",
+      "value": "振動"
+
+    },
+    {
+      "key": "Attendance",
+      "value": "出席チェック"
+    },
+    {
+      "key": "AttendanceDesc",
+      "value": "毎日出席して報酬を受け取ろう！"
+    },
+    {
+      "key": "BaseTime",
+      "value": "※ 毎日午前{0}時にリセットされます。"
+    },
+    {
+      "key": "Day",
+      "value": "{0}日"
+    },
+    {
+      "key": "WatchAdsToContinuePlay",
+      "value": "広告を見て続ける"
+    },
+    {
+      "key": "GoogleLogin",
+      "value": "Google Play ログイン"
+    },
+    {
+      "key": "LoginDesc",
+      "value": "ログインしない場合、データが削除される可能性があります。"
+    },
+    {
+      "key": "Copy",
+      "value": "コピー"
+    },
+    {
+      "key": "CopyDesc",
+      "value": "コピーしました"
+    },
+    {
+      "key": "LoginWarringMsg",
+      "value": "データが存在します。読み込みますか？"
+    },
+    {
+      "key": "SuccessLogin",
+      "value": "ログインに成功しました。"
+    },
+    {
+      "key": "NextObject",
+      "value": "ネクスト"
+    },
+    {
+      "key": "Book",
+      "value": "コレクション"
+    },
+    {
+      "key": "BookDesc",
+      "value": "※ 果物を見つけて毎日報酬を受け取ろう！"
+    }
+  ]
+}

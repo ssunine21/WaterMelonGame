@@ -1,0 +1,224 @@
+{
+  "items": [
+    {
+      "key": "AppName",
+      "value": "西瓜遊戲"
+
+    },
+    {
+      "key": "Title",
+      "value": "西瓜遊戲"
+
+    },
+    {
+      "key": "StartGame",
+      "value": "遊戲開始"
+
+    },
+    {
+      "key": "NewGame",
+      "value": "新遊戲"
+
+    },
+    {
+      "key": "Main",
+      "value": "主要"
+
+    },
+    {
+      "key": "Store",
+      "value": "商店"
+
+    },
+    {
+      "key": "IsPurchase",
+      "value": "您要購買嗎？"
+
+    },
+    {
+      "key": "IsNotCoin",
+      "value": "硬幣不足。"
+
+    },
+    {
+      "key": "Check",
+      "value": "確認"
+
+    },
+    {
+      "key": "Cancel",
+      "value": "取消"
+    },
+    {
+      "key": "CoinPack",
+      "value": "硬幣套餐"
+
+    },
+    {
+      "key": "CoinBundle",
+      "value": "硬幣捆綁銷售"
+
+    },
+    {
+      "key": "CoinChest",
+      "value": "硬幣盒子"
+
+    },
+    {
+      "key": "Bonus",
+      "value": "獎金"
+
+    },
+    {
+      "key": "Object",
+      "value": "物件"
+
+    },
+    {
+      "key": "Background",
+      "value": "背景"
+
+    },
+    {
+      "key": "Special",
+      "value": "特殊"
+
+    },
+    {
+      "key": "Destruction",
+      "value": "破壞"
+
+    },
+    {
+      "key": "RankUp",
+      "value": "晉升"
+
+    },
+    {
+      "key": "Reroll",
+      "value": "重新擲骰"
+
+    },
+    {
+      "key": "FreeCoin",
+      "value": "免費硬幣"
+
+    },
+    {
+      "key": "DoubleCoin",
+      "value": "雙倍硬幣"
+
+    },
+    {
+      "key": "RemoveAds",
+      "value": "清除廣告"
+
+    },
+    {
+      "key": "DestructionDesc",
+      "value": "破壞4個球。(隨機)"
+
+    },
+    {
+      "key": "RankUpDesc",
+      "value": "提升2顆球的等級。(隨機)"
+
+    },
+    {
+      "key": "RerollDesc",
+      "value": "所有球重新擲骰。"
+
+    },
+    {
+      "key": "FreeCoinDesc",
+      "value": "每日奖励"
+
+    },
+    {
+      "key": "DoubleCoinDesc",
+      "value": "金幣獲得量增加兩倍。"
+
+    },
+    {
+      "key": "RemoveAdsDesc",
+      "value": "永久清除所有的廣告"
+
+    },
+    {
+      "key": "WaringNewStart",
+      "value": "您有進行中的遊戲。是否要開始新遊戲？"
+
+    },
+    {
+      "key": "BGM",
+      "value": "背景音"
+
+    },
+    {
+      "key": "Effect",
+      "value": "效果音"
+
+    },
+    {
+      "key": "Vibration",
+      "value": "震動"
+
+    },
+    {
+      "key": "Attendance",
+      "value": "簽到"
+    },
+    {
+      "key": "AttendanceDesc",
+      "value": "每天簽到領取獎勵！"
+    },
+    {
+      "key": "BaseTime",
+      "value": "※ 每天午夜{0}點重置。"
+    },
+    {
+      "key": "Day",
+      "value": "{0}日"
+    },
+    {
+      "key": "WatchAdsToContinuePlay",
+      "value": "觀看廣告後繼續"
+    },
+    {
+      "key": "GoogleLogin",
+      "value": "Google Play 登入"
+    },
+    {
+      "key": "LoginDesc",
+      "value": "如果不登錄，您的數據可能會被刪除。"
+    },
+    {
+      "key": "Copy",
+      "value": "複製"
+    },
+    {
+      "key": "CopyDesc",
+      "value": "已複製"
+    },
+    {
+      "key": "LoginWarringMsg",
+      "value": "存在數據。您要載入嗎？"
+    },
+    {
+      "key": "SuccessLogin",
+      "value": "登錄成功。"
+    },
+    {
+      "key": "NextObject",
+      "value": "下一個"
+    },
+    {
+      "key": "Book",
+      "value": "收藏"
+    },
+    {
+      "key": "BookDesc",
+      "value": "※ 尋找水果，每天領取獎勵！"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "items": [
+    {
+      "key": "AppName",
+      "value": "Watermelon Game"
+    },
+    {
+      "key": "Title",
+      "value": "Watermelon Game"
+
+    },
+    {
+      "key": "StartGame",
+      "value": "Start game"
+
+    },
+    {
+      "key": "NewGame",
+      "value": "New Game"
+
+    },
+    {
+      "key": "Main",
+      "value": "Main"
+
+    },
+    {
+      "key": "Store",
+      "value": "Store"
+
+    },
+    {
+      "key": "IsPurchase",
+      "value": "Would you like to make a purchase?"
+
+    },
+    {
+      "key": "IsNotCoin",
+      "value": "Not enough coins."
+
+    },
+    {
+      "key": "Check",
+      "value": "Confirm"
+
+    },
+    {
+      "key": "Cancel",
+      "value": "Cancel"
+
+    },
+    {
+      "key": "CoinPack",
+      "value": "Coin Pack"
+    },
+    {
+      "key": "CoinBundle",
+      "value": "Coin Bundle"
+    },
+    {
+      "key": "CoinChest",
+      "value": "Coin Chest"
+    },
+    {
+      "key": "Bonus",
+      "value": "bonus"
+    },
+    {
+      "key": "Object",
+      "value": "OBJECT"
+    },
+    {
+      "key": "Background",
+      "value": "BACKGROUND"
+    },
+    {
+      "key": "Special",
+      "value": "SPECIAL"
+    },
+    {
+      "key": "Destruction",
+      "value": "Destruction"
+
+    },
+    {
+      "key": "RankUp",
+      "value": "Promotion"
+
+    },
+    {
+      "key": "Reroll",
+      "value": "Reroll"
+
+    },
+    {
+      "key": "FreeCoin",
+      "value": "Free coins"
+
+    },
+    {
+      "key": "DoubleCoin",
+      "value": "Double coins"
+
+    },
+    {
+      "key": "RemoveAds",
+      "value": "Ad Block"
+
+    },
+    {
+      "key": "DestructionDesc",
+      "value": "Destroys 4 balls. (Random)"
+
+    },
+    {
+      "key": "RankUpDesc",
+      "value": "Increase the grade of 2 balls. (Random)"
+
+    },
+    {
+      "key": "RerollDesc",
+      "value": "All balls are rerolled."
+
+    },
+    {
+      "key": "FreeCoinDesc",
+      "value": "Daily Reward"
+
+    },
+    {
+      "key": "DoubleCoinDesc",
+      "value": "Coin acquisition rate doubles."
+
+    },
+    {
+      "key": "RemoveAdsDesc",
+      "value": "Removes all Ads forever."
+
+    },
+    {
+      "key": "WaringNewStart",
+      "value": "You have a game in progress. Would you like to start a new game?"
+
+    },
+    {
+      "key": "BGM",
+      "value": "BGM"
+
+    },
+    {
+      "key": "Effect",
+      "value": "Sound FX"
+
+    },
+    {
+      "key": "Vibration",
+      "value": "Vibration"
+    },
+    {
+      "key": "Attendance",
+      "value": "Check-in"
+    },
+    {
+      "key": "AttendanceDesc",
+      "value": "Attend daily and claim your rewards!"
+    },
+    {
+      "key": "BaseTime",
+      "value": "※ Resets daily at {0}."
+    },
+    {
+      "key": "Day",
+      "value": "{0} day"
+    },
+    {
+      "key": "WatchAdsToContinuePlay",
+      "value": "Continue after watching an ad"
+    },
+    {
+      "key": "GoogleLogin",
+      "value": "Google Play Login"
+    },
+    {
+      "key": "LoginDesc",
+      "value": "If you don't log in, your data may be deleted."
+    },
+    {
+      "key": "Copy",
+      "value": "Copy"
+    },
+    {
+      "key": "CopyDesc",
+      "value": "Copied"
+    },
+    {
+      "key": "LoginWarringMsg",
+      "value": "Data exists. Would you like to load it?"
+    },
+    {
+      "key": "SuccessLogin",
+      "value": "Login successful."
+    },
+    {
+      "key": "NextObject",
+      "value": "NEXT"
+    },
+    {
+      "key": "Book",
+      "value": "Collection"
+    },
+    {
+      "key": "BookDesc",
+      "value": "※ Find fruits and collect rewards every day!"
+    }
+  ]
+}
